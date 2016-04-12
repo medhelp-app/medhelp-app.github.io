@@ -1,0 +1,17 @@
+.home .container{
+	width:30%;
+	position:fixed;
+	left:35%;
+	top:20%;
+	z-index:20;
+}
+
+@media only screen and (max-width: 992px) {
+  .home .container{
+		width:60%;
+		position:fixed;
+		left:22%;
+		top:20%;
+		z-index:20;
+	}
+}
