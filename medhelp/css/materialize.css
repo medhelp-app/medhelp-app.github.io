@@ -8737,8 +8737,8 @@ input[type=search]:disabled,
 input[type=search][readonly="readonly"],
 textarea.materialize-textarea:disabled,
 textarea.materialize-textarea[readonly="readonly"] {
-  color: #1a237e;
-  border-bottom: 1px dotted #1a237e;
+  color: #CC3333;
+  border-bottom: 1px dotted #CC3333;
 }
 
 input:not([type]):disabled + label, input:not([type])[readonly="readonly"] + label,
@@ -8764,7 +8764,7 @@ input[type=search]:disabled + label,
 input[type=search][readonly="readonly"] + label,
 textarea.materialize-textarea:disabled + label,
 textarea.materialize-textarea[readonly="readonly"] + label {
-  color: #1a237e;
+  color: #CC3333;
 }
 
 input:not([type]):focus:not([readonly]),
@@ -8779,8 +8779,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #1a237e;
-  box-shadow: 0 1px 0 0 #1a237e;
+  border-bottom: 1px solid #CC3333;
+  box-shadow: 0 1px 0 0 #CC3333;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -8795,7 +8795,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #1a237e;
+  color: #CC3333;
 }
 
 input:not([type]).valid, input:not([type]):focus.valid,

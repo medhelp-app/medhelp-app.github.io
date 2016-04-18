@@ -5,13 +5,18 @@ app.config(function($routeProvider, $locationProvider){
 	});
 
 	$routeProvider.when("/signup",{
-		templateUrl: "views/signUp.html",
-		controller: "SignUpCtrl"
+		templateUrl: "views/signup.html",
+		controller: "SignupCtrl"
 	});
 
-	$routeProvider.when("/erro",{
-		templateUrl: "views/erro.html",
-		controller: "ErroCtrl"
+	$routeProvider.when("/login",{
+		templateUrl: "views/home.html",
+		controller: "HomeCtrl"
+	});
+
+	$routeProvider.when("/home",{
+		templateUrl: "views/principal.html",
+		controller: "PrincipalCtrl"
 	});
 
 	$routeProvider.otherwise({redirectTo: "/erro"});

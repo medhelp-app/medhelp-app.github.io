@@ -7,6 +7,34 @@
 	z-index:5;
 }
 
+.signup .container{
+	width:60%;
+	position:fixed;
+	left:20%;
+	top:17%;
+	z-index:5;
+}
+
+.signup .logo{
+	width:10%;
+}
+
+.nav-wrapper img{
+	height:40px;	
+}
+
+.erro{
+	float:left;
+	width:100%;
+	background: #ffcdd2;
+	margin: 10px 0;
+	text-align: center;
+	padding: 2% 2%;
+	border: 1px solid #d32f2f;
+	color:#d32f2f;
+	border-radius:5px;
+}
+
 @media only screen and (max-width: 992px) {
   .home .container{
 		width:70%;
@@ -15,4 +43,16 @@
 		top:20%;
 		z-index:5;
 	}
+	.nav-wrapper img{
+		height:35px;
+	}
+
+	.signup .logo{
+		width:30%;
+	}
+}
+
+nav{
+	background:#1a237e;
+	position: absolute;
 }
