@@ -2,6 +2,7 @@
 <html ng-app="medhelp">
 <head>
 	<base href="/web/medhelp/">
+	<!-- <base href="/"> -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MedHelp</title>
@@ -31,6 +32,7 @@
 
 </head>
 <body>
+	<div ng-include="'views/nav.html'"></div>
 	<div ng-view ></div>
 </body>
 </html>

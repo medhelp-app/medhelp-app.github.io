@@ -3171,7 +3171,7 @@ span.badge.new:after {
 
 nav ul a span.badge {
   position: static;
-  margin-left: 4px;
+  margin-left: 12px;
   line-height: 0;
 }
 
@@ -8670,21 +8670,21 @@ label {
    Text Inputs + Textarea
 ****************************/
 ::-webkit-input-placeholder {
-  color: #d1d1d1;
+  color: #999999;
 }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #d1d1d1;
+  color: #999999;
 }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #d1d1d1;
+  color: #999999;
 }
 
 :-ms-input-placeholder {
-  color: #d1d1d1;
+  color: #999999;
 }
 
 input:not([type]),

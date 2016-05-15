@@ -1,3 +1,7 @@
+body{
+	margin:1%;
+	background: #F7F8FA
+}
 
 .home .container{
 	width:30%;
@@ -7,16 +11,10 @@
 	z-index:5;
 }
 
-.signup .container{
-	width:60%;
-	position:fixed;
-	left:20%;
-	top:17%;
+.container{
+	width:100%;
 	z-index:5;
-}
-
-.signup .logo{
-	width:10%;
+	margin-top:20px;
 }
 
 .nav-wrapper img{
@@ -44,7 +42,8 @@
 		z-index:5;
 	}
 	.nav-wrapper img{
-		height:35px;
+		height:25px;
+		margin-top:5px;
 	}
 
 	.signup .logo{
@@ -53,6 +52,97 @@
 }
 
 nav{
-	background:#1a237e;
-	position: absolute;
+	background:#336699;
+	margin-bottom: 30px;
+}
+
+nav .titulo{
+	font-size: 10pt;
+	font-weight: 500;
+	padding:0px;
+	line-height: 25px;
+}
+
+nav .fotouser{
+	width: 40px;
+	margin-right: 10px;
+}
+
+nav .badge{
+	background: #CC3333;
+	border-radius: 100px;
+	color:white;
+	font-size: 8pt;
+	padding: 4px 7px;
+	margin:0px;
+}
+
+nav .fa{
+	font-size: 15pt;
+}
+
+.menu{
+	width:100%;
+	float: left;
+	padding: 0px;
+}
+
+.menu .col{
+	padding: 0px;
+}
+
+.menu .collection{
+	padding: 0px;
+	border:none;
+	overflow: visible;
+	margin-bottom: 40px;
+}
+
+.menu .collection .collection-item{
+	padding: 0px;
+	margin:0px;
+	background: transparent;
+	border:none;
+	margin-bottom:5px;
+}
+
+.menu .collection .collection-item:first-child{
+	margin-bottom:15px
+}
+
+.menu .titulo{
+	color: #CC3333;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+.menu .item{
+	color: #999999;
+	font-size: 11pt;
+	margin-bottom: 5px;
+	vertical-align: top;
+	line-height: 25px;
+}
+
+.menu .item input{
+	width: 80%;
+	margin-bottom: 0px;
+	border:none;
+	padding: 0px;
+	height: 2rem;
+}
+
+.menu .item input:focus{
+	border-bottom:1px solid #999999;
+	box-shadow: none;
+}
+
+.menu .item ::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.menu img{
+	width: 20px;
+	margin-right: 8px;
+	margin-left: -5px;
 }
