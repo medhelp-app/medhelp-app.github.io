@@ -1,0 +1,38 @@
+<div class="home">
+	<div class="row">
+		<div class="card col l6 m8 s12 offset-l3 offset-m2">
+			<div>
+				<form>
+					<div class="row">
+						<div class="logo col l8 offset-l2">
+							<img src="img/logo1.png">
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12" style="margin-top:10px">
+							<input type="text" ng-model="user.email">
+							<label>Email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="password" ng-model="user.password">
+							<label>Senha</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col l12">
+							<button class="waves-effect waves-light btn btn-red" ng-click="login(user)">
+								ENTRAR
+							</button>
+						</div>
+						
+						<div class="erro" ng-show="errostatus">
+							{{ erro }}
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

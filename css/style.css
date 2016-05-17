@@ -1,14 +1,26 @@
-body{
-	margin:1%;
-	background: #F7F8FA
+body {
+	background: #f7f8fa
 }
 
-.home .container{
-	width:30%;
-	position:fixed;
-	left:35%;
-	top:20%;
-	z-index:5;
+.home .card {
+	padding: 16px;
+	margin-top: 50px;
+}
+
+.home .card .logo img {
+	width: 100%;
+}
+
+.home .card .row:last-child {
+	margin-bottom: 0;
+}
+
+.btn-red {
+	background-color: #ce3234;
+}
+.btn-red:hover,
+.btn-red:focus {
+	background-color: #b22d2f;
 }
 
 .container{
