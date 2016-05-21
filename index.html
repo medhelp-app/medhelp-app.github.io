@@ -1,37 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html ng-app="medhelp">
-<head>
-	<base href="/web/">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MedHelp</title>
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
-	<link rel="stylesheet" type="text/css" href="css/materialize.css"/>
-	<link rel="stylesheet" type="text/css" href="css/fonts.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
-	<script src="libs/angular.js"></script>
-	<script src="libs/jquery.min.js"></script>	
-	<script src="libs/angular-locale_pt-br.js"></script>
-	<script src="libs/angular-route.js"></script>
-	<script src="libs/ngStorage.min.js"></script>
-	<script src="libs/spin.min.js"></script>
-	<script src="libs/angular-spinner.min.js"></script>
-	<script src="libs/angular-loading-spinner.js"></script>
-	<script src="libs/materialize.min.js"></script>
+	<head>
+		<base href="/web/">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MedHelp</title>
+		
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="libs/materialize.css"/>
+		<link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+		
+		<script src="libs/angular.js"></script>
+		<script src="libs/jquery.min.js"></script>	
+		<script src="libs/angular-locale_pt-br.js"></script>
+		<script src="libs/angular-route.js"></script>
+		<script src="libs/ngStorage.min.js"></script>
+		<script src="libs/spin.min.js"></script>
+		<script src="libs/angular-spinner.min.js"></script>
+		<script src="libs/angular-loading-spinner.js"></script>
+		<script src="libs/materialize.min.js"></script>
 
-	<script src="js/config/apps.js"></script>
-	<script src="js/config/routes.js"></script>
-	<script src="js/config/varGlobal.js"></script>
+		<script src="js/config/apps.js"></script>
+		<script src="js/config/routes.js"></script>
+		<script src="js/config/varGlobal.js"></script>
 
-	<script src="js/controller/homeCtrl.js"></script>
-	<script src="js/controller/signupCtrl.js"></script>
-	<script src="js/controller/principalCtrl.js"></script>
+		<script src="js/controller/homeCtrl.js"></script>
+		<script src="js/controller/signupCtrl.js"></script>
+		<script src="js/controller/principalCtrl.js"></script>
 
-</head>
-<body>
-	<div ng-include="'views/nav.html'"></div>
-	<div ng-view ></div>
-</body>
+		<script src="libs/less.min.js"></script>
+	</head>
+	<body>
+		<div ng-include="'views/nav.html'"></div>
+		<div ng-view ></div>
+	</body>
 </html>

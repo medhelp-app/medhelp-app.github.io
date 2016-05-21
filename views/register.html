@@ -1,0 +1,64 @@
+<div class="register">
+	<div class="row">
+		<div class="card col l6 m8 s12 offset-l3 offset-m2">
+			<div class="row" style="margin-bottom:0px">
+				<form>
+					<div class="row image">
+						<div class="col l8 offset-l2">
+							<img src="images/logo.png">
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12" style="margin-top:10px">
+							<input type="text" ng-model="user.name">
+							<label>Nome</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="text" ng-model="user.email">
+							<label>E-mail</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12 m6">
+							<input type="password" ng-model="user.password">
+							<label>Senha</label>
+						</div>
+
+						<div class="input-field col s12 m6">
+							<input type="password" ng-model="user.rePassword">
+							<label>Confrmar senha</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s3">
+							<input class="with-gap" name="type" type="radio" checked />
+							<label for="test5">Paciente</label>
+						</div>
+						<div class="col s3">
+							<input class="with-gap" name="type" type="radio" />
+							<label for="test5">Médico</label>
+						</div>
+					</div>
+					<div class="row buttons">
+						<div class="col s8">
+							<a href="login.html" class="btn-link">
+								ENTRAR
+							</a>
+						</div>
+						<div class="col s4 signin">
+							<button class="waves-effect waves-light btn btn-red" ng-click="signup(user)">
+								CRIAR CONTA
+							</button>
+						</div>
+					</div>
+
+					<div class="alert error" ng-show="errostatus">
+						{{erro}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

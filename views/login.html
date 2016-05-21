@@ -1,11 +1,11 @@
-<div class="home">
+<div class="login">
 	<div class="row">
 		<div class="card col l6 m8 s12 offset-l3 offset-m2">
 			<div>
 				<form>
 					<div class="row">
-						<div class="logo col l8 offset-l2">
-							<img src="img/logo1.png">
+						<div class="image col l8 offset-l2">
+							<img src="images/logo.png">
 						</div>
 					</div>
 					<div class="row">
@@ -20,16 +20,21 @@
 							<label>Senha</label>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col l12">
+					<div class="row buttons">
+						<div class="col s9">
+							<a href="register.html" class="btn-link">
+								CRIAR CONTA
+							</a>
+						</div>
+						<div class="col s3 signin">
 							<button class="waves-effect waves-light btn btn-red" ng-click="login(user)">
 								ENTRAR
 							</button>
 						</div>
+					</div>
 						
-						<div class="erro" ng-show="errostatus">
-							{{ erro }}
-						</div>
+					<div class="alert error" ng-show="errostatus">
+						{{ erro }}
 					</div>
 				</form>
 			</div>

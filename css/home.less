@@ -1,0 +1,186 @@
+.menu {
+	width: 100%;
+	float: left;
+	padding: 0px;
+
+	.col {
+		padding: 0px;
+	}
+
+	.collection { 
+		padding: 0px;
+		border: none;
+		overflow: visible;
+		margin-bottom: 40px;
+
+		.collection-item {
+			padding: 0px;
+			margin: 0px;
+			background: transparent;
+			border: none;
+			margin-bottom: 5px;
+
+			img {
+				width: 24px;
+			}
+
+			.titulo {
+				color: #CC3333;
+				font-size: 12pt;
+				font-weight: bold;
+			}
+
+			&:first-child {
+				margin-bottom: 15px
+			}
+
+			.item {
+				color: #999999;
+				font-size: 11pt;
+				margin-bottom: 5px;
+				vertical-align: top;
+				line-height: 25px;
+
+				span {
+					position: relative;
+					top: 5px;
+				}
+
+				input {
+					width: 80%;
+					margin-bottom: 0px;
+					border:none;
+					padding: 0px;
+					height: 2rem;
+
+					border-bottom: 1px solid #f7f8fa;
+				}
+
+				input:focus {
+					border-bottom: 1px solid #999999;
+					box-shadow: none;
+				}
+
+				&:-webkit-input-placeholder {
+				  color: #999999;
+				}
+			}
+		}
+	}
+}
+
+.main-content {
+	min-height: 500px;
+	padding: 20px;
+
+	form {
+		.perfil-image {
+			overflow: hidden;
+
+			img {
+				float: left;
+
+				width: 80px;
+				height: 80px;
+
+				border: 1px solid @blue-color;
+			}
+
+			.select-file {
+				float: left;
+				margin-top: 25px;
+				margin-left: 20px;
+			}
+		}
+
+		.buttons {
+			.right {
+				button {
+					float: right;
+				}
+			}
+		}
+	}
+
+	.doctor {
+		.perfil-image {
+			img {
+				width: 100%;
+
+				border: 1px solid @blue-color;
+			}
+		}
+
+		.name {
+			font-size: 24px;
+			font-weight: lighter;
+		}
+
+		.subname {
+			font-size: 18px;
+			font-weight: lighter;
+
+			span {
+				position: relative;
+				top: 5px;
+			}
+		}
+
+		.map {
+			margin-top: 20px;
+
+			#gmap_canvas img {
+				max-width: none !important;
+				background: none !important
+			}
+		}
+
+		.address {
+			font-size: 12px;
+		}
+
+		.opinions {
+			font-size: 12px;
+
+			.geral {
+
+			}
+
+			.specific {
+				border-left: 1px solid #DDD;
+
+				ul:first-child {
+					overflow: hidden;
+					margin: 0;
+
+					li {
+
+						span {
+							position: relative;
+							top: 7px;
+						}
+					}
+				}
+			}
+
+			.opinion {
+				margin-top: 20px;
+
+				border-bottom: 1px solid #DDD;
+
+				.subname {
+					margin-bottom: 5px;
+				}
+			}
+		}
+	}
+}
+
+.rate {
+	overflow: hidden;
+
+	li {
+		float: left;
+		color: @blue-color;
+	}
+}
