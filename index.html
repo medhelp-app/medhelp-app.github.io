@@ -27,12 +27,17 @@
 
 		<script src="js/controller/homeCtrl.js"></script>
 		<script src="js/controller/signupCtrl.js"></script>
+		<script src="js/controller/doctorCtrl.js"></script>
+		<script src="js/controller/doctorsCtrl.js"></script>
+		<script src="js/controller/doctorSearchCtrl.js"></script>
 		<script src="js/controller/principalCtrl.js"></script>
+		<script src="js/controller/editProfileCtrl.js"></script>
+		<script src="js/controller/routeCtrl.js"></script>
 
 		<script src="libs/less.min.js"></script>
 	</head>
-	<body>
-		<div ng-include="'views/nav.html'"></div>
+	<body ng-controller="RouteCtrl">
+		<div ng-include="'views/nav.html'" ng-show="nav"></div>
 		<div ng-view ></div>
 	</body>
 </html>

@@ -5,7 +5,7 @@ app.config(function($routeProvider, $locationProvider){
 	});
 
 	$routeProvider.when("/signup",{
-		templateUrl: "views/signup.html",
+		templateUrl: "views/register.html",
 		controller: "SignupCtrl"
 	});
 
@@ -17,6 +17,26 @@ app.config(function($routeProvider, $locationProvider){
 	$routeProvider.when("/home",{
 		templateUrl: "views/principal.html",
 		controller: "PrincipalCtrl"
+	});
+
+	$routeProvider.when("/doctor",{
+		templateUrl: "views/doctor.html",
+		controller: "DoctorCtrl"
+	});
+
+	$routeProvider.when("/doctors",{
+		templateUrl: "views/doctors_all.html",
+		controller: "DoctorsCtrl"
+	});
+
+	$routeProvider.when("/searchdoctor",{
+		templateUrl: "views/doctors_search.html",
+		controller: "DoctorSearchCtrl"
+	});
+
+	$routeProvider.when("/editprofile",{
+		templateUrl: "views/edit_profile.html",
+		controller: "EditProfileCtrl"
 	});
 
 	$routeProvider.otherwise({redirectTo: "/erro"});
