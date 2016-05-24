@@ -1,1 +1,1 @@
-web: python -m SimpleHTTPServer 5000
+web: python -m SimpleHTTPServer 8080
