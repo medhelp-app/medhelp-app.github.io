@@ -1,76 +1,8 @@
 <div class="container">
 	<div class="row">
-		<div class="col s3 hide-on-small-only">
-			<div class="menu">
-				<ul class="collection">
-					<li class="collection-item"><div class="titulo">PERFIL</div></li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">person</span> Editar Perfil
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">history</span> Histórico
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">accessibility</span> Corpo Humano
-						</div>
-					</li>
-				</ul>
-				<ul class="collection">
-					<li class="collection-item">
-						<div class="titulo">MÉDICOS</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">search</span>
-							<input placeholder="Procurar Médicos" id="first_name" type="text">
-						</div>
-					</li>
-					<li class="collection-item">
-						<img src="http://www.unimedjf.coop.br/novosite/Imagens/Site/imagemDestaqueDownloadGuiaMedico.png" class="circle">
-						<span class="item">Maria Pereira</span>
-					</li>
-					<li class="collection-item">
-						<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
-						<span class="item">Joaquina França</span>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">view_module</span>
-							Ver todos
-						</div>
-					</li>
-				</ul>
-				<ul class="collection">
-					<li class="collection-item">
-						<div class="titulo">ARQUIVOS</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">folder</span>
-							Prescrições
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">folder_special</span>
-							Exames
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">opacity</span>
-							Medicações
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="col l9 m9 s12">
+		<div ng-include="'views/side.html'"></div>
+		
+		<div class="col s12 m9 l9">
 			<div class="card main-content">
 				<form>
 					<div class="perfil-image">
@@ -93,33 +25,33 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6">
-							<input type="password" ng-model="user.password">
+							<input type="password">
 							<label>Senha</label>
 						</div>
 
 						<div class="input-field col s12 m6">
-							<input type="password" ng-model="user.rePassword">
+							<input type="password">
 							<label>Confrmar senha</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m8">
-							<input type="text" ng-model="user.password">
+							<input type="text" ng-model="user.streetName">
 							<label>Endereço</label>
 						</div>
 
 						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.rePassword">
+							<input type="text" ng-model="user.number">
 							<label>Número</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.password">
+							<input type="text" ng-model="user.city">
 							<label>Bairro</label>
 						</div>
 						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.rePassword">
+							<input type="text" ng-model="user.city">
 							<label>Cidade</label>
 						</div>
 						<div class="input-field col s12 m4">
@@ -131,25 +63,25 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m2">
-							<input type="text" ng-model="user.password" value="Brasil">
+							<input type="text" ng-model="user.country" value="Brasil">
 							<label>País</label>
 						</div>
 						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.rePassword">
+							<input type="text" ng-model="user.phone">
 							<label>Telefone</label>
 						</div>
 						<div class="input-field col s12 m3">
-							<input type="text" ng-model="user.rePassword">
+							<input type="text" ng-model="user.crm">
 							<label>CRM</label>
 						</div>
 						<div class="input-field col s12 m3">
-							<input type="text" ng-model="user.rePassword">
+							<input type="text" ng-model="user.crmStatae">
 							<label>UF</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
-							<input type="text" ng-model="user.password">
+							<input type="text" ng-model="user.doctorType">
 							<label>Especialidade</label>
 						</div>
 					</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html ng-app="medhelp">
 	<head>
-		<base href="/web/">
+		<base href="/">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>MedHelp</title>
@@ -10,6 +10,11 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="libs/materialize.css"/>
 		<link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+
+		<script type="text/javascript">
+			var API_URL = 'https://medhelp-app.herokuapp.com/api/';
+			var TOKEN = null;
+		</script>
 		
 		<script src="libs/angular.js"></script>
 		<script src="libs/jquery.min.js"></script>	
@@ -20,6 +25,7 @@
 		<script src="libs/angular-spinner.min.js"></script>
 		<script src="libs/angular-loading-spinner.js"></script>
 		<script src="libs/materialize.min.js"></script>
+		<script src="libs/angular-hmac-sha512.js"></script>
 
 		<script src="js/config/apps.js"></script>
 		<script src="js/config/routes.js"></script>
@@ -32,6 +38,7 @@
 		<script src="js/controller/doctorSearchCtrl.js"></script>
 		<script src="js/controller/principalCtrl.js"></script>
 		<script src="js/controller/editProfileCtrl.js"></script>
+		<script src="js/controller/sideController.js"></script>
 		<script src="js/controller/routeCtrl.js"></script>
 
 		<script src="libs/less.min.js"></script>

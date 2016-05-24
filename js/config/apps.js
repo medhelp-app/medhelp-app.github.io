@@ -1,1 +1,1 @@
-var app = angular.module("medhelp", ["ngRoute","ngStorage","ngLoadingSpinner"]);
+var app = angular.module("medhelp", ["ngRoute", "ngStorage", "ngLoadingSpinner", "angular-hmac-sha512"]);

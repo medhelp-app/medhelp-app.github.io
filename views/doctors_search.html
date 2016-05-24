@@ -1,76 +1,8 @@
 <div class="container">
 	<div class="row">
-		<div class="col s3">
-			<div class="menu">
-				<ul class="collection">
-					<li class="collection-item"><div class="titulo">PERFIL</div></li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">person</span> Editar Perfil
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">history</span> Histórico
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">accessibility</span> Corpo Humano
-						</div>
-					</li>
-				</ul>
-				<ul class="collection">
-					<li class="collection-item">
-						<div class="titulo">MÉDICOS</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">search</span>
-							<input placeholder="Procurar Médicos" id="first_name" type="text">
-						</div>
-					</li>
-					<li class="collection-item">
-						<img src="http://www.unimedjf.coop.br/novosite/Imagens/Site/imagemDestaqueDownloadGuiaMedico.png" class="circle">
-						<span class="item">Maria Pereira</span>
-					</li>
-					<li class="collection-item">
-						<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
-						<span class="item">Joaquina França</span>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">view_module</span>
-							Ver todos
-						</div>
-					</li>
-				</ul>
-				<ul class="collection">
-					<li class="collection-item">
-						<div class="titulo">ARQUIVOS</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">folder</span>
-							Prescrições
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">folder_special</span>
-							Exames
-						</div>
-					</li>
-					<li class="collection-item">
-						<div class="item">
-							<span class="material-icons">opacity</span>
-							Medicações
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="col s9">
+		<div ng-include="'views/side.html'"></div>
+		
+		<div class="col s12 m9 l9">
 			<div class="card main-content">
 				<div class="doctor">
 					<div class="row">

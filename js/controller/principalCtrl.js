@@ -1,11 +1,6 @@
-app.controller("PrincipalCtrl", function($scope, $http, $sessionStorage){
+app.controller("PrincipalCtrl", function($scope, $http, $sessionStorage, $location){
 	//if(!$sessionStorage.login) location.href="/";
 	$(".button-collapse").sideNav();
 
-	$scope.sair = function(){
-		delete $sessionStorage.login;
-		delete $sessionStorage.session;
-		delete $sessionStorage.id;
-		location.href="/";
-	}
+	$scope.user = $sessionStorage.user;
 });

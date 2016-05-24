@@ -1,0 +1,75 @@
+<div class="col s3 hide-on-small-only" ng-controller="SideController">
+	<div class="menu">
+		<ul class="collection">
+			<li class="collection-item"><div class="titulo">PERFIL</div></li>
+			<li class="collection-item">
+				<div class="item" ng-click="redirect('usuario/editar')">
+					<span class="material-icons">person</span> Editar Perfil
+				</div>
+			</li>
+			<li class="collection-item">
+				<div class="item">
+					<span class="material-icons">history</span> Histórico
+				</div>
+			</li>
+			<li class="collection-item">
+				<div class="item">
+					<span class="material-icons">accessibility</span> Corpo Humano
+				</div>
+			</li>
+			<li class="collection-item">
+				<div class="item" ng-click="logout()">
+					<span class="material-icons">input</span> Sair
+				</div>
+			</li>
+		</ul>
+		<ul class="collection">
+			<li class="collection-item">
+				<div class="titulo">MÉDICOS</div>
+			</li>
+			<li class="collection-item">
+				<div class="item">
+					<span class="material-icons">search</span>
+					<input placeholder="Procurar Médicos" id="first_name" type="text">
+				</div>
+			</li>
+			<li class="collection-item">
+				<img src="http://www.unimedjf.coop.br/novosite/Imagens/Site/imagemDestaqueDownloadGuiaMedico.png" class="circle">
+				<span class="item">Maria Pereira</span>
+			</li>
+			<li class="collection-item">
+				<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
+				<span class="item">Joaquina França</span>
+			</li>
+			<li class="collection-item">
+				<div class="item" ng-click="redirect('medicos')">
+					<span class="material-icons">view_module</span>
+					Ver todos
+				</div>
+			</li>
+		</ul>
+		<ul class="collection">
+			<li class="collection-item">
+				<div class="titulo">ARQUIVOS</div>
+			</li>
+			<li class="collection-item">
+				<div class="item">
+					<span class="material-icons">folder</span>
+					Prescrições
+				</div>
+			</li>
+			<li class="collection-item">
+				<div class="item">
+					<span class="material-icons">folder_special</span>
+					Exames
+				</div>
+			</li>
+			<li class="collection-item">
+				<div class="item">
+					<span class="material-icons">opacity</span>
+					Medicações
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

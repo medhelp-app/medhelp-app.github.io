@@ -1,46 +1,59 @@
-app.config(function($routeProvider, $locationProvider){
+app.config(function($routeProvider, $locationProvider, $httpProvider, $crypthmacProvider) {
 	$routeProvider.when("/",{
 		templateUrl: "views/login.html",
 		controller: "HomeCtrl"
 	});
 
-	$routeProvider.when("/signup",{
+	$routeProvider.when("/cadastro",{
 		templateUrl: "views/register.html",
 		controller: "SignupCtrl"
 	});
 
-	$routeProvider.when("/login",{
+	$routeProvider.when("/entrar",{
 		templateUrl: "views/home.html",
 		controller: "HomeCtrl"
 	});
 
-	$routeProvider.when("/home",{
-		templateUrl: "views/principal.html",
+	$routeProvider.when("/inicio",{
+		templateUrl: "views/home.html",
 		controller: "PrincipalCtrl"
 	});
 
-	$routeProvider.when("/doctor",{
-		templateUrl: "views/doctor.html",
-		controller: "DoctorCtrl"
-	});
-
-	$routeProvider.when("/doctors",{
+	$routeProvider.when("/medicos",{
 		templateUrl: "views/doctors_all.html",
 		controller: "DoctorsCtrl"
 	});
 
-	$routeProvider.when("/searchdoctor",{
+	$routeProvider.when("/medicos/procurar",{
 		templateUrl: "views/doctors_search.html",
 		controller: "DoctorSearchCtrl"
 	});
 
-	$routeProvider.when("/editprofile",{
+	$routeProvider.when("/medicos/:id",{
+		templateUrl: "views/doctor.html",
+		controller: "DoctorCtrl"
+	});
+
+	$routeProvider.when("/usuario/:id",{
+		templateUrl: "views/edit_profile.html",
+		controller: "EditProfileCtrl"
+	});
+
+	$routeProvider.when("/usuario/editar",{
 		templateUrl: "views/edit_profile.html",
 		controller: "EditProfileCtrl"
 	});
 
 	$routeProvider.otherwise({redirectTo: "/erro"});
+	
+	/*
+	$httpProvider.defaults.headers.common = {};
+	$httpProvider.defaults.headers.post = {};
+	$httpProvider.defaults.headers.put = {};
+	$httpProvider.defaults.headers.patch = {};*/
 
-	$locationProvider.html5Mode(true);
-	$locationProvider.hashPrefix("!");
+	$crypthmacProvider.setCryptoSecret('medhelp.projetao.2016.1');
+
+	//$locationProvider.html5Mode(true);
+	//$locationProvider.hashPrefix("!");
 });

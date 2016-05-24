@@ -1,35 +1,51 @@
-app.controller("HomeCtrl", function($scope, $http, $sessionStorage){
-	if($sessionStorage.login) location.href="home";
+app.controller("HomeCtrl", function ($scope, $http, $sessionStorage, $location, $crypthmac) {
+	if ($sessionStorage.login) 
+		$location.path("inicio");
+
 	$(".button-collapse").sideNav();
-	$('.slider').slider({full_width: true,indicators: false});
-	$scope.user = {password:"",email:""};
+
+	$scope.user = {
+		password: "",
+		email: ""
+	};
+
 	$scope.errostatus = false;
-	$scope.login = function(user){
-		if(user.email=="" || user.password==""){
+
+	$scope.goSignin = function () {
+		$location.path('cadastro');
+	}
+
+	$scope.login = function(user) {
+		if (user.email == "" || user.password == "") {
 			$scope.errostatus = true;
-			$scope.erro = "Algum campo está vazio";
-		}
-		else{
+			$scope.erro = "O campo e-mail e senha são obrigatórios";
+		} else {
 			$http({
 			    method: "post",
-			    url: "http://104.236.112.162/api/users/login",
+			    url: API_URL + "users/login",
 			    data: {
-			    	email:user.email,
-			    	password: user.password
+			    	email: user.email,
+			    	password: $crypthmac.encrypt(user.password, "")
 			    }
-			}).success(function(data){
+			}).success(function(data) {
+				$scope.user = { 
+					password: "",
+					email: ""
+				};
+
+				TOKEN = data.token;
+
 				$scope.errostatus = false;
-				$scope.user = {password:"",email:""};
+				
 				$sessionStorage.login = true;
-				$sessionStorage.id = data.id;
-				$sessionStorage.session = data.session;
-			  	location.href="home";
-			}).error(function(data){
+				$sessionStorage.user = data.user;
+			  	
+			  	$location.path("inicio");
+			}).error(function(data) {
 				$scope.errostatus = true;
 				$scope.erro = data.error;
 				$scope.user.password = "";
 			});
 		}
 	}
-
 });
