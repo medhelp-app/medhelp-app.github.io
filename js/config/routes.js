@@ -1,4 +1,4 @@
-app.config(function($routeProvider, $locationProvider, $httpProvider, $crypthmacProvider) {
+app.config(function($routeProvider, $locationProvider, $httpProvider) {
 	$routeProvider.when("/",{
 		templateUrl: "views/login.html",
 		controller: "HomeCtrl"
@@ -51,8 +51,6 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $crypthmac
 	$httpProvider.defaults.headers.post = {};
 	$httpProvider.defaults.headers.put = {};
 	$httpProvider.defaults.headers.patch = {};*/
-
-	$crypthmacProvider.setCryptoSecret('medhelp.projetao.2016.1');
 
 	//$locationProvider.html5Mode(true);
 	//$locationProvider.hashPrefix("!");

@@ -1,4 +1,4 @@
-app.controller("HomeCtrl", function ($scope, $http, $sessionStorage, $location, $crypthmac) {
+app.controller("HomeCtrl", function ($scope, $http, $sessionStorage, $location) {
 	if ($sessionStorage.login) 
 		$location.path("inicio");
 
@@ -20,12 +20,15 @@ app.controller("HomeCtrl", function ($scope, $http, $sessionStorage, $location, 
 			$scope.errostatus = true;
 			$scope.erro = "O campo e-mail e senha são obrigatórios";
 		} else {
+			var jsSha = new jsSHA(user.password);
+			var hash = jsSha.getHash("SHA-512", "HEX");
+
 			$http({
 			    method: "post",
 			    url: API_URL + "users/login",
 			    data: {
 			    	email: user.email,
-			    	password: $crypthmac.encrypt(user.password, "")
+			    	password: hash
 			    }
 			}).success(function(data) {
 				$scope.user = { 

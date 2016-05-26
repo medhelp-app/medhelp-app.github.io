@@ -1,4 +1,4 @@
-app.controller("SignupCtrl", function ($scope, $http, $sessionStorage, $location, $crypthmac) {
+app.controller("SignupCtrl", function ($scope, $http, $sessionStorage, $location) {
 	$(".button-collapse").sideNav();
 	$scope.errostatus = false;
 	
@@ -24,12 +24,18 @@ app.controller("SignupCtrl", function ($scope, $http, $sessionStorage, $location
 			$scope.errostatus = true;
 			$scope.erro = "Senha tem poucos caracteres";
 		} else {
+			var jsSha = new jsSHA($scope.user.password);
+			var hash = jsSha.getHash("SHA-512", "HEX");
+
+			var jsShaRe = new jsSHA($scope.user.rePassword);
+			var hashRe = jsShaRe.getHash("SHA-512", "HEX");
+
 			$http({
 			    method: "POST",
 			    url: API_URL + "users",
 			    data: {
-					password: $crypthmac.encrypt($scope.user.password, ""),
-					rePassword: $crypthmac.encrypt($scope.user.rePassword, ""),
+					password: hash,
+					rePassword: hashRe,
 					name: $scope.user.name,
 					email: $scope.user.email,
 					userType: $scope.user.userType
