@@ -36,14 +36,15 @@ app.controller("HomeCtrl", function ($scope, $http, $sessionStorage, $location) 
 					email: ""
 				};
 
-				TOKEN = data.token;
-
 				$scope.errostatus = false;
 				
 				$sessionStorage.login = true;
 				$sessionStorage.user = data.user;
+				$sessionStorage.token = data.token;
 			  	
-			  	$location.path("inicio");
+			  	//$location.path("inicio");
+			  	window.location = '#/inicio';
+      			window.location.reload();
 			}).error(function(data) {
 				$scope.errostatus = true;
 				$scope.erro = data.error;

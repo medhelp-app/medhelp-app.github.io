@@ -12,7 +12,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12" style="margin-top:10px">
+						<div class="input-field col s12" style="margin-top:40px">
 							<input type="text" ng-model="user.name">
 							<label>Nome</label>
 						</div>
@@ -33,26 +33,23 @@
 							<input type="password">
 							<label>Confrmar senha</label>
 						</div>
+
+						<div class="col s12"><small>Deixe os campos em branco caso não deseje alterar a senha</small></div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m8">
 							<input type="text" ng-model="user.streetName">
 							<label>Endereço</label>
 						</div>
-
 						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.number">
-							<label>Número</label>
+							<input type="text" ng-model="user.city">
+							<label>Cidade</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.city">
-							<label>Bairro</label>
-						</div>
-						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.city">
-							<label>Cidade</label>
+							<input type="text" ng-model="user.country" value="Brasil">
+							<label>País</label>
 						</div>
 						<div class="input-field col s12 m4">
 							<select>
@@ -60,27 +57,21 @@
 							</select>
 							<label>Estado</label>
 						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12 m2">
-							<input type="text" ng-model="user.country" value="Brasil">
-							<label>País</label>
-						</div>
 						<div class="input-field col s12 m4">
 							<input type="text" ng-model="user.phone">
 							<label>Telefone</label>
 						</div>
+					</div>
+					<div class="row" ng-show="user.userType == 1">
 						<div class="input-field col s12 m3">
 							<input type="text" ng-model="user.crm">
 							<label>CRM</label>
 						</div>
 						<div class="input-field col s12 m3">
-							<input type="text" ng-model="user.crmStatae">
+							<input type="text" ng-model="user.crmState">
 							<label>UF</label>
 						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
+						<div class="input-field col s12 m6">
 							<input type="text" ng-model="user.doctorType">
 							<label>Especialidade</label>
 						</div>
