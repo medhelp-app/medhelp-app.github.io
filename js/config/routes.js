@@ -44,8 +44,13 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
 		controller: "EditProfileCtrl"
 	});
 
+	$routeProvider.when("/corpo",{
+		templateUrl: "views/human_body.html",
+		controller: "HumanBodyCtrl"
+	});
+
 	$routeProvider.otherwise({redirectTo: "/erro"});
-	
+
 	/*
 	$httpProvider.defaults.headers.common = {};
 	$httpProvider.defaults.headers.post = {};

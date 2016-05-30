@@ -1,4 +1,4 @@
-app.controller("HomeCtrl", function ($scope, $http, $sessionStorage, $location) {
+app.controller("HomeCtrl", function($scope, $http, $sessionStorage, $location) {
 	if ($sessionStorage.login) 
 		$location.path("inicio");
 
@@ -36,15 +36,18 @@ app.controller("HomeCtrl", function ($scope, $http, $sessionStorage, $location) 
 					email: ""
 				};
 
+				USER_ID = data.user._id;
+				TOKEN = data.token;
+
 				$scope.errostatus = false;
 				
 				$sessionStorage.login = true;
 				$sessionStorage.user = data.user;
 				$sessionStorage.token = data.token;
 			  	
-			  	//$location.path("inicio");
-			  	window.location = '#/inicio';
-      			window.location.reload();
+			  	$location.path("inicio");
+			  	//window.location = '#/inicio';
+      			//window.location.reload();
 			}).error(function(data) {
 				$scope.errostatus = true;
 				$scope.erro = data.error;

@@ -1,3 +1,5 @@
+<div ng-include="'views/nav.html'"></div>
+
 <div class="container">
 	<div class="row">
 		<div ng-include="'views/side.html'"></div>
@@ -5,8 +7,20 @@
 		<div class="col s12 m9 l9">
 			<div class="card main-content">
 				<div class="doctor">
+					<div class="row">
+						<div class="input-field col s12">
+							<i class="material-icons prefix">search</i>
+							<input id="icon_prefix" type="text" class="validate" ng-model="search">
+							<label for="icon_prefix">Procurar médicos</label>
+						</div>
+					</div>
+					<div class="divider"></div>
 					<div class="opinions">
-						<div class="row opinion" ng-repeat="doctor in doctors">
+						<ul class="collection">
+							<li class="collection-item" ng-click="openDoctor(doctor._id)"
+								ng-repeat="doctor in doctors | filter: search">{{ doctor.name }}</li>
+						</ul>
+						<!--<div class="row opinion" ng-repeat="doctor in doctors">
 							<div class="col l2 m2 s12 perfil-image">
 								<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
 							</div>
@@ -15,7 +29,7 @@
 								<div>CRM: <b>{{ doctor.crm }}</b></div>
 								<div>Especialidade: <b>{{ doctor.doctorType }}</b></div>
 							</div>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-app.controller("DoctorsCtrl", function($scope, $http, $location, $sessionStorage) {
+app.controller("HumanBodyCtrl", function($scope, $http, $location, $sessionStorage) {
 	var config = {
 		headers:  {
 			'x-access-token': $sessionStorage.token
@@ -11,8 +11,4 @@ app.controller("DoctorsCtrl", function($scope, $http, $location, $sessionStorage
 	}, function (error) {
 		console.log(error);
 	});
-
-	$scope.openDoctor = function (id) {
-		$location.path('/medicos/' + id);
-	}
 });

@@ -1,6 +1,4 @@
 app.controller("RouteCtrl", function($scope, $sessionStorage, $route, $location) {
-	$scope.user = $sessionStorage.user;
-
 	$scope.$on('$routeChangeSuccess', function() {
 		var path = $location.path();
 		

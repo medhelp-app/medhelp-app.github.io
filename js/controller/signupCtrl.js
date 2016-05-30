@@ -1,4 +1,4 @@
-app.controller("SignupCtrl", function ($scope, $http, $sessionStorage, $location) {
+app.controller("SignupCtrl", function($scope, $http, $sessionStorage, $location) {
 	$(".button-collapse").sideNav();
 	$scope.errostatus = false;
 	

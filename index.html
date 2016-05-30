@@ -14,10 +14,11 @@
 		<script type="text/javascript">
 			var API_URL = 'https://medhelp-app.herokuapp.com/api/';
 			var TOKEN = null;
+			var USER_ID = null;
 		</script>
 		
-		<script src="libs/angular.js"></script>
 		<script src="libs/jquery.min.js"></script>	
+		<script src="libs/angular.js"></script>
 		<script src="libs/angular-locale_pt-br.js"></script>
 		<script src="libs/angular-route.js"></script>
 		<script src="libs/ngStorage.min.js"></script>
@@ -39,12 +40,12 @@
 		<script src="js/controller/principalCtrl.js"></script>
 		<script src="js/controller/editProfileCtrl.js"></script>
 		<script src="js/controller/sideController.js"></script>
+		<script src="js/controller/humanBodyCtrl.js"></script>
 		<script src="js/controller/routeCtrl.js"></script>
 
 		<script src="libs/less.min.js"></script>
 	</head>
-	<body ng-controller="RouteCtrl">
-		<div ng-include="'views/nav.html'" ng-show="nav"></div>
-		<div ng-view ></div>
+	<body>
+		<div ng-view></div>
 	</body>
 </html>

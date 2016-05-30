@@ -1,4 +1,4 @@
-app.controller('SideController', function ($scope, $location, $sessionStorage) {
+app.controller('SideController', function($scope, $location, $sessionStorage) {
 	$scope.redirect = function (path) {
 		$location.path(path);
 	};
