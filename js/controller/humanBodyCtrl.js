@@ -1,7 +1,7 @@
-app.controller("HumanBodyCtrl", function($scope, $http, $location, $sessionStorage) {
+app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies) {
 	var config = {
 		headers:  {
-			'x-access-token': $sessionStorage.token
+			'x-access-token': $cookies.get('token')
 		}
 	};
 

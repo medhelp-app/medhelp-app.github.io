@@ -21,7 +21,8 @@
 		<script src="libs/angular.js"></script>
 		<script src="libs/angular-locale_pt-br.js"></script>
 		<script src="libs/angular-route.js"></script>
-		<script src="libs/ngStorage.min.js"></script>
+		<!-- <script src="libs/ngStorage.min.js"></script>-->
+		<script src="libs/angular-cookies.js"></script>
 		<script src="libs/spin.min.js"></script>
 		<script src="libs/angular-spinner.min.js"></script>
 		<script src="libs/angular-loading-spinner.js"></script>
@@ -32,6 +33,7 @@
 		<script src="js/config/routes.js"></script>
 		<script src="js/config/varGlobal.js"></script>
 
+		<script src="js/controller/indexController.js"></script>
 		<script src="js/controller/homeCtrl.js"></script>
 		<script src="js/controller/signupCtrl.js"></script>
 		<script src="js/controller/doctorCtrl.js"></script>
@@ -45,7 +47,7 @@
 
 		<script src="libs/less.min.js"></script>
 	</head>
-	<body>
+	<body ng-controller="IndexController">
 		<div ng-view></div>
 	</body>
 </html>

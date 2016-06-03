@@ -1,6 +1,4 @@
-app.controller("EditProfileCtrl", function($scope, $http, $sessionStorage, $location) {
-	console.log($sessionStorage.user);
-
+app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location) {
 	$scope.states = [
 		{ value: 'AC', name: 'Acre' },
 		{ value: 'AL', name: 'Alagoas' },
@@ -33,21 +31,19 @@ app.controller("EditProfileCtrl", function($scope, $http, $sessionStorage, $loca
 
 	var config = {
 		headers: {
-			'x-access-token': $sessionStorage.token
+			'x-access-token': $cookies.get('token')
 		}
 	};
 
+	$scope.sucess = false;
+
 	var url = '';
-	if ($sessionStorage.user.userType == 0) {
-		url = API_URL + 'patients/' + $sessionStorage.user._id;
-	} else {
-		url = API_URL + 'doctors/' + $sessionStorage.user._id;
-	}
-
+	if ($cookies.get('type') == 0)
+		url = API_URL + 'patients/' + $cookies.get('user');
+	else
+		url = API_URL + 'doctors/' + $cookies.get('user');
+	
 	$http.get(url, config).then(function (data) {
-		data.data.name = $scope.user.name;
-		data.data.email = $scope.user.email;
-
 		$scope.user = data.data;
 		console.log($scope.user);
 	}, function (error) {
@@ -55,14 +51,16 @@ app.controller("EditProfileCtrl", function($scope, $http, $sessionStorage, $loca
 	})
 
 	$scope.signup = function (user) {
-		$http.put(API_URL + 'patients/' + user._id, user, config).then(function (data) {
+		$http.put(url, user, config).then(function (data) {
 			if (data.data.message == 'Token inválido') {
-				delete $sessionStorage.login;
-				delete $sessionStorage.user;
+				$sessionStorage.login;
+				$sessionStorage.user;
 				$location.path('/');
+			} else {
+				$scope.sucess = true;
 			}
 		}, function (error) {
-			console.log(error);
+			$scope.errorstatus = error.error;
 		});
 	}
 });

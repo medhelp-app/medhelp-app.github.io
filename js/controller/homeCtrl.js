@@ -1,5 +1,5 @@
-app.controller("HomeCtrl", function($scope, $http, $sessionStorage, $location) {
-	if ($sessionStorage.login) 
+app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
+	if ($cookies.get('login')) 
 		$location.path("inicio");
 
 	$(".button-collapse").sideNav();
@@ -41,9 +41,10 @@ app.controller("HomeCtrl", function($scope, $http, $sessionStorage, $location) {
 
 				$scope.errostatus = false;
 				
-				$sessionStorage.login = true;
-				$sessionStorage.user = data.user;
-				$sessionStorage.token = data.token;
+				$cookies.put('login', true);
+				$cookies.put('user', data.user._id);
+				$cookies.put('type', data.user.userType);
+				$cookies.put('token', data.token);
 			  	
 			  	$location.path("inicio");
 			  	//window.location = '#/inicio';

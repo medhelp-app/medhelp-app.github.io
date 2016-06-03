@@ -70,7 +70,7 @@
 							<label>CRM</label>
 						</div>
 						<div class="input-field col s12 m3">
-							<input type="text" ng-model="user.crmState">
+							<input type="text" ng-model="user.ufCrm">
 							<label>UF</label>
 						</div>
 						<div class="input-field col s12 m6">
@@ -93,6 +93,10 @@
 
 					<div class="alert error" ng-show="errostatus">
 						{{erro}}
+					</div>
+
+					<div class="alert success" ng-show="sucess">
+						Perfil salvo com sucesso.
 					</div>
 				</form>
 			</div>

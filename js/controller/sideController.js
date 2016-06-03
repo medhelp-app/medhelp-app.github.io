@@ -1,11 +1,11 @@
-app.controller('SideController', function($scope, $location, $sessionStorage) {
+app.controller('SideController', function($scope, $location, $cookies) {
 	$scope.redirect = function (path) {
 		$location.path(path);
 	};
 
 	$scope.logout = function () {
-		delete $sessionStorage.login;
-		delete $sessionStorage.user;
+		$cookies.remove('login');
+		$cookies.remove('user');
 		$location.path('/');
 	}
 })

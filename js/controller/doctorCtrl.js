@@ -1,7 +1,7 @@
-app.controller("DoctorCtrl", function($scope, $http, $sessionStorage, $routeParams) {
+app.controller("DoctorCtrl", function($scope, $http, $cookies, $routeParams) {
 	var config = {
 		headers:  {
-			'x-access-token': $sessionStorage.token
+			'x-access-token': $cookies.get('token')
 		}
 	};
 
