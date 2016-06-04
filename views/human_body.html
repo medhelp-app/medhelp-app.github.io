@@ -6,8 +6,37 @@
 
 		<div class="col s12 m9 l9">
 			<div class="card main-content">
-				Testando
+				<div class="body">
+					<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+					<div class="human-body full"></div>
+					<div ng-repeat="p in parts" class="human-body {{ p }}"></div>
+					<div class="clicks">
+						<div class="head" ng-click="part('head')"></div>
+						<div class="rightArm" ng-click="part('rightArm')"></div>
+						<div class="chest" ng-click="part('chest')"></div>
+						<div class="stomach" ng-click="part('stomach')"></div>
+						<div class="leftArm" ng-click="part('leftArm')"></div>
+						<div class="rightLeg" ng-click="part('rightLeg')"></div>
+						<div class="leftLeg" ng-click="part('leftLeg')"></div>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div id="modalHumanBody" class="modal">
+	<div class="modal-content">
+		<h4>{{ selectedPart }}</h4>
+		
+		<ul class="collection">
+			<li ng-repeat="p in selectProblemns" class="collection-item">
+				<span class="title-list">{{ p.problem }}</span>
+				<p ng-show="p.description">{{ p.description }}</p>
+			</li>
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<a class=" modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
 	</div>
 </div>

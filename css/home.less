@@ -176,6 +176,115 @@
 			}
 		}
 	}
+
+	.body {
+		position: relative;
+		min-height: 600px;
+
+		padding-bottom: 50px;
+
+		.human-body {
+			background-size: contain;
+			background-repeat: no-repeat;
+
+			width: 500px;
+			height: 500px;
+
+			position: absolute;
+
+			&.full { background-image: url('../images/body/greyBody.png'); }
+
+			&.stomach-red { background-image: url('../images/body/redAbs.png'); }
+			&.stomach-yellow { background-image: url('../images/body/yellowAbs.png'); }
+
+			&.chest-red { background-image: url('../images/body/redChest.png'); }
+			&.chest-yellow { background-image: url('../images/body/yellowChest.png'); }
+
+			&.head-red { background-image: url('../images/body/redHead.png'); }
+			&.head-yellow { background-image: url('../images/body/yellowHead.png'); }
+
+			&.leftArm-red { background-image: url('../images/body/redLeftArm.png'); }
+			&.leftArm-yellow { background-image: url('../images/body/yellowLeftArm.png'); }
+
+			&.leftLeg-red { background-image: url('../images/body/redLeftLeg.png'); }
+			&.leftLeg-yellow { background-image: url('../images/body/yellowLeftLeg.png'); }
+
+			&.rightArm-red { background-image: url('../images/body/redRightArm.png'); }
+			&.rightArm-yellow { background-image: url('../images/body/yellowRightArm.png'); }
+
+			&.rightLeg-red { background-image: url('../images/body/redRightLeg.png'); }
+			&.rightLeg-yellow { background-image: url('../images/body/yellowRightLeg.png'); }
+		}
+
+		.clicks {
+			position: absolute;
+
+			div {
+				cursor: pointer;
+			}
+
+			.head {
+				width: 61px;
+				height: 77px;
+
+				position: absolute;
+				left: 95px;
+			}
+
+			.rightArm {
+				width: 71px;
+				height: 222px;
+
+				position: absolute;
+				top: 77px;
+			}
+
+			.chest {
+				width: 98px;
+				height: 75px;
+
+				position: absolute;
+				left: 75px;
+				top: 77px;
+			}
+
+			.stomach {
+				width: 98px;
+				height: 87px;
+
+				position: absolute;
+				left: 75px;
+				top: 153px;
+			}
+
+			.leftArm {
+				width: 71px;
+				height: 222px;
+
+				position: absolute;
+				left: 178px;
+				top: 77px;
+			}
+
+			.rightLeg {
+				width: 55px;
+				height: 257px;
+
+				position: absolute;
+				left: 71px;
+				top: 240px;
+			}
+
+			.leftLeg {
+				width: 52px;
+				height: 257px;
+
+				position: absolute;
+				left: 126px;
+				top: 240px;
+			}
+		}
+	}
 }
 
 .rate {
@@ -184,5 +293,12 @@
 	li {
 		float: left;
 		color: @blue-color;
+	}
+}
+
+.modal {
+	.title-list {
+		font-size: 16px;
+		font-weight: bold;
 	}
 }
