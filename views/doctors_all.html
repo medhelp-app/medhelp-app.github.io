@@ -20,10 +20,15 @@
 					</div>
 					<div class="divider"></div>
 					<div class="opinions">
-						<ul class="collection">
-							<li class="collection-item" ng-click="openDoctor(doctor._id)"
-								ng-repeat="doctor in doctors">{{ doctor.name }}</li>
-						</ul>
+						<md-list flex>
+							<md-list-item class="md-2-line" ng-repeat="item in doctors" ng-click="openDoctor(item._id)">
+								<img ng-src="data:image/png;base64,{{ item.profileImage }}" class="md-avatar" />
+								<div class="md-list-item-text" layout="column">
+									<h3>{{ item.name }}</h3>
+									<p>{{ item.doctorType }}</p>
+								</div>
+							</md-list-item>
+						</md-list>
 						<!--<div class="row opinion" ng-repeat="doctor in doctors">
 							<div class="col l2 m2 s12 perfil-image">
 								<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">

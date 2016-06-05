@@ -18,8 +18,8 @@
 					</a>
 				</div>
 			</div>
-			<div class="photo">
-				<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
+			<div class="photo" ng-show="user.profileImage">
+				<img ng-src="data:image/png;base64,{{ user.profileImage }}" class="circle" />
 			</div>
 		</div>
 	</div>

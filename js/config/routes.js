@@ -29,6 +29,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "DoctorSearchCtrl"
 	});
 
+	$routeProvider.when("/medicos/prescrever/:id",{
+		templateUrl: "views/doctor_prescription.html",
+		controller: "DoctorPrescriptionController"
+	});
+
 	$routeProvider.when("/medicos/:id",{
 		templateUrl: "views/doctor.html",
 		controller: "DoctorCtrl"

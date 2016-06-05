@@ -3,10 +3,83 @@
 <div class="container">
 	<div class="row">
 		<div ng-include="'views/side.html'"></div>
-
+		
 		<div class="col-xs-12 col-sm-9 col-md-9">
 			<md-card md-theme="default" md-theme-watch class="main-content">
-
+				<form>
+					<div class="row col-sm-12">
+						<md-button class="md-raised md-primary" ng-click="prescription()">Prescrever</md-button>
+					</div>
+					<div class="perfil-image photo" ng-show="user.profileImage">
+						<img ng-src="data:image/png;base64,{{ user.profileImage }}" class="circle" />
+					</div>
+					<div class="row col-md-12">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Name</label>
+							<input ng-model="user.name" disabled>
+						</md-input-container>
+					</div>
+					<div class="row col-md-12">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>E-mail</label>
+							<input ng-model="user.email" disabled>
+						</md-input-container>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-8">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Endereço</label>
+								<input ng-model="user.addressStreet" disabled>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Cidade</label>
+								<input ng-model="user.city" disabled>
+							</md-input-container>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-4">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>País</label>
+								<input ng-model="user.country" disabled>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Estado</label>
+								<input ng-model="user.state" disabled>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12 col-md-4">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Telefone</label>
+								<input ng-model="user.phone" disabled>
+							</md-input-container>
+						</div>
+					</div>
+					<div class="row" ng-show="user.userType == 1">
+						<div class="col-sm-12 col-md-3">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>CRM</label>
+								<input ng-model="user.crm" disabled>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12 col-md-3">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>CRM-UF</label>
+								<input ng-model="user.ufCrm" disabled>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Especialidade</label>
+								<input ng-model="user.doctorType" disabled>
+							</md-input-container>
+						</div>
+					</div>
+				</form>
 			</md-card>
 		</div>
 	</div>
