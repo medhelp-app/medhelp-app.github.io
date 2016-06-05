@@ -1,4 +1,4 @@
-app.config(function($routeProvider, $locationProvider, $httpProvider) {
+app.config(function($routeProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
 	$routeProvider.when("/",{
 		templateUrl: "views/login.html",
 		controller: "HomeCtrl"
@@ -50,6 +50,28 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
 	});
 
 	$routeProvider.otherwise({redirectTo: "/erro"});
+
+	$mdThemingProvider.definePalette('amazingPaletteName', {
+	    '50': 'ffebee',
+	    '100': 'ffcdd2',
+	    '200': 'ef9a9a',
+	    '300': 'e57373',
+	    '400': 'ef5350',
+	    '500': 'ce3234', // red 
+	    '600': 'e53935',
+	    '700': 'd32f2f',
+	    '800': '32689b', // blue
+	    '900': 'b71c1c',
+	    'A100': 'ff8a80',
+	    'A200': 'ff5252',
+	    'A400': 'ff1744',
+	    'A700': 'd50000',
+	    'contrastDefaultColor': 'light',
+	    'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100'],
+	    'contrastLightColors': undefined    // could also specify this if default was 'dark'
+	  });
+
+	$mdThemingProvider.theme('default').primaryPalette('amazingPaletteName').accentPalette('red');
 
 	/*
 	$httpProvider.defaults.headers.common = {};

@@ -1,43 +1,36 @@
 <div class="login">
-	<div class="row">
-		<div class="card col l6 m8 s12 offset-l3 offset-m2">
-			<div>
-				<form>
-					<div class="row">
-						<div class="image col l8 offset-l2">
-							<img src="images/logo.png">
-						</div>
+	<md-card md-theme="default" md-theme-watch class="card col-md-6 col-sm-8 col-xs12 col-md-offset-3 col-sm-offset-2">
+		<div>
+			<form name="userForm">
+				<div class="row">
+					<div class="image col-md-8 col-md-offset-2">
+						<img src="images/logo.png">
 					</div>
-					<div class="row">
-						<div class="input-field col s12" style="margin-top:10px">
-							<input type="text" ng-model="user.email">
-							<label>Email</label>
-						</div>
+				</div>
+
+				<md-input-container class="md-block">
+					<label>E-mail</label>
+					<input ng-model="user.email">
+				</md-input-container>
+
+				<md-input-container class="md-block">
+					<label>Senha</label>
+					<input type="password" ng-model="user.password">
+				</md-input-container>
+
+				<div class="row buttons">
+					<div class="col-md-9">
+						<md-button class="md-primary" ng-click="goSignin()">Criar conta</md-button>
 					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input type="password" ng-model="user.password">
-							<label>Senha</label>
-						</div>
+					<div class="col-md-3 signin">
+						<md-button class="md-raised md-primary" ng-click="login(user)">Entrar</md-button>
 					</div>
-					<div class="row buttons">
-						<div class="col s9">
-							<a ng-click="goSignin()" class="btn-link">
-								CRIAR CONTA
-							</a>
-						</div>
-						<div class="col s3 signin">
-							<button class="waves-effect waves-light btn btn-red" ng-click="login(user)">
-								ENTRAR
-							</button>
-						</div>
-					</div>
-						
-					<div class="alert error" ng-show="errostatus">
-						{{ erro }}
-					</div>
-				</form>
-			</div>
+				</div>
+					
+				<div class="alert error" ng-show="errostatus">
+					{{ erro }}
+				</div>
+			</form>
 		</div>
-	</div>
+	</md-card>
 </div>

@@ -4,80 +4,100 @@
 	<div class="row">
 		<div ng-include="'views/side.html'"></div>
 		
-		<div class="col s12 m9 l9">
-			<div class="card main-content">
+		<div class="col-xs-12 col-sm-9 col-md-9">
+			<md-card md-theme="default" md-theme-watch class="main-content">
 				<form>
-					<div class="perfil-image">
+					<div class="perfil-image photo">
 						<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
 						<div class="select-file">
 							<input type="file">
 						</div>
 					</div>
-					<div class="row">
-						<div class="input-field col s12" style="margin-top:40px">
-							<input type="text" ng-model="user.name">
-							<label>Nome</label>
-						</div>
+					<div class="row col-md-12">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Name</label>
+							<input ng-model="user.name">
+						</md-input-container>
 					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input type="text" ng-model="user.email">
+					<div class="row col-md-12">
+						<md-input-container class="md-block" flex-gt-sm>
 							<label>E-mail</label>
-						</div>
+							<input ng-model="user.email">
+						</md-input-container>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m6">
-							<input type="password">
-							<label>Senha</label>
+						<div class="col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Senha</label>
+								<input ng-model="user.password" type="password">
+							</md-input-container>
 						</div>
 
-						<div class="input-field col s12 m6">
-							<input type="password">
-							<label>Confrmar senha</label>
+						<div class="col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Confirmar Senha</label>
+								<input ng-model="user.rePassword" type="password">
+							</md-input-container>
 						</div>
 
-						<div class="col s12"><small>Deixe os campos em branco caso não deseje alterar a senha</small></div>
+						<div class="col-md-12"><small>Deixe os campos em branco caso não deseje alterar a senha</small></div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m8">
-							<input type="text" ng-model="user.addressNumber">
-							<label>Endereço</label>
+						<div class="col-sm-12 col-md-8">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Endereço</label>
+								<input ng-model="user.addressStreet">
+							</md-input-container>
 						</div>
-						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.city">
-							<label>Cidade</label>
+						<div class="col-sm-12 col-md-4">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Cidade</label>
+								<input ng-model="user.city">
+							</md-input-container>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.country" value="Brasil">
-							<label>País</label>
+						<div class="col-sm-12 col-md-4">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>País</label>
+								<input ng-model="user.country">
+							</md-input-container>
 						</div>
-						<div class="input-field col s12 m4">
-							<select ng-model="user.state" ng-options="s.value as s.name for s in states track by s.value">
-								
-							</select>
-							<label>Estado</label>
+						<div class="col-sm-12 col-md-4">
+							<md-select ng-model="user.state" placeholder="Estado">
+								<md-option ng-repeat="state in states" value="{{ state.value }}">
+									{{ state.name }}
+								</md-option>
+							</md-select>
 						</div>
-						<div class="input-field col s12 m4">
-							<input type="text" ng-model="user.phone">
-							<label>Telefone</label>
+						<div class="col-sm-12 col-md-4">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Telefone</label>
+								<input ng-model="user.phone">
+							</md-input-container>
 						</div>
 					</div>
 					<div class="row" ng-show="user.userType == 1">
-						<div class="input-field col s12 m3">
-							<input type="text" ng-model="user.crm">
-							<label>CRM</label>
+						<div class="col-sm-12 col-md-3">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>CRM</label>
+								<input ng-model="user.crm">
+							</md-input-container>
 						</div>
-						<div class="input-field col s12 m3">
-							<input type="text" ng-model="user.ufCrm">
-							<label>UF</label>
+						<div class="col-sm-12 col-md-3">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>CRM-UF</label>
+								<input ng-model="user.ufCrm">
+							</md-input-container>
 						</div>
-						<div class="input-field col s12 m6">
-							<input type="text" ng-model="user.doctorType">
-							<label>Especialidade</label>
+						<div class="col-sm-12 col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Especialidade</label>
+								<input ng-model="user.doctorType">
+							</md-input-container>
 						</div>
 					</div>
+
 					<div class="row buttons">
 						<!--<div class="col s9">
 							<a href="" class="btn-link">
@@ -85,9 +105,7 @@
 							</a>
 						</div>-->
 						<div class="col s3 right">
-							<button class="waves-effect waves-light btn btn-red" ng-click="signup(user)">
-								SALVAR
-							</button>
+							<md-button ng-click="signup(user)" class="md-raised md-primary">Salvar</md-button>
 						</div>
 					</div>
 
@@ -99,7 +117,7 @@
 						Perfil salvo com sucesso.
 					</div>
 				</form>
-			</div>
+			</md-card>
 		</div>
 	</div>
 </div>

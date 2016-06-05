@@ -2,8 +2,6 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 	if ($cookies.get('login')) 
 		$location.path("inicio");
 
-	$(".button-collapse").sideNav();
-
 	$scope.user = {
 		password: "",
 		email: ""
