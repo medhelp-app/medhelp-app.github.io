@@ -1,1 +1,1 @@
-var app = angular.module("medhelp", ["ngRoute", "ngLoadingSpinner", "ngCookies", "ngMaterial"]);
+var app = angular.module("medhelp", ["ngRoute", "ngLoadingSpinner", "ngCookies", "ngMaterial", 'angular-loading-bar']);
