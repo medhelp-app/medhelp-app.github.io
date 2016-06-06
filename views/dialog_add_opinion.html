@@ -1,0 +1,70 @@
+<md-dialog aria-label="Adicionar opinião" ng-cloak>
+	<form name="addForm">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Adicionar opinião</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<i class="material-icons">close</i>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div class="row">
+					<div class="row col-md-12">
+						<label>Pontualidade</label>
+						<md-slider-container>
+							<md-icon><i class="material-icons">star</i></md-icon>
+							<md-slider flex class="md-primary" md-discrete ng-model="add.punctualityRating" 
+									   step="0.5" min="0" max="5" aria-label="Pontualidade">
+							</md-slider>
+							<md-input-container>
+								<input flex type="number" step="0.5" min="0" max="5" ng-model="add.punctualityRating" aria-label="green" aria-controls="green-slider">
+							</md-input-container>
+						</md-slider-container>
+					</div>
+					<div class="row col-md-12">
+						<label>Atenção</label>
+						<md-slider-container>
+							<md-icon><i class="material-icons">star</i></md-icon>
+							<md-slider flex class="md-primary" md-discrete ng-model="add.attentionRating" 
+									   step="0.5" min="0" max="5" aria-label="Pontualidade">
+							</md-slider>
+							<md-input-container>
+								<input flex type="number" step="0.5" min="0" max="5" ng-model="add.attentionRating" aria-label="green" aria-controls="green-slider">
+							</md-input-container>
+						</md-slider-container>
+					</div>
+					<div class="row col-md-12">
+						<label>Instalações</label>
+						<md-slider-container>
+							<md-icon><i class="material-icons">star</i></md-icon>
+							<md-slider flex class="md-primary" md-discrete ng-model="add.installationRating" 
+									   step="0.5" min="0" max="5" aria-label="Pontualidade">
+							</md-slider>
+							<md-input-container>
+								<input flex type="number" step="0.5" min="0" max="5" ng-model="add.installationRating" aria-label="green" aria-controls="green-slider">
+							</md-input-container>
+						</md-slider-container>
+					</div>
+					<div class="row col-md-12">
+						<md-input-container class="md-block">
+							<label>Comentário</label>
+							<textarea ng-model="add.comment" ng-required="true" rows="5" md-select-on-focus></textarea>
+						</md-input-container>
+					</div>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="cancel()">
+				Cancelar
+			</md-button>
+			<md-button ng-click="save()" ng-disabled="addForm.$invalid">
+				Adicionar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
