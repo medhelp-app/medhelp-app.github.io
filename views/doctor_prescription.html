@@ -41,7 +41,9 @@
 							</md-input-container>
 						</div>
 					</div>
+				</form>
 
+				<form name="prescriptionForm">
 					<div class="divider"></div>
 					<div class="row">
 						<div class="col-md-12">
@@ -50,7 +52,7 @@
 						<div class="col-sm-12">
 							<md-input-container class="md-block" flex-gt-sm>
 								<label>Problema</label>
-								<textarea ng-model="prescription.problem"></textarea>
+								<textarea ng-model="prescription.problem" required></textarea>
 							</md-input-container>
 						</div>
 						<div>
@@ -58,44 +60,53 @@
 								<h5>Medicamentos</h5>
 							</div>
 							<div class="col-md-6">
-								<md-button class="md-primary" style="float:right">Adicionar outra medicação</md-button>
+								<md-button ng-click="addMedicine()" class="md-primary" style="float:right">
+									Adicionar outra medicação
+								</md-button>
 							</div>
 						</div>
-						<div class="col-sm-12 col-md-10">
-							<md-input-container class="md-block" flex-gt-sm>
-								<label>Remédio</label>
-								<input ng-model="prescription.medicine">
-							</md-input-container>
-						</div>
-						<div class="col-sm-12 col-md-2">
-							<md-input-container class="md-block" flex-gt-sm>
-								<label>Quantidade</label>
-								<input type="number" ng-model="patient.phone" min="0">
-							</md-input-container>
-						</div>
-						<div class="col-sm-12 col-md-4">
-							<md-input-container class="md-block" flex-gt-sm>
-								<label>Frequência</label>
-								<input ng-model="prescription.medicine">
-							</md-input-container>
-						</div>
-						<div class="col-sm-12 col-md-8">
-							<md-input-container class="md-block" flex-gt-sm>
-								<label>Descrição</label>
-								<textarea ng-model="prescription.problem"></textarea>
-							</md-input-container>
-						</div>
-						<div class="col-sm-12">
-							<md-input-container class="md-block" flex-gt-sm>
-								<label>Notas</label>
-								<textarea ng-model="prescription.problem"></textarea>
-							</md-input-container>
-						</div>
-						<div class="col-md-12">
-							<md-button class="md-primary" style="float:right">Remover medicação</md-button>
+						<div ng-repeat="medicine in prescription.medicines">
+							<div class="col-sm-12 col-md-10">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Remédio</label>
+									<input ng-model="medicine.name">
+								</md-input-container>
+							</div>
+							<div class="col-sm-12 col-md-2">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Quantidade</label>
+									<input type="number" ng-model="medicine.amount" min="0">
+								</md-input-container>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Frequência</label>
+									<input ng-model="medicine.occurence">
+								</md-input-container>
+							</div>
+							<div class="col-sm-12 col-md-8">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Descrição</label>
+									<textarea ng-model="medicine.description"></textarea>
+								</md-input-container>
+							</div>
+							<div class="col-sm-12">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Notas</label>
+									<textarea ng-model="medicine.note"></textarea>
+								</md-input-container>
+							</div>
+							<div class="col-md-12">
+								<md-button class="md-primary" style="float:right" ng-click="removeMedicine($index)">
+									Remover medicação
+								</md-button>
+							</div>
 						</div>
 					</div>
 					<div class="divider"></div>
+					<md-button class="md-raised md-primary" style="float:right" ng-click="save()" ng-disabled="prescriptionForm.$invalid">
+						Salvar prescrição
+					</md-button>
 				</form>
 			</md-card>
 		</div>

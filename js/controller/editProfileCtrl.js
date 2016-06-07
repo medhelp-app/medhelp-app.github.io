@@ -45,6 +45,8 @@ app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location, f
 
 	function load () {
 		$http.get(url, config).then(function (data) {
+			delete data.data.password;
+
 			$scope.user = data.data;
 			console.log($scope.user);
 		}, function (error) {
@@ -68,8 +70,10 @@ app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location, f
         
 		        console.log('file is ' );
 		        console.dir(file);
-		        
-		        var uploadUrl = API_URL + "patients/" + $cookies.get('user') + '/image';
+		       
+		       	var type = $cookies.get('type') == 0 ? "patients/" : "doctors/";
+
+		        var uploadUrl = API_URL + type + $cookies.get('user') + '/image';
 		        fileUpload.uploadFileToUrl(file, uploadUrl, $cookies.get('token'), function (success) {
 		        	if (success)
 		        		load();
