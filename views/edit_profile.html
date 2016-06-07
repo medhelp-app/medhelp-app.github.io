@@ -8,9 +8,9 @@
 			<md-card md-theme="default" md-theme-watch class="main-content">
 				<form>
 					<div class="perfil-image photo">
-						<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
+						<img ng-src="data:image/png;base64,{{ user.profileImage }}" class="circle" ng-show="user.profileImage" />
 						<div class="select-file">
-							<input type="file">
+							<input type="file" file-model="myFile">
 						</div>
 					</div>
 					<div class="row col-md-12">

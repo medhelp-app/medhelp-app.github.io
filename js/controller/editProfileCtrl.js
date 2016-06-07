@@ -1,4 +1,4 @@
-app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location) {
+app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location, fileUpload) {
 	$scope.states = [
 		{ value: 'AC', name: 'Acre' },
 		{ value: 'AL', name: 'Alagoas' },
@@ -42,15 +42,20 @@ app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location) {
 		url = API_URL + 'patients/' + $cookies.get('user');
 	else
 		url = API_URL + 'doctors/' + $cookies.get('user');
-	
-	$http.get(url, config).then(function (data) {
-		$scope.user = data.data;
-		console.log($scope.user);
-	}, function (error) {
-		console.log(error);
-	})
+
+	function load () {
+		$http.get(url, config).then(function (data) {
+			$scope.user = data.data;
+			console.log($scope.user);
+		}, function (error) {
+			console.log(error);
+		})
+	}
+	load();
 
 	$scope.signup = function (user) {
+		delete user.profileImage;
+		
 		$http.put(url, user, config).then(function (data) {
 			if (data.data.message == 'Token inválido') {
 				$sessionStorage.login;
@@ -58,6 +63,19 @@ app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location) {
 				$location.path('/');
 			} else {
 				$scope.sucess = true;
+
+				var file = $scope.myFile;
+        
+		        console.log('file is ' );
+		        console.dir(file);
+		        
+		        var uploadUrl = API_URL + "patients/" + $cookies.get('user') + '/image';
+		        fileUpload.uploadFileToUrl(file, uploadUrl, $cookies.get('token'), function (success) {
+		        	if (success)
+		        		load();
+		        	else
+		        		$scope.errorstatus = 'Erro ao enviar imagem.';
+		        });
 			}
 		}, function (error) {
 			$scope.errorstatus = error.error;

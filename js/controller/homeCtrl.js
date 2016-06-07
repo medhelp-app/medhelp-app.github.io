@@ -44,9 +44,9 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 				$cookies.put('type', data.user.userType);
 				$cookies.put('token', data.token);
 			  	
-			  	$location.path("inicio");
-			  	//window.location = '#/inicio';
-      			//window.location.reload();
+			  	//$location.path("inicio");
+			  	window.location = '#/inicio';
+      			window.location.reload();
 			}).error(function(data) {
 				$scope.errostatus = true;
 				$scope.erro = data.error;
