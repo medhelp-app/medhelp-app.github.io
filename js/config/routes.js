@@ -39,6 +39,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "DoctorCtrl"
 	});
 
+	$routeProvider.when("/consultas",{
+		templateUrl: "views/appointment.html",
+		controller: "AppointmentController"
+	});
+
 	$routeProvider.when("/usuario/:id",{
 		templateUrl: "views/edit_profile.html",
 		controller: "EditProfileCtrl"

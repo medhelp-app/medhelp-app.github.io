@@ -1,0 +1,52 @@
+<div ng-include="'views/nav.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div ng-include="'views/side.html'"></div>
+		
+		<div class="col-xs-12 col-sm-9 col-md-9">
+			<md-card md-theme="default" md-theme-watch class="main-content">
+				<div class="doctor">
+					<md-button class="md-fab" aria-label="Eat cake" ng-click="add()">
+						<i class="material-icons">add</i>
+					</md-button>
+
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Horários de atendimento</h5>
+						</div>
+					</div>
+					<div class="row" ng-repeat="day in availability">
+						<div class="col-md-2"><h5>{{ weekdaysPTBR[day.weekday] }}</h5></div>
+						<div class="col-md-10">
+							<md-chips ng-model="day.availability" name="days" readonly="true">
+								<md-chip-template>
+									<strong>{{ $chip.startHour + ' - ' + $chip.endHour }}</strong>
+									<i ng-click="remove($chip)" md-chip-remove class="material-icons md-18">delete</i>
+								</md-chip-template>
+							</md-chips>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Consultas marcadas</h5>
+						</div>
+					</div>
+					<div class="row">
+						<md-list flex>
+							<md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+								<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+								<div class="md-list-item-text" layout="column">
+								<h3>{{ item.who }}</h3>
+								<h4>{{ item.what }}</h4>
+								<p>{{ item.notes }}</p>
+								</div>
+							</md-list-item>
+						</md-list>
+					</div>
+				</div>
+			</md-card>
+		</div>
+	</div>
+</div>

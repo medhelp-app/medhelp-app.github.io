@@ -17,6 +17,11 @@
 					<span class="material-icons">accessibility</span> Corpo Humano
 				</div>
 			</li>
+			<li class="collection-item" ng-show="user.userType == 1">
+				<div class="item" ng-click="redirect('consultas')">
+					<span class="material-icons">contact_phone</span> Consultas
+				</div>
+			</li>
 			<li class="collection-item">
 				<div class="item" ng-click="logout()">
 					<span class="material-icons">input</span> Sair

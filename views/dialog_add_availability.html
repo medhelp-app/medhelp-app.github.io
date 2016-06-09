@@ -1,0 +1,50 @@
+<md-dialog aria-label="Adicionar horário" ng-cloak>
+	<form name="addForm">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Adicionar horário</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<i class="material-icons">close</i>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<label>Dia da semana</label>
+						<md-select ng-model="add.weekday" ng-required="true">
+							<md-option value="sunday">Domingo</md-option>
+							<md-option value="monday">Segunda</md-option>
+							<md-option value="tuesday">Terça</md-option>
+							<md-option value="wednesday">Quarta</md-option>
+							<md-option value="thursday">Quinta</md-option>
+							<md-option value="friday">Sexta</md-option>
+							<md-option value="saturday">Sábado</md-option>
+						</md-select>
+					</div>
+				</div>
+				<div class="row">
+					<md-input-container class="md-block col-md-6" flex-gt-sm>
+						<label>Horário de inicio</label>
+						<input ng-model="add.startHour" ng-required="true">
+					</md-input-container>
+					<md-input-container class="md-block col-md-6" flex-gt-sm>
+						<label>Horário final</label>
+						<input ng-model="add.endHour" ng-required="true">
+					</md-input-container>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="cancel()">
+				Cancelar
+			</md-button>
+			<md-button ng-click="save()" ng-disabled="addForm.$invalid">
+				Adicionar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
