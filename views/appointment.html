@@ -27,7 +27,7 @@
 							</md-chips>
 						</div>
 					</div>
-
+					<div class="divider"></div>
 					<div class="row">
 						<div class="col-md-12">
 							<h5>Consultas marcadas</h5>
@@ -35,12 +35,13 @@
 					</div>
 					<div class="row">
 						<md-list flex>
-							<md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
-								<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+							<md-list-item class="md-3-line" ng-repeat="appointment in appointments" 
+										  ng-click="openUser(appointment.patientId)">
+								<img ng-src="data:image/png;base64,{{ appointment.profileImage }}" class="circle md-avatar">
 								<div class="md-list-item-text" layout="column">
-								<h3>{{ item.who }}</h3>
-								<h4>{{ item.what }}</h4>
-								<p>{{ item.notes }}</p>
+									<h3>{{ appointment.user.name }}</h3>
+									<h4>{{ appointment.date | date }}</h4>
+									<p>{{ appointment.availabilityId.startHour + ' - ' + appointment.availabilityId.endHour }}</p>
 								</div>
 							</md-list-item>
 						</md-list>

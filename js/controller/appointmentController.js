@@ -1,4 +1,4 @@
-app.controller('AppointmentController', function ($scope, $http, $cookies, $mdDialog) {
+app.controller('AppointmentController', function ($scope, $http, $cookies, $mdDialog, $location) {
 	var config = {
 		headers:  {
 			'x-access-token': $cookies.get('token')
@@ -32,6 +32,12 @@ app.controller('AppointmentController', function ($scope, $http, $cookies, $mdDi
 			}
 
 			console.log($scope.availability, data.data);
+		}, function (error) {
+			console.log(error);
+		});
+
+		$http.get(API_URL + 'doctors/' + $cookies.get('user') + '/appointments', config).then(function (data) {
+			$scope.appointments = data.data;
 		}, function (error) {
 			console.log(error);
 		});
@@ -78,5 +84,9 @@ app.controller('AppointmentController', function ($scope, $http, $cookies, $mdDi
 				targetEvent: ev,
 				clickOutsideToClose: true
 			});
+	}
+
+	$scope.openUser = function (id) {
+		$location.path('/usuario/' + id);
 	}
 })

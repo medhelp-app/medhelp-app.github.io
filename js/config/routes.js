@@ -45,8 +45,8 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 	});
 
 	$routeProvider.when("/usuario/:id",{
-		templateUrl: "views/edit_profile.html",
-		controller: "EditProfileCtrl"
+		templateUrl: "views/profile.html",
+		controller: "PrincipalCtrl"
 	});
 
 	$routeProvider.when("/usuario/editar",{

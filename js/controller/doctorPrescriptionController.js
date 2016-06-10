@@ -1,4 +1,4 @@
-app.controller('DoctorPrescriptionController', function ($scope, $http, $cookies, $routeParams, $location) {
+app.controller('DoctorPrescriptionController', function ($scope, $http, $cookies, $routeParams, $location, $mdDialog) {
 	var config = {
 		headers:  {
 			'x-access-token': $cookies.get('token')
@@ -38,6 +38,15 @@ app.controller('DoctorPrescriptionController', function ($scope, $http, $cookies
 		$http.post(API_URL + 'patients/' + $routeParams.id + '/prescriptions', $scope.prescription, config).then(function (success) {
 			console.log(success);
 			$location.path('/');
+			$mdDialog.show(
+				$mdDialog.alert()
+					.parent(angular.element(document.querySelector('#main')))
+					.clickOutsideToClose(true)
+					.title('Prescrição adicionada.')
+					.textContent('Prescrição adicionada com sucesso.')
+					.ariaLabel('Prescrição adicionada')
+					.ok('Ok!')
+			);
 		}, function (error) {
 			console.log(error);
 		})	
