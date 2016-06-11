@@ -22,6 +22,11 @@
 					<span class="material-icons">contact_phone</span> Consultas
 				</div>
 			</li>
+			<li class="collection-item" ng-show="user.userType == 0">
+				<div class="item" ng-click="redirect('marcacoes')">
+					<span class="material-icons">contact_phone</span> Consultas
+				</div>
+			</li>
 			<li class="collection-item">
 				<div class="item" ng-click="logout()">
 					<span class="material-icons">input</span> Sair
