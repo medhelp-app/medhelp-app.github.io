@@ -13,6 +13,10 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 		$location.path('cadastro');
 	}
 
+	$scope.forget = function () {
+		$location.path('esqueci');
+	}
+
 	$scope.login = function(user) {
 		if (user.email == "" || user.password == "") {
 			$scope.errostatus = true;

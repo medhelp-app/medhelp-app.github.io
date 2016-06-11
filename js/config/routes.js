@@ -14,6 +14,16 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "HomeCtrl"
 	});
 
+	$routeProvider.when("/esqueci",{
+		templateUrl: "views/foget_email.html",
+		controller: "ForgetPasswordController"
+	});
+
+	$routeProvider.when("/senha",{
+		templateUrl: "views/foget_password.html",
+		controller: "ForgetPasswordController"
+	});
+
 	$routeProvider.when("/inicio",{
 		templateUrl: "views/home.html",
 		controller: "PrincipalCtrl"
@@ -47,6 +57,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 	$routeProvider.when("/marcacoes",{
 		templateUrl: "views/appointmentPatient.html",
 		controller: "AppointmentPatientController"
+	});
+
+	$routeProvider.when("/publicacoes",{
+		templateUrl: "views/posts.html",
+		controller: "PostsController"
 	});
 
 	$routeProvider.when("/usuario/:id",{

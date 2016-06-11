@@ -1,64 +1,56 @@
-<div class="register">
-	<div class="row">
-		<div class="card col l6 m8 s12 offset-l3 offset-m2">
-			<div class="row" style="margin-bottom:0px">
-				<form>
-					<div class="row image">
-						<div class="col l8 offset-l2">
-							<img src="images/logo.png">
-						</div>
+<div class="login">
+	<md-card md-theme="default" md-theme-watch class="card col-md-6 col-sm-8 col-xs12 col-md-offset-3 col-sm-offset-2">
+		<div>
+			<form name="userForm">
+				<div class="row">
+					<div class="image col-md-8 col-md-offset-2">
+						<img src="images/logo.png">
 					</div>
-					<div class="row">
-						<div class="input-field col s12" style="margin-top:10px">
-							<input type="text" ng-model="user.name">
-							<label>Nome</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<input type="text" ng-model="user.email">
-							<label>E-mail</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12 m6">
-							<input type="password" ng-model="user.password">
+				</div>
+				<md-input-container class="md-block">
+					<label>Nome</label>
+					<input ng-model="user.name" ng-required="true">
+				</md-input-container>
+				<md-input-container class="md-block">
+					<label>E-mail</label>
+					<input ng-model="user.email" ng-required="true">
+				</md-input-container>
+
+				<div class="row">
+					<div class="col-md-6 col-xs-12">
+						<md-input-container class="md-block">
 							<label>Senha</label>
-						</div>
+							<input type="password" ng-model="user.password" ng-required="true">
+						</md-input-container>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<md-input-container class="md-block">
+							<label>Confirmar Senha</label>
+							<input type="password" ng-model="user.rePassword" ng-required="true">
+						</md-input-container>
+					</div>
+				</div>
 
-						<div class="input-field col s12 m6">
-							<input type="password" ng-model="user.rePassword">
-							<label>Confrmar senha</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col s3">
-							<input class="with-gap" id="pacient" ng-model="user.userType" value="0" type="radio" />
-							<label for="pacient">Paciente</label>
-						</div>
-						<div class="col s3">
-							<input class="with-gap" id="doctor" ng-model="user.userType" value="1" type="radio" />
-							<label for="doctor">Médico</label>
-						</div>
-					</div>
-					<div class="row buttons">
-						<div class="col s8">
-							<a href="/" class="btn-link">
-								ENTRAR
-							</a>
-						</div>
-						<div class="col s4 signin">
-							<button class="waves-effect waves-light btn btn-red" ng-click="signup(user)">
-								CRIAR CONTA
-							</button>
-						</div>
-					</div>
+				<div>
+					<md-radio-group ng-model="user.userType">
+						<md-radio-button value="0" class="md-primary">Paciente</md-radio-button>
+						<md-radio-button value="1">Médico</md-radio-button>
+					</md-radio-group>
+				</div>
 
-					<div class="alert error" ng-show="errostatus">
-						{{erro}}
+				<div class="row buttons">
+					<div class="col-md-9">
+						<md-button class="md-primary" ng-click="goLogin()">Entrar</md-button>
 					</div>
-				</form>
-			</div>
+					<div class="col-md-3 signin">
+						<md-button class="md-raised md-primary" ng-click="signup(user)" ng-disabled="userForm.$invalid">Criar conta</md-button>
+					</div>
+				</div>
+
+				<div class="alert error" ng-show="errostatus">
+					{{erro}}
+				</div>
+			</form>
 		</div>
-	</div>
+	</md-card>
 </div>

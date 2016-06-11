@@ -9,6 +9,10 @@ app.controller("SignupCtrl", function($scope, $http, $cookies, $location) {
 		userType: "0"
 	};
 
+	$scope.goLogin = function () {
+		$location.path('/');
+	}
+
 	$scope.signup = function(user) {
 		if (user.password == "" || user.rePassword == "" || user.name == "" || user.email == "") {
 			$scope.errostatus = true;

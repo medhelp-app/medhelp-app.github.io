@@ -13,24 +13,12 @@
 					<input ng-model="user.email">
 				</md-input-container>
 
-				<div class="row">
-					<div class="col-md-8">
-						<md-input-container class="md-block">
-							<label>Senha</label>
-							<input type="password" ng-model="user.password">
-						</md-input-container>
-					</div>
-					<div class="col-md-4">
-						<md-button style="margin-top:15px" class="md-primary" ng-click="forget()">Esqueci minha senha</md-button>
-					</div>
-				</div>
-
 				<div class="row buttons">
 					<div class="col-md-9">
-						<md-button class="md-primary" ng-click="goSignin()">Criar conta</md-button>
+						<md-button class="md-primary" ng-click="goSignin()">Voltar</md-button>
 					</div>
 					<div class="col-md-3 signin">
-						<md-button class="md-raised md-primary" ng-click="login(user)">Entrar</md-button>
+						<md-button class="md-raised md-primary" ng-click="send(user)">Resetar senha</md-button>
 					</div>
 				</div>
 					
