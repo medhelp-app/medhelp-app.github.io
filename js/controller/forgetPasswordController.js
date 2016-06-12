@@ -13,11 +13,12 @@ app.controller('ForgetPasswordController', function ($scope, $http, $cookies, $l
 	};
 
 	var params = $location.absUrl().split('?')[1].split('&');
-	var urlParams = {};
-	for (var i = 0; i < params.length; i++) {
-		var p = params[i].split('=');
-		urlParams[p[0]] = p[1];
-	};
+	var urlParams = {
+		id: params[0].substr(3),
+		tokenGenerated: params[1].substr("tokenGenerated=".length)
+	}
+
+	console.log(params, urlParams);
 
 	$scope.send = function (user) {
 		$http.get(API_URL + 'users/' + user.email + '/password/forgottenPassword').then(function (data) {
