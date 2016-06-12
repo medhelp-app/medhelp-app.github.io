@@ -42,8 +42,7 @@ app.controller('ForgetPasswordController', function ($scope, $http, $cookies, $l
 			reNewPassword: hashRe
 		}).then(function (data) {
 			if (data.data && data.data.success) {
-			  	window.location = '#/';
-      			window.location.reload();
+			  	window.location.replace('http://medhelp-app.github.io/#/');
 			} else {
 				$scope.message = data.data.error;
 			}
