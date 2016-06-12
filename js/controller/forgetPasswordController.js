@@ -12,7 +12,12 @@ app.controller('ForgetPasswordController', function ($scope, $http, $cookies, $l
 		$location.path('/');
 	};
 
-	var params = $location.search();
+	var params = $location.absUrl().split('?')[1].split('&');
+	var urlParams = {};
+	for (var i = 0; i < params.length; i++) {
+		var p = params[i].split('=');
+		urlParams[p[0]] = p[1];
+	};
 
 	$scope.send = function (user) {
 		$http.get(API_URL + 'users/' + user.email + '/password/forgottenPassword').then(function (data) {
@@ -23,8 +28,8 @@ app.controller('ForgetPasswordController', function ($scope, $http, $cookies, $l
 	};
 
 	$scope.update = function (password) {
-		$http.put(API_URL + 'users/' + params.id + '/password/forgottenPassword', {
-			tokenGenerated: params.tokenGenerated,
+		$http.put(API_URL + 'users/' + urlParams.id + '/password/forgottenPassword', {
+			tokenGenerated: urlParams.tokenGenerated,
 			password: password.password,
 			newPassword: password.rePassword
 		}).then(function (data) {
