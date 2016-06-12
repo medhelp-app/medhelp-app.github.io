@@ -14,7 +14,8 @@ app.controller('ForgetPasswordController', function ($scope, $http, $cookies, $l
 
 	$scope.send = function (user) {
 		$http.get(API_URL + 'users/' + user.email + '/password/forgottenPassword').then(function (data) {
-			$scope.message = '';
+			if (data.data && data.data.success)
+				$scope.message = 'Verifique seu e-mail para resetar sua senha.';
 		}, function (error) {
 			console.log(error);
 		})
@@ -40,7 +41,12 @@ app.controller('ForgetPasswordController', function ($scope, $http, $cookies, $l
 			newPassword: hash,
 			reNewPassword: hashRe
 		}).then(function (data) {
-			$scope.message = '';
+			if (data.data && data.data.success) {
+			  	window.location = '#/';
+      			window.location.reload();
+			} else {
+				$scope.message = data.data.error;
+			}
 		}, function (error) {
 			console.log(error);
 		})
