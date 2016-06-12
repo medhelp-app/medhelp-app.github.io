@@ -35,6 +35,36 @@ app.controller('PostsController', function ($scope, $http, $cookies, $mdDialog, 
 		});
 	}
 
+	$scope.upVote = function (post) {
+		var vote = {
+			idUser: $cookies.get('user'),
+			idPublication: post._id,
+			type: 'agree',
+			date: new Date()
+		};
+
+		$http.post(API_URL + 'publications/vote', vote, config).then(function (data) {
+			load();
+		}, function (error) {
+			console.log(error);
+		});
+	}
+
+	$scope.downVote = function (post) {
+		var vote = {
+			idUser: $cookies.get('user'),
+			idPublication: post._id,
+			type: 'disagree',
+			date: new Date()
+		};
+
+		$http.post(API_URL + 'publications/vote', vote, config).then(function (data) {
+			load();
+		}, function (error) {
+			console.log(error);
+		});
+	}
+
 	function load() {
 		$http.get(API_URL + 'publications', config).then(function (data) {
 			$scope.posts = data.data;

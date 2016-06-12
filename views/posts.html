@@ -28,20 +28,36 @@
 								<img ng-src="data:image/png;base64,{{ post.profileImage }}" 
 									 class="circle md-avatar" ng-click="openUser(post)">
 								<div class="md-list-item-text col-md-12" layout="column">
-									<br />
-									<h3>Nome {{ post.user.name }}</h3>
-									<p>{{ post.text }}</p>
-									<p><i>{{ post.date | date }}</i></p>
-									<h4>
-										<a href="" ng-click="post.response = !post.response" class="md-primary" 
-										   ng-show="user.userType == 1">
-											Responder
-										</a>
-										<a href="" class="md-primary" ng-click="remover(post)"
-										   ng-show="user._id == post.idUser">
-											Deletar
-										</a>
-									</h4>
+									<div class="row">
+										<div class="col-md-10">
+											<br />
+											<h3>Nome {{ post.user.name }}</h3>
+											<p>{{ post.text }}</p>
+											<p><i>{{ post.date | date }}</i></p>
+											<h4>
+												<a href="" ng-click="post.response = !post.response" class="md-primary" 
+												   ng-show="user.userType == 1">
+													Responder
+												</a>
+												<a href="" class="md-primary" ng-click="remover(post)"
+												   ng-show="user._id == post.idUser">
+													Deletar
+												</a>
+											</h4>
+										</div>
+										<div class="col-md-2 thumbs">
+											<div>
+												<md-button ng-click="upVote(post)" class="md-primary">
+													<i class="material-icons">thumb_up</i>
+												</md-button>
+											</div>
+											<div>
+												<md-button ng-click="downVote(post)" class="md-primary">
+													<i class="material-icons">thumb_down</i>
+												</md-button>
+											</div>
+										</div>
+									</div>
 									<div class="row" ng-show="post.response">
 										<form name="response">
 											<div class="col-md-9">
