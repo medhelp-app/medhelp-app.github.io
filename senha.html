@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="medhelp">
+	<head>
+		<base href="/">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MedHelp</title>
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+		
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="libs/angular-material.min.css"/>
+
+		<link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+
+		<link rel="stylesheet" type="text/css" href="libs/loading-bar.css" />
+
+		<script type="text/javascript">
+			var API_URL = 'https://medhelp-app.herokuapp.com/api/';
+			var TOKEN = null;
+			var USER_ID = null;
+		</script>
+		
+		<!--<script src="libs/jquery.min.js"></script>	-->
+		<script src="libs/angular.min.js"></script>
+		<script src="libs/angular-locale_pt-br.js"></script>
+		<script src="libs/angular-route.js"></script>
+		<script src="libs/angular-cookies.js"></script>
+		<script src="libs/spin.min.js"></script>
+		<script src="libs/angular-spinner.min.js"></script>
+		<script src="libs/angular-loading-spinner.js"></script>
+		<script src="libs/angular-animate.min.js"></script>
+		<script src="libs/angular-aria.min.js"></script>
+		<script src="libs/angular-material.min.js"></script>
+		<script src="libs/loading-bar.js"></script>
+		<script src="libs/sha512.js"></script>
+
+		<script src="js/config/apps.js"></script>
+		<script src="js/config/routes.js"></script>
+		<script src="js/config/varGlobal.js"></script>
+
+		<script src="js/controller/forgetPasswordController.js"></script>
+
+		<script src="libs/less.min.js"></script>
+	</head>
+	<body id="main" ng-controller="ForgetPasswordController">
+		<div class="login">
+			<md-card md-theme="default" md-theme-watch class="card col-md-6 col-sm-8 col-xs12 col-md-offset-3 col-sm-offset-2">
+				<div>
+					<form name="userForm">
+						<div class="row">
+							<div class="image col-md-8 col-md-offset-2">
+								<img src="images/logo.png">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<md-input-container class="md-block">
+									<label>Senha</label>
+									<input type="password" ng-model="password.password">
+								</md-input-container>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<md-input-container class="md-block">
+									<label>Senha</label>
+									<input type="password" ng-model="password.rePassword">
+								</md-input-container>
+							</div>
+						</div>
+
+						<div class="row buttons">
+							<div class="col-md-3 signin">
+								<md-button class="md-raised md-primary" ng-click="update(password)">Alterar senha</md-button>
+							</div>
+						</div>
+							
+						<div class="alert error" ng-show="errostatus">
+							{{ erro }}
+						</div>
+					</form>
+				</div>
+			</md-card>
+		</div>
+	</body>
+</html>

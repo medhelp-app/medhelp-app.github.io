@@ -1,5 +1,5 @@
 app.controller("RouteCtrl", function($scope, $sessionStorage, $route, $location) {
-	$scope.$on('$routeChangeSuccess', function() {
+	/*$scope.$on('$routeChangeSuccess', function() {
 		var path = $location.path();
 		
 		$scope.nav = false;
@@ -15,5 +15,5 @@ app.controller("RouteCtrl", function($scope, $sessionStorage, $route, $location)
 		} else {
 			$scope.nav = true;
 		}
-	});
+	});*/
 });

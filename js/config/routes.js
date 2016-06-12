@@ -19,11 +19,6 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "ForgetPasswordController"
 	});
 
-	$routeProvider.when("/senha",{
-		templateUrl: "views/foget_password.html",
-		controller: "ForgetPasswordController"
-	});
-
 	$routeProvider.when("/inicio",{
 		templateUrl: "views/home.html",
 		controller: "PrincipalCtrl"

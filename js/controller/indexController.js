@@ -2,7 +2,7 @@ app.controller('IndexController', function ($scope, $cookies, $http, $location) 
 	var path = $location.path();
 
 	if (path !== '/' && path !== '') {
-		if (!$cookies.get('login') && !$cookies.get('senha')) {
+		if (!$cookies.get('login')) {
 			location.href = "/";
 		} 
 
