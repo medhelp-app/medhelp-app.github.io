@@ -63,11 +63,11 @@
 											<div class="col-md-9">
 												<md-input-container class="md-block">
 													<label>Digite sua resposta</label>
-													<textarea ng-model="post.response.text" ng-required="true" rows="5" md-select-on-focus></textarea>
+													<textarea ng-model="post.comment" ng-required="true" rows="5" md-select-on-focus></textarea>
 												</md-input-container>
 											</div>
 											<div class="col-md-3">
-												<md-button class="md-primary" ng-click="save()" ng-disabled="response.$invalid">
+												<md-button class="md-primary" ng-click="comment(post)" ng-disabled="response.$invalid">
 													Responder
 												</md-button>
 											</div>

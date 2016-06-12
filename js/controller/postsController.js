@@ -27,6 +27,21 @@ app.controller('PostsController', function ($scope, $http, $cookies, $mdDialog, 
 		});
 	}
 
+	$scope.comment = function (post) {
+		var comment = {
+			idUser: $cookies.get('user'),
+			idPublication: post._id,
+			text: post.comment,
+			date: new Date()
+		};
+
+		$http.post(API_URL + 'publications/comment', comment, config).then(function (data) {
+			load();
+		}, function (error) {
+			console.log(error);
+		});
+	}
+
 	$scope.remover = function (post) {
 		$http.delete(API_URL + 'publications/' + post._id, config).then(function (data) {
 			load();
