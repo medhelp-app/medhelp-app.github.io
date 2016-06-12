@@ -29,10 +29,16 @@ app.controller('ForgetPasswordController', function ($scope, $http, $cookies, $l
 
 		console.log(params, urlParams);
 
+		var jsSha = new jsSHA(password.password);
+		var hash = jsSha.getHash("SHA-512", "HEX");
+
+		var jsShaRe = new jsSHA(password.rePassword);
+		var hashRe = jsShaRe.getHash("SHA-512", "HEX");
+
 		$http.put(API_URL + 'users/' + urlParams.id + '/password/forgottenPassword', {
 			tokenGenerated: urlParams.tokenGenerated,
-			password: password.password,
-			newPassword: password.rePassword
+			newPassword: hash,
+			reNewPassword: hashRe
 		}).then(function (data) {
 			$scope.message = '';
 		}, function (error) {
