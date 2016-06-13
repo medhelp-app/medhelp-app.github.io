@@ -7,9 +7,31 @@
 		<div class="col-xs-12 col-sm-9 col-md-9">
 			<md-card md-theme="default" md-theme-watch class="main-content">
 				<div class="doctor">
-					<md-button class="md-fab" aria-label="Eat cake" ng-click="add()">
-						<i class="material-icons">add</i>
-					</md-button>
+					<div class="row">
+						<md-button class="col-md-6 md-primary" aria-label="Horários de atendimento" ng-click="add()">
+							Adicionar horários de atendimento
+						</md-button>
+						<md-button class="com-md-6 md-primary" aria-label="Planos de saúde" ng-click="addHealthInsurance()">
+							Adicionar planos de saúde
+						</md-button>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Planos de sáude</h5>
+						</div>
+					</div>
+					<div class="row">
+						<md-list class="col-md-12" ng-cloak>
+							<md-list-item class="secondary-button-padding" ng-repeat="hi in healthInsurance">
+								<p>{{ hi.healthInsurance }}</p>
+								<md-button class="md-secondary" ng-click="deleteHealthInsurance(hi)">
+									<i class="material-icons md-18">delete</i>
+								</md-button>
+							</md-list-item>
+						</md-list>
+					</div>
+					<div class="divider"></div>
 
 					<div class="row">
 						<div class="col-md-12">

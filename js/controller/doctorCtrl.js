@@ -5,8 +5,28 @@ app.controller("DoctorCtrl", function($scope, $http, $cookies, $routeParams, $md
 		}
 	};
 
+	$scope.follow = function (doctor) {
+		var f = {
+			idPatient: $cookies.get('user'),
+			idDoctor: doctor._id,
+			date: new Date()
+		};
+
+		$http.post(API_URL + 'users/follow', f, config).then(function (data) {
+			console.log(data);
+		}, function (error) {
+			console.log(error);
+		})
+	}
+
 	$http.get(API_URL + 'doctors/' + $routeParams.id, config).then(function (data) {
 		$scope.doctor = data.data;
+	}, function (error) {
+		console.log(error);
+	});
+
+	$http.get(API_URL + 'doctors/' + $routeParams.id + '/healthInsurance', config).then(function (data) {
+		$scope.healthInsurance = data.data;
 	}, function (error) {
 		console.log(error);
 	});

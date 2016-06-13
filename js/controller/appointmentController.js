@@ -44,6 +44,15 @@ app.controller('AppointmentController', function ($scope, $http, $cookies, $mdDi
 	}
 	load();
 
+	function loadHealthInsurance() {
+		$http.get(API_URL + 'doctors/' + $cookies.get('user') + '/healthInsurance', config).then(function (data) {
+			$scope.healthInsurance = data.data;
+		}, function (error) {
+			console.log(error);
+		});
+	}
+	loadHealthInsurance();
+
 	$scope.remove = function (item) {
 		$http.delete(API_URL + 'doctors/availability/' + item._id, config).then(function (data) {
 			console.log(data);
@@ -84,6 +93,37 @@ app.controller('AppointmentController', function ($scope, $http, $cookies, $mdDi
 				targetEvent: ev,
 				clickOutsideToClose: true
 			});
+	}
+
+	$scope.addHealthInsurance = function (ev) {
+		var confirm = $mdDialog.prompt()
+			.title('Adicionar plano de saúde')
+			.textContent('Escreva o nome do plano de saúde que você deseja adicionar.')
+			.placeholder('Nome do plano')
+			.ariaLabel('Nome do plano')
+			.targetEvent(ev)
+			.ok('Salvar')
+			.cancel('Cancelar');
+
+		$mdDialog.show(confirm).then(function(result) {
+			$http.post(API_URL + 'doctors/' + $cookies.get('user') + '/healthInsurance', { healthInsurance: result }, config).then(function (data) {
+				console.log(data);
+				loadHealthInsurance();
+			}, function (error) {
+				console.log(error);
+			});
+		}, function() {
+			
+		});
+	}
+
+	$scope.deleteHealthInsurance = function (healthInsurance) {
+		$http.delete(API_URL + 'doctors/' + $cookies.get('user') + '/healthInsurance/' + healthInsurance._id, config).then(function (data) {
+			console.log(data);
+			loadHealthInsurance();
+		}, function (error) {
+			console.log(error);
+		})
 	}
 
 	$scope.openUser = function (id) {

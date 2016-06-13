@@ -21,8 +21,11 @@
 						</div>
 					</div>
 					<div class="row" ng-show="availability.length > 0">
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 							<md-button class="md-raised md-primary" ng-click="appointment()">Marcar consulta</md-button>
+						</div>
+						<div class="col-sm-3">
+							<md-button class="md-raised md-primary" ng-click="follow(doctor)">Seguir</md-button>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -40,8 +43,13 @@
 							<div>{{ doctor.city + ', ' + doctor.state }}</div>
 						</div>
 						<div class="col-md-5 col-xs-12">
-							<div><b>Horários: </b> Segunda das 14h as 17h</div>
-							<div><b>Atende: </b> Pacientes privados e Amil, Bradesco Saúde, Allianz Saúde, Camed, Cassi, Correios, Embratel, Petrobras, e 1 mais</div>
+							<!--<div><b>Horários: </b> Segunda das 14h as 17h</div>-->
+							<div ng-show="healthInsurance.length > 0">
+								<b>Atende: </b> 
+								<span ng-repeat="h in healthInsurance">
+									{{ h.healthInsurance + ($index < healthInsurance.length - 1 ? ',' : '') }}
+								</span>
+							</div>
 						</div>
 					</div>
 					<div class="divider"></div>

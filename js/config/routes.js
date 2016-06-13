@@ -59,14 +59,14 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "PostsController"
 	});
 
-	$routeProvider.when("/usuario/:id",{
-		templateUrl: "views/profile.html",
-		controller: "PrincipalCtrl"
-	});
-
 	$routeProvider.when("/usuario/editar",{
 		templateUrl: "views/edit_profile.html",
 		controller: "EditProfileCtrl"
+	});
+
+	$routeProvider.when("/usuario/:id",{
+		templateUrl: "views/profile.html",
+		controller: "PrincipalCtrl"
 	});
 
 	$routeProvider.when("/corpo",{

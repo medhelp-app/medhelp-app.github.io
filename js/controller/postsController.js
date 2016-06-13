@@ -35,7 +35,7 @@ app.controller('PostsController', function ($scope, $http, $cookies, $mdDialog, 
 			date: new Date()
 		};
 
-		$http.post(API_URL + 'publications/comment', comment, config).then(function (data) {
+		$http.post(API_URL + 'publications/' + post._id + '/comment', comment, config).then(function (data) {
 			load();
 		}, function (error) {
 			console.log(error);
@@ -50,30 +50,15 @@ app.controller('PostsController', function ($scope, $http, $cookies, $mdDialog, 
 		});
 	}
 
-	$scope.upVote = function (post) {
+	$scope.vote = function (type, post) {
 		var vote = {
 			idUser: $cookies.get('user'),
 			idPublication: post._id,
-			type: 'agree',
+			type: type,
 			date: new Date()
 		};
 
-		$http.post(API_URL + 'publications/vote', vote, config).then(function (data) {
-			load();
-		}, function (error) {
-			console.log(error);
-		});
-	}
-
-	$scope.downVote = function (post) {
-		var vote = {
-			idUser: $cookies.get('user'),
-			idPublication: post._id,
-			type: 'disagree',
-			date: new Date()
-		};
-
-		$http.post(API_URL + 'publications/vote', vote, config).then(function (data) {
+		$http.post(API_URL + 'publications/' + post._id + '/vote', vote, config).then(function (data) {
 			load();
 		}, function (error) {
 			console.log(error);

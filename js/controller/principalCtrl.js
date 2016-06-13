@@ -9,6 +9,8 @@ app.controller("PrincipalCtrl", function($scope, $http, $cookies, $location, $ro
 		}
 	};
 
+	$scope.type = $cookies.get('type');
+
 	if ($routeParams.id) {
 		$http.get(API_URL + 'users/' + $routeParams.id, config).then(function (data) {
 			load(data.data.userType);
