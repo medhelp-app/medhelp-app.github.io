@@ -1,7 +1,4 @@
 app.controller('ArchivesController', function ($scope, $http,  $cookies, $location, $routeParams, fileUpload) {
-	$scope.type = $routeParams.type == 'prescricoes' ? 'prescrição' : 'exame';
-	$scope.name = $routeParams.type == 'prescricoes' ? 'Prescrições' : 'Exames';
-
 	var config = {
 		headers: {
 			'x-access-token': $cookies.get('token')
@@ -10,20 +7,30 @@ app.controller('ArchivesController', function ($scope, $http,  $cookies, $locati
 
 	function load () {
 		$http.get(API_URL + 'archives/' + $cookies.get('user'), config).then(function (data) {
-			console.log(data);
+			$scope.files = data.data;
 		}, function (error) {
 			console.log(error);
 		})
 	}
 	load();
 
-	$scope.add = function () {
-		var uploadUrl = API_URL + 'users/' + $cookies.get('user') + '/image';
+	$scope.save = function () {
+		var file = $scope.myFile;
+
+		var uploadUrl = API_URL + 'archives/' + $cookies.get('user');
 		fileUpload.uploadFileToUrl(file, uploadUrl, $cookies.get('token'), function (success) {
 			if (success)
 				load();
 			else
 				$scope.errorstatus = 'Erro ao enviar imagem.';
+		}, 'post', 'archive');
+	}
+
+	$scope.delete = function (file) {
+		$http.delete(API_URL + 'archives/' + file._id, config).then(function (data) {
+			load();
+		}, function (error) {
+			console.log(error);
 		});
 	}
 });

@@ -15,22 +15,38 @@ app.directive('fileModel', ['$parse', function ($parse) {
 }]);
 
 app.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl, token, callback){
+    this.uploadFileToUrl = function(file, uploadUrl, token, callback, method, field){
         var fd = new FormData();
-        fd.append('profileImage', file);
+        fd.append(field ? field : 'profileImage', file);
 
-        $http.put(uploadUrl, fd, {
-                transformRequest: angular.identity,
-                headers: {
-                    'Content-Type': undefined,
-                    'x-access-token': token
-                }
-            })
-            .success(function(){
-                callback(true);
-            })
-            .error(function(){
-                callback(false);
-            });
+        if (method == 'post') {
+            $http.post(uploadUrl, fd, {
+                    transformRequest: angular.identity,
+                    headers: {
+                        'Content-Type': undefined,
+                        'x-access-token': token
+                    }
+                })
+                .success(function(){
+                    callback(true);
+                })
+                .error(function(){
+                    callback(false);
+                });
+        } else {
+            $http.put(uploadUrl, fd, {
+                    transformRequest: angular.identity,
+                    headers: {
+                        'Content-Type': undefined,
+                        'x-access-token': token
+                    }
+                })
+                .success(function(){
+                    callback(true);
+                })
+                .error(function(){
+                    callback(false);
+                });
+        }
     }
 }]);

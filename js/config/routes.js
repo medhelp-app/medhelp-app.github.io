@@ -74,7 +74,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "HumanBodyCtrl"
 	});
 
-	$routeProvider.when("/arquivos/:type",{
+	$routeProvider.when("/arquivos",{
 		templateUrl: "views/archives.html",
 		controller: "ArchivesController"
 	});

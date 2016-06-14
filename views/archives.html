@@ -8,21 +8,29 @@
 			<md-card md-theme="default" md-theme-watch class="main-content">
 				<div class="doctor">
 					<div class="row">
-						<md-button class="col-md-4 md-primary" aria-label="Adicionar" ng-click="add()">
-							Adicionar {{ type }}
-						</md-button>
+						<form name="addForm">
+							<div class="col-md-2"><label>Novo arquivo</label></div>
+							<div class="col-md-8">
+								<input type="file" file-model="myFile" ng-required="true" />
+							</div>
+							<div class="col-md-2">
+								<md-button class="md-raised md-primary" ng-click="save()" ng-disabled="addForm.$invalid">
+									Enviar
+								</md-button>
+							</div>
+						</form>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12">
-							<h5>{{ name }}</h5>
+							<h5>Prescrições e Exames</h5>
 						</div>
 					</div>
 					<div class="row">
 						<md-list class="col-md-12" ng-cloak>
-							<md-list-item class="secondary-button-padding" ng-repeat="hi in healthInsurance">
-								<p>{{ hi.healthInsurance }}</p>
-								<md-button class="md-secondary" ng-click="deleteHealthInsurance(hi)">
+							<md-list-item class="row secondary-button-padding" ng-repeat="file in files">
+								<img class="col-md-10" ng-src="data:image/png;base64,{{ file.archive }}">
+								<md-button class="col-md-2 md-secondary" ng-click="delete(file)">
 									<i class="material-icons md-18">delete</i>
 								</md-button>
 							</md-list-item>
