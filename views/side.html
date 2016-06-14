@@ -12,7 +12,7 @@
 					<span class="material-icons">person</span> Editar Perfil
 				</div>
 			</li>
-			<li class="collection-item">
+			<li class="collection-item" ng-show="user.userType == 0">
 				<div class="item" ng-click="redirect('corpo')">
 					<span class="material-icons">accessibility</span> Corpo Humano
 				</div>
@@ -33,7 +33,7 @@
 				</div>
 			</li>
 		</ul>
-		<ul class="collection">
+		<ul class="collection" ng-show="user.userType == 0">
 			<li class="collection-item">
 				<div class="titulo">MÉDICOS</div>
 			</li>

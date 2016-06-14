@@ -7,12 +7,14 @@
 		<div class="col-xs-12 col-sm-9 col-md-9">
 			<md-card md-theme="default" md-theme-watch class="main-content">
 				<div class="body">
-					<md-button class="md-fab" aria-label="Eat cake" ng-click="openAdd()">
-						<i class="material-icons">add</i>
-					</md-button>
+					<div class="row">
+						<md-button class="col-md-3 md-primary" aria-label="Adicionar problema" ng-click="openAdd()">
+							Adicionar problema
+						</md-button>
+					</div>
 
 					<div class="human-body full"></div>
-					<div ng-repeat="p in parts" class="human-body {{ p }}"></div>
+					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>
 					<div class="clicks">
 						<div class="head" ng-click="part('head')"></div>
 						<div class="rightArm" ng-click="part('rightArm')"></div>

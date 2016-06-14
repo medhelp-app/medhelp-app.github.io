@@ -1,4 +1,4 @@
-<md-dialog aria-label="Adicionar problema" ng-cloak>
+<md-dialog aria-label="Adicionar problema" ng-cloak style="min-width:500px">
 	<form name="addForm">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
@@ -12,38 +12,48 @@
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<div class="row">
-					<div>
-						<div class="row col-md-6 col-sm-12">
-							<label>Parte do corpo</label>
-							<md-select ng-model="add.part" ng-required="true">
-								<md-option ng-repeat="state in partsList" value="{{state.value}}">
-									{{state.name}}
-								</md-option>
-							</md-select>
-						</div>
-						<div class="row col-md-6 col-sm-12">
-							<label>Severidade</label>
-							<md-select ng-model="add.severity" ng-required="true">
-								<md-option ng-repeat="state in severities" value="{{state.value}}">
-									{{state.name}}
-								</md-option>
-							</md-select>
-						</div>
+					<div class="col-md-6 col-sm-12">
+						<label>Parte do corpo</label>
+						<md-select ng-model="add.part" ng-required="true">
+							<md-option ng-repeat="state in partsList" value="{{state.value}}">
+								{{state.name}}
+							</md-option>
+						</md-select>
 					</div>
-					<div class="row col-md-12">
+					<div class="col-md-6 col-sm-12">
+						<label>Severidade</label>
+						<md-select ng-model="add.severity" ng-required="true">
+							<md-option ng-repeat="state in severities" value="{{state.value}}">
+								{{state.name}}
+							</md-option>
+						</md-select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
 						<md-input-container class="md-block" flex-gt-sm>
 							<label>Problema</label>
 							<input ng-model="add.problem" ng-required="true">
 						</md-input-container>
 					</div>
-					<div class="row col-md-12">
+				</div>
+				<div class="row">
+					<div class="col-md-12">
 						<md-input-container class="md-block">
 							<label>Descrição</label>
 							<textarea ng-model="add.description" ng-required="true" rows="5" md-select-on-focus></textarea>
 						</md-input-container>
 					</div>
-					<div class="row col-md-12">
-          				<md-datepicker ng-model="add.occurredDate" ng-required="true" md-placeholder="Selecione a data"></md-datepicker>
+				</div>
+				<div class="row">
+					<div class="col-md-7">
+          				<md-datepicker ng-model="add.occurredDate" ng-required="true" md-placeholder="Selecione a data">
+          				</md-datepicker>
+          			</div>
+          			<div class="col-md-5">
+          				<md-switch ng-model="add.resolved" aria-label="Resolvido">
+							Resolvido
+						</md-switch>
           			</div>
 				</div>
 			</div>

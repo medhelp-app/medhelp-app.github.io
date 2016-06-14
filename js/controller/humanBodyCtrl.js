@@ -9,11 +9,21 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	function load () {
 		$http.get(API_URL + 'patients/' + $cookies.get('user') + '/bodyparts', config).then(function (data) {
 			for (var i = 0; i < data.data.length; i++) {
+				data.data[i].problems.sort(function(a, b) {
+					var x = a.severity == "High" ? 2 : (a.severity == "Medium" ? 1 : 0);
+					var y = b.severity == "High" ? 2 : (b.severity == "Medium" ? 1 : 0);
+					return x - y;
+				});
+
 				for (var j = 0; j < data.data[i].problems.length; j++) {
-					if (data.data[i].problems[j].severity == "Medium") {
-						$scope.parts.push(data.data[i].part + "-yellow");
-					} else if (data.data[i].problems[j].severity == "High") {
-						$scope.parts.push(data.data[i].part + "-red");
+					if (!data.data[i].problems[j].resolved) {
+						if (data.data[i].problems[j].severity == "Medium") {
+							$scope.parts.push(data.data[i].part + "-yellow");
+						} else if (data.data[i].problems[j].severity == "High") {
+							$scope.parts.push(data.data[i].part + "-red");
+						} else {
+							$scope.parts.push(data.data[i].part + "-gray");
+						}
 					}
 				};
 			};

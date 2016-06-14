@@ -1,4 +1,4 @@
-<md-dialog aria-label="{{ name }}" ng-cloak>
+<md-dialog aria-label="{{ name }}" ng-cloak style="min-width:500px">
 	<form>
 		<md-toolbar>
 			<div class="md-toolbar-tools">
@@ -13,10 +13,17 @@
 			<div class="md-dialog-content">
 				<div class="row">
 					<md-list flex>
-						<md-list-item class="md-2-line" ng-repeat="item in problems">
+						<md-list-item class="md-3-line" ng-repeat="item in problems">
 							<div class="md-list-item-text" layout="column">
 								<h3>{{ item.problem }}</h3>
 								<h4>{{ item.description }}</h4>
+								<p>
+									<i>
+										Data: {{ item.occurredDate | date }}, 
+										Severidade: <b>{{ item.severity == "High" ? "Alta" : (item.severity == "Medium" ? "Média" : "Baixa") }}</b>
+										<span ng-show="item.resolved">- <b>Resolvido</b></span>
+									</i>
+								</p>
 							</div>
 						</md-list-item>
 					</md-list>
