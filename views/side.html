@@ -39,17 +39,14 @@
 			</li>
 			<li class="collection-item">
 				<div class="item">
-					<span class="material-icons">search</span>
-					<input placeholder="Procurar Médicos" id="first_name" type="text">
+					<md-input-container md-no-float class="md-block" flex-gt-sm>
+						<input ng-model="search" placeholder="Procurar médicos">
+					</md-input-container>
 				</div>
 			</li>
-			<li class="collection-item">
-				<img src="http://www.unimedjf.coop.br/novosite/Imagens/Site/imagemDestaqueDownloadGuiaMedico.png" class="circle">
-				<span class="item">Maria Pereira</span>
-			</li>
-			<li class="collection-item">
-				<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
-				<span class="item">Joaquina França</span>
+			<li class="collection-item" ng-repeat="d in doctors | filter: search | limitTo: 3" ng-click="redirect('medicos/' + d._id)">
+				<img ng-src="data:image/png;base64,{{ d.profileImage }}" class="circle">
+				<span class="item">{{ d.name }}</span>
 			</li>
 			<li class="collection-item">
 				<div class="item" ng-click="redirect('medicos')">

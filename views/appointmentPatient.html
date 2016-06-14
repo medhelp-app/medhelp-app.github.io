@@ -16,7 +16,7 @@
 						<md-list flex>
 							<md-list-item class="md-3-line" ng-repeat="appointment in appointments" 
 										  ng-click="openUser(appointment.doctorId._id)">
-								<img ng-src="data:image/png;base64,{{ appointment.profileImage }}" class="circle md-avatar">
+								<img ng-src="data:image/png;base64,{{ appointment.user.profileImage }}" class="circle md-avatar">
 								<div class="md-list-item-text" layout="column">
 									<h3>{{ appointment.user.name }}</h3>
 									<h4>{{ appointment.date | date }}</h4>
