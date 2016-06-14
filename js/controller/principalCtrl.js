@@ -3,6 +3,10 @@ app.controller("PrincipalCtrl", function($scope, $http, $cookies, $location, $ro
 		$location.path('/medicos/prescrever/' + $scope.user._id);
 	}	
 
+	$scope.humanBody = function () {
+		$location.path('/corpo/' + $scope.user._id);
+	}	
+
 	var config = {
 		headers: {
 			'x-access-token': $cookies.get('token')

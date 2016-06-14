@@ -12,17 +12,17 @@
 					<span class="material-icons">person</span> Editar Perfil
 				</div>
 			</li>
-			<li class="collection-item" ng-show="user.userType == 0">
+			<li class="collection-item" ng-show="type == 0">
 				<div class="item" ng-click="redirect('corpo')">
 					<span class="material-icons">accessibility</span> Corpo Humano
 				</div>
 			</li>
-			<li class="collection-item" ng-show="user.userType == 1">
+			<li class="collection-item" ng-show="type == 1">
 				<div class="item" ng-click="redirect('consultas')">
 					<span class="material-icons">contact_phone</span> Consultas
 				</div>
 			</li>
-			<li class="collection-item" ng-show="user.userType == 0">
+			<li class="collection-item" ng-show="type == 0">
 				<div class="item" ng-click="redirect('marcacoes')">
 					<span class="material-icons">contact_phone</span> Consultas
 				</div>
@@ -33,7 +33,7 @@
 				</div>
 			</li>
 		</ul>
-		<ul class="collection" ng-show="user.userType == 0">
+		<ul class="collection" ng-show="type == 0">
 			<li class="collection-item">
 				<div class="titulo">MÉDICOS</div>
 			</li>

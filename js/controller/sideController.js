@@ -1,4 +1,6 @@
 app.controller('SideController', function($scope, $location, $cookies) {
+	$scope.type = $cookies.get('type');
+	
 	$scope.redirect = function (path) {
 		$location.path(path);
 	};

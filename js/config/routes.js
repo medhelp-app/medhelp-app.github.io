@@ -69,7 +69,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "PrincipalCtrl"
 	});
 
-	$routeProvider.when("/corpo",{
+	$routeProvider.when("/corpo/:id?",{
 		templateUrl: "views/human_body.html",
 		controller: "HumanBodyCtrl"
 	});

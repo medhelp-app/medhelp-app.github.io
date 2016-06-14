@@ -64,7 +64,7 @@
 				Cancelar
 			</md-button>
 			<md-button ng-click="save()" ng-disabled="addForm.$invalid">
-				Adicionar
+				{{ edit ? 'Editar' : 'Adicionar' }}
 			</md-button>
 		</md-dialog-actions>
 	</form>

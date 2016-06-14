@@ -1,13 +1,18 @@
-app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $mdDialog, $mdMedia) {
+app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $mdDialog, $mdMedia, $routeParams) {
 	var config = {
 		headers:  {
 			'x-access-token': $cookies.get('token')
 		}
 	};
 
+	var id = $routeParams.id ? $routeParams.id : $cookies.get('user');
+	var edit = $routeParams.id ? true : false;
+
 	$scope.parts = [];
 	function load () {
-		$http.get(API_URL + 'patients/' + $cookies.get('user') + '/bodyparts', config).then(function (data) {
+		$scope.parts = [];
+
+		$http.get(API_URL + 'patients/' + id + '/bodyparts', config).then(function (data) {
 			for (var i = 0; i < data.data.length; i++) {
 				data.data[i].problems.sort(function(a, b) {
 					var x = a.severity == "High" ? 2 : (a.severity == "Medium" ? 1 : 0);
@@ -61,6 +66,12 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				controller: function ($scope) {
 					$scope.name = selectedName;
 					$scope.problems = problems;
+					$scope.edit = edit;
+
+					$scope.openEdit = function (item) {
+						item.part = name;
+						$mdDialog.hide(item);
+					};
 
 					$scope.cancel = function () {
 						$mdDialog.cancel();
@@ -71,10 +82,14 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				targetEvent: ev,
 				clickOutsideToClose:true,
 				fullscreen: useFullScreen
+			}).then(function (item) {
+				if (item) {
+					$scope.openAdd(null, item);
+				}
 			});
 	};
 
-	$scope.openAdd = function(ev) {
+	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 
 		$mdDialog.show({
@@ -95,7 +110,13 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						{ value: 'High', name: 'Alta' }
 					];
 
-					$scope.add = {
+					if (item)
+						item.occurredDate = new Date(item.occurredDate);
+					
+					var edit = item ? true : false;
+					$scope.edit = edit;
+
+					$scope.add = item ? item : {
 						part: 'head',
 						severity: 'Low',
 						problem: '',
@@ -106,15 +127,27 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					$scope.save = function () {
 						console.log($scope.add);
 
-						$http.post(API_URL + 'patients/' + $cookies.get('user') + '/bodyparts', $scope.add, config).then(function (data) {
-							console.log(data);
+						if (!edit) {
+							$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
+								console.log(data);
 
-							load();
+								load();
 
-							$mdDialog.hide();
-						}, function (error) {
-							console.log(error);
-						});
+								$mdDialog.hide();
+							}, function (error) {
+								console.log(error);
+							});
+						} else {
+							$http.put(API_URL + 'patients/' + id + '/bodyparts/' + $scope.add._id, $scope.add, config).then(function (data) {
+								console.log(data);
+
+								load();
+
+								$mdDialog.hide();
+							}, function (error) {
+								console.log(error);
+							});
+						}
 
 						$scope.add = {
 							part: 'head',
