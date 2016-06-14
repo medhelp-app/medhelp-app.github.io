@@ -50,10 +50,18 @@
 							<h5>Prescrição</h5>
 						</div>
 						<div class="col-sm-12">
-							<md-input-container class="md-block" flex-gt-sm>
+							<!--<md-input-container class="md-block" flex-gt-sm>
 								<label>Problema</label>
 								<textarea ng-model="prescription.problem" required></textarea>
-							</md-input-container>
+							</md-input-container>-->
+							<md-autocomplete flex
+								md-selected-item="prescription.problem"
+								md-search-text="disease"
+								md-items="item in searchDiseases(disease)"
+								md-item-text="item.nome"
+								md-floating-label="Problema">
+								<span md-highlight-text="disease">{{ item }}</span>
+							</md-autocomplete>
 						</div>
 						<div>
 							<div class="col-md-6">
@@ -67,10 +75,14 @@
 						</div>
 						<div ng-repeat="medicine in prescription.medicines">
 							<div class="col-sm-12 col-md-10">
-								<md-input-container class="md-block" flex-gt-sm>
-									<label>Remédio</label>
-									<input ng-model="medicine.name">
-								</md-input-container>
+								<md-autocomplete flex
+									md-selected-item="medicine.name"
+									md-search-text="searchText"
+									md-items="item in searchMedicines(searchText)"
+									md-item-text="item.nome"
+									md-floating-label="Remédio">
+									<span md-highlight-text="searchText">{{ item.nome }}</span>
+								</md-autocomplete>
 							</div>
 							<div class="col-sm-12 col-md-2">
 								<md-input-container class="md-block" flex-gt-sm>
@@ -80,11 +92,9 @@
 							</div>
 							<div class="col-sm-12 col-md-4">
 								<md-input-container class="md-block" flex-gt-sm>
-									<label>Frequência</label>
-									<md-select ng-model="medicine.occurence" placeholder="Estado">
+									<md-select ng-model="medicine.occurence" placeholder="Frequência">
 										<md-option>1 vez por dia</md-option>
 									</md-select>
-									<input ng-model="medicine.occurence">
 								</md-input-container>
 							</div>
 							<div class="col-sm-12 col-md-8">
