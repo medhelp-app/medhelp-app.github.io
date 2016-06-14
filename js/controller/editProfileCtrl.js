@@ -71,9 +71,7 @@ app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location, f
 		        console.log('file is ' );
 		        console.dir(file);
 		       
-		       	var type = $cookies.get('type') == 0 ? "patients/" : "doctors/";
-
-		        var uploadUrl = API_URL + type + $cookies.get('user') + '/image';
+		        var uploadUrl = API_URL + 'users/' + $cookies.get('user') + '/image';
 		        fileUpload.uploadFileToUrl(file, uploadUrl, $cookies.get('token'), function (success) {
 		        	if (success)
 		        		load();

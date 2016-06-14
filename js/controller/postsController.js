@@ -74,6 +74,19 @@ app.controller('PostsController', function ($scope, $http, $cookies, $mdDialog, 
 	}
 	load();
 
+	$scope.loadComments = function (post) {
+		post.response = !post.response;
+
+		if (post.response) {
+			$http.get(API_URL + 'publications/' + post._id + '/comment', config).then(function (data) {
+				console.log(data);
+				post.commentList = data.data;
+			}, function (error) {
+				console.log(error);
+			})
+		}
+	}
+
 	$scope.openUser = function (id) {
 		if (id.type == 'question')
 			$location.path('/usuario/' + id.idUser);

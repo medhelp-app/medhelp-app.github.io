@@ -74,6 +74,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "HumanBodyCtrl"
 	});
 
+	$routeProvider.when("/arquivos/:type",{
+		templateUrl: "views/archives.html",
+		controller: "ArchivesController"
+	});
+
 	$routeProvider.otherwise({redirectTo: "/erro"});
 
 	$mdThemingProvider.definePalette('amazingPaletteName', {

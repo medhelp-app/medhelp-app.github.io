@@ -1,0 +1,35 @@
+<div ng-include="'views/nav.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div ng-include="'views/side.html'"></div>
+		
+		<div class="col-xs-12 col-sm-9 col-md-9">
+			<md-card md-theme="default" md-theme-watch class="main-content">
+				<div class="doctor">
+					<div class="row">
+						<md-button class="col-md-4 md-primary" aria-label="Adicionar" ng-click="add()">
+							Adicionar {{ type }}
+						</md-button>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<h5>{{ name }}</h5>
+						</div>
+					</div>
+					<div class="row">
+						<md-list class="col-md-12" ng-cloak>
+							<md-list-item class="secondary-button-padding" ng-repeat="hi in healthInsurance">
+								<p>{{ hi.healthInsurance }}</p>
+								<md-button class="md-secondary" ng-click="deleteHealthInsurance(hi)">
+									<i class="material-icons md-18">delete</i>
+								</md-button>
+							</md-list-item>
+						</md-list>
+					</div>
+				</div>
+			</md-card>
+		</div>
+	</div>
+</div>
