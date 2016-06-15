@@ -89,6 +89,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "HistoricController"
 	});
 
+	$routeProvider.when("/prescricoes",{
+		templateUrl: "views/prescription.html",
+		controller: "PrescriptionController"
+	});
+
 	$routeProvider.when("/arquivos",{
 		templateUrl: "views/archives.html",
 		controller: "ArchivesController"

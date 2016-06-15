@@ -1,0 +1,64 @@
+<div ng-include="'views/nav.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div ng-include="'views/side.html'"></div>
+		
+		<div class="col-xs-12 col-sm-9 col-md-9">
+			<md-card md-theme="default" md-theme-watch class="main-content">
+				<form name="prescriptionForm" ng-repeat="prescription in prescriptions">
+					<div class="divider"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Prescrição</h5>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Problema</label>
+								<textarea ng-model="prescription.problem" disabled></textarea>
+							</md-input-container>
+						</div>
+						<div>
+							<div class="col-md-6">
+								<h5>Medicamentos</h5>
+							</div>
+						</div>
+						<div ng-repeat="medicine in prescription.medicines">
+							<div class="col-sm-12 col-md-10">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Remédio</label>
+									<textarea ng-model="medicine.name" disabled></textarea>
+								</md-input-container>
+							</div>
+							<div class="col-sm-12 col-md-2">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Quantidade</label>
+									<input type="text" ng-model="medicine.amount" disabled>
+								</md-input-container>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<md-input-container class="md-block" flex-gt-sm>
+									<md-select ng-model="medicine.occurence" disabled placeholder="Frequência">
+										<md-option>1 vez por dia</md-option>
+									</md-select>
+								</md-input-container>
+							</div>
+							<div class="col-sm-12 col-md-8">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Descrição</label>
+									<textarea ng-model="medicine.description" disabled></textarea>
+								</md-input-container>
+							</div>
+							<div class="col-sm-12">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Notas</label>
+									<textarea ng-model="medicine.note" disabled></textarea>
+								</md-input-container>
+							</div>
+						</div>
+					</div>
+				</form>
+			</md-card>
+		</div>
+	</div>
+</div>
