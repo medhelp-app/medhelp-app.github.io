@@ -1,11 +1,32 @@
-app.controller("PrincipalCtrl", function($scope, $http, $cookies, $location, $routeParams) {
-	$scope.prescription = function () {
-		$location.path('/medicos/prescrever/' + $scope.user._id);
-	}	
+app.controller("PrincipalCtrl", function($scope, $http, $cookies, $location, $routeParams, $mdBottomSheet) {
+	$scope.options = function () {
+		var id = $scope.user._id;
+		$mdBottomSheet.show({
+			templateUrl: '../views/bottom_sheet_profile.html',
+			controller: function ($scope) {
 
-	$scope.humanBody = function () {
-		$location.path('/corpo/' + $scope.user._id);
-	}	
+				$scope.prescription = function () {
+					$mdBottomSheet.hide();
+					$location.path('/medicos/prescrever/' + id);
+				}	
+
+				$scope.humanBody = function () {
+					$mdBottomSheet.hide();
+					$location.path('/corpo/' + id);
+				}	
+
+				$scope.records = function () {
+					$mdBottomSheet.hide();
+					$location.path('/prontuario/' + id);
+				}	
+
+				$scope.recordsBack = function () {
+					$mdBottomSheet.hide();
+					$location.path('/historico/' + id);
+				}	
+			}
+		});
+	}
 
 	var config = {
 		headers: {

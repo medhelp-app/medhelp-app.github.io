@@ -79,6 +79,16 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "HumanBodyCtrl"
 	});
 
+	$routeProvider.when("/prontuario/:id?",{
+		templateUrl: "views/records.html",
+		controller: "RecordsController"
+	});
+
+	$routeProvider.when("/historico/:id?",{
+		templateUrl: "views/historic.html",
+		controller: "HistoricController"
+	});
+
 	$routeProvider.when("/arquivos",{
 		templateUrl: "views/archives.html",
 		controller: "ArchivesController"

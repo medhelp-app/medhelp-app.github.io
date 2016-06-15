@@ -1,0 +1,88 @@
+<div ng-include="'views/nav.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div ng-include="'views/side.html'"></div>
+		
+		<div class="col-xs-12 col-sm-9 col-md-9">
+			<md-card md-theme="default" md-theme-watch class="main-content">
+				<form>
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Paciente</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Name</label>
+								<input ng-model="patient.name" disabled>
+							</md-input-container>
+						</div>
+						<div class="col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>E-mail</label>
+								<input ng-model="patient.email" disabled>
+							</md-input-container>
+						</div>
+					</div>
+				</form>
+
+				<form name="prescriptionForm">
+					<div class="divider"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Adicionar ao Prontuário</h5>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Queixa principal</label>
+								<textarea ng-model="add.queixaPrincipal" required></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Histórico doença</label>
+								<textarea ng-model="add.historicoDoenca" required></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Interrogatorio</label>
+								<textarea ng-model="add.interrogatorio" required></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Antecedentes familiares</label>
+								<textarea ng-model="add.antecedentesFamiliares" required></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Antecedentes pessoais</label>
+								<textarea ng-model="add.antecedentesPessoais" required></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Habitos vida</label>
+								<textarea ng-model="add.habitosVida" required></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Hipotese diagnostica</label>
+								<textarea ng-model="add.hipoteseDiagnostica" required></textarea>
+							</md-input-container>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<md-button class="md-raised md-primary" style="float:right" ng-click="save(add)" ng-disabled="prescriptionForm.$invalid">
+						Salvar prontuário
+					</md-button>
+				</form>
+			</md-card>
+		</div>
+	</div>
+</div>

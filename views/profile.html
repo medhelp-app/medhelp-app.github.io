@@ -8,12 +8,15 @@
 			<md-card md-theme="default" md-theme-watch class="main-content">
 				<form>
 					<div class="row">
-						<div class="col-sm-6 perfil-image photo" ng-show="user.profileImage">
+						<div class="col-sm-2 perfil-image photo" ng-show="user.profileImage">
 							<img ng-src="data:image/png;base64,{{ user.profileImage }}" class="circle" />
 						</div>
-						<div class="col-sm-6" ng-show="type == 1">
-							<md-button class="md-raised md-primary" ng-click="prescription()">Prescrever</md-button>
+						<div class="col-sm-10" ng-show="type == 1">
+							<md-button class="md-raised md-primary" ng-click="options()">Opções</md-button>
+							<!-- <md-button class="md-raised md-primary" ng-click="prescription()">Prescrever</md-button>
 							<md-button class="md-raised md-primary" ng-click="humanBody()">Corpo humano</md-button>
+							<md-button class="md-raised md-primary" ng-click="records()">Prontuário</md-button>
+							<md-button class="md-raised md-primary" ng-click="recordsBack()">Ver histórico</md-button> -->
 						</div>
 					</div>
 					<div class="row col-md-12">

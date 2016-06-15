@@ -1,0 +1,91 @@
+<div ng-include="'views/nav.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div ng-include="'views/side.html'"></div>
+		
+		<div class="col-xs-12 col-sm-9 col-md-9">
+			<md-card md-theme="default" md-theme-watch class="main-content">
+				<form>
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Paciente</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Name</label>
+								<input ng-model="patient.name" disabled>
+							</md-input-container>
+						</div>
+						<div class="col-md-6">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>E-mail</label>
+								<input ng-model="patient.email" disabled>
+							</md-input-container>
+						</div>
+					</div>
+				</form>
+
+				<form>
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Prontuários</h5>
+						</div>
+					</div>
+				</form>
+
+				<form ng-repeat="r in records">
+					<div class="row">
+						<div class="col-md-12">
+							<h5>Médico: {{ r.doctorId }}</h5>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Queixa principal</label>
+								<textarea ng-model="r.queixaPrincipal" disabled></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Histórico doença</label>
+								<textarea ng-model="r.historicoDoenca" disabled></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Interrogatorio</label>
+								<textarea ng-model="r.interrogatorio" disabled></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Antecedentes familiares</label>
+								<textarea ng-model="r.antecedentesFamiliares" disabled></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Antecedentes pessoais</label>
+								<textarea ng-model="r.antecedentesPessoais" disabled></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Habitos vida</label>
+								<textarea ng-model="r.habitosVida" disabled></textarea>
+							</md-input-container>
+						</div>
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Hipotese diagnostica</label>
+								<textarea ng-model="r.hipoteseDiagnostica" disabled></textarea>
+							</md-input-container>
+						</div>
+					</div>
+				</form>
+			</md-card>
+		</div>
+	</div>
+</div>
