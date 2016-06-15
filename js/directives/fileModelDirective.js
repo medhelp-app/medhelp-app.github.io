@@ -18,6 +18,7 @@ app.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl, token, callback, method, field){
         var fd = new FormData();
         fd.append(field ? field : 'profileImage', file);
+        fd.append('type', 'exam');
 
         if (method == 'post') {
             $http.post(uploadUrl, fd, {
