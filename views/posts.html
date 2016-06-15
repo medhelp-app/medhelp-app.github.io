@@ -85,7 +85,7 @@
 										<div class="row">
 											<md-list flex class="col-md-12">
 												<md-list-item class="md-2-line" ng-repeat="c in post.commentList">
-													<img ng-src="{{todos[0].face}}?20" class="md-avatar" />
+													<img ng-src="data:image/png;base64,{{ c.imageUser }}" class="md-avatar" />
 													<div class="md-list-item-text">
 														<h3>{{ c.nameUser }}</h3>
 														<p>{{ c.text }}</p>
