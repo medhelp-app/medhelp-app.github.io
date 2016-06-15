@@ -6,7 +6,7 @@ app.controller('ArchivesController', function ($scope, $http,  $cookies, $locati
 	};
 
 	function load () {
-		$http.get(API_URL + 'archives/' + $cookies.get('user'), config).then(function (data) {
+		$http.get(API_URL + 'archives/patient/' + $cookies.get('user'), config).then(function (data) {
 			$scope.files = data.data;
 		}, function (error) {
 			console.log(error);
