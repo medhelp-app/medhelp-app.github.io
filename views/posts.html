@@ -25,13 +25,13 @@
 					<div class="row">
 						<md-list flex class="col-md-12">
 							<md-list-item class="md-3-line" ng-repeat="post in posts | orderBy: 'date':true">
-								<img ng-src="data:image/png;base64,{{ post.profileImage }}" 
+								<img ng-src="data:image/png;base64,{{ post.imageUser }}" 
 									 class="circle md-avatar" ng-click="openUser(post)">
 								<div class="md-list-item-text col-md-12" layout="column">
 									<div class="row">
 										<div class="col-md-10">
 											<br />
-											<h3>Nome {{ post.nameUser }}</h3>
+											<h3>{{ post.nameUser }}</h3>
 											<p>{{ post.text }}</p>
 											<p>
 												<i>

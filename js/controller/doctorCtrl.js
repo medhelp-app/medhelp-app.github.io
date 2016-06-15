@@ -162,7 +162,7 @@ app.controller("DoctorCtrl", function($scope, $http, $cookies, $routeParams, $md
 					var doctorDays = [];
 
 					for (var i = 0; i < availability.length; i++) {
-						doctorDays[days[availability[i].weekday]] = true;
+						doctorDays.push(days[availability[i].weekday]);
 					}
 
 					$scope.minDate = new Date();
@@ -180,11 +180,12 @@ app.controller("DoctorCtrl", function($scope, $http, $cookies, $routeParams, $md
 
 					$scope.hours = [];
 					$scope.selectDate = function () {
+						$scope.hours = [];
+
 						var d = new Date($scope.add.date);
 						var day = d.getDay();
 
 						for (var i = 0; i < availability.length; i++) {
-							console.log(day, days[availability[i].weekday], $scope.add.date);
 							if (day == days[availability[i].weekday]) 
 								$scope.hours.push(availability[i]);
 						}
@@ -194,8 +195,7 @@ app.controller("DoctorCtrl", function($scope, $http, $cookies, $routeParams, $md
 
 					$scope.save = function () {
 						$http.post(API_URL + 'doctors/' + $routeParams.id + '/appointments', $scope.add, config).then(function (data) {
-							console.log(data);
-
+							
 							$mdDialog.show(
 								$mdDialog.alert()
 									.parent(angular.element(document.querySelector('#main')))

@@ -1,5 +1,20 @@
 <div class="col-md-3" ng-controller="SideController">
-	<div class="menu">
+	<div class="menu" ng-show="type == 2">
+		<ul class="collection">
+			<li class="collection-item"><div class="titulo">Gerenciar</div></li>
+			<li class="collection-item">
+				<div class="item" ng-click="redirect('consultas/sec')">
+					<span class="material-icons">contact_phone</span> Consultas
+				</div>
+			</li>
+			<li class="collection-item">
+				<div class="item" ng-click="logout()">
+					<span class="material-icons">input</span> Sair
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu" ng-hide="type == 2">
 		<ul class="collection">
 			<li class="collection-item"><div class="titulo">PERFIL</div></li>
 			<li class="collection-item">

@@ -77,6 +77,14 @@
 							</md-input-container>
 						</div>
 					</div>
+					<div class="row" ng-show="user.userType == 0">
+						<div class="col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Plano de saúde</label>
+								<input ng-model="user.healthInsurance">
+							</md-input-container>
+						</div>
+					</div>
 					<div class="row" ng-show="user.userType == 1">
 						<div class="col-sm-12 col-md-3">
 							<md-input-container class="md-block" flex-gt-sm>
@@ -95,6 +103,13 @@
 								<label>Especialidade</label>
 								<input ng-model="user.doctorType">
 							</md-input-container>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<md-switch ng-model="user.showOpinions" aria-label="Públicas">
+								Deixar minhas opiniões como públicas.
+							</md-switch>
 						</div>
 					</div>
 

@@ -126,6 +126,46 @@ app.controller('AppointmentController', function ($scope, $http, $cookies, $mdDi
 		})
 	}
 
+	function loadSecretary () {
+		$http.get(API_URL + 'secretariats/doctor/' + $cookies.get('user'), config).then(function (data) {
+			$scope.secretary = data.data ? data.data : null;
+		}, function (error) {
+			console.log(error);
+		});
+	}
+	loadSecretary();
+
+	$scope.addSec = function (secretary) {
+		if (secretary.password == secretary.rePassword && secretary.password.length >= 0) {
+			var jsSha = new jsSHA(secretary.password);
+			var hash = jsSha.getHash("SHA-512", "HEX");
+
+			var jsShaRe = new jsSHA(secretary.rePassword);
+			var hashRe = jsShaRe.getHash("SHA-512", "HEX");
+
+			secretary.password = hash;
+			secretary.rePassword = hashRe;
+			secretary.doctorId = $cookies.get('user');
+
+			$http.post(API_URL + 'secretariats', secretary, config).then(function (data) {
+				loadSecretary();
+			}, function (error) {
+				console.log(error);
+			})	
+		} else {
+			$scope.message = 'Senhas invalídas';
+		}
+	};
+
+	$scope.removeSec = function (secretary) {
+		$http.delete(API_URL + 'secretariats/' + secretary.secretary._id, config).then(function (data) {
+			console.log(data);
+			loadSecretary();
+		}, function (error) {
+			console.log(error);
+		})
+	}
+
 	$scope.openUser = function (id) {
 		$location.path('/usuario/' + id);
 	}

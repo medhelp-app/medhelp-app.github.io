@@ -52,71 +52,24 @@
 							</div>
 						</div>
 					</div>
-					<div class="divider"></div>
-					<div class="row">
-						<div class="col-md-12">
-							<h5>Opiniões para Luiza Santos</h5>
-						</div>
-					</div>
-					<div class="row opinions">
-						<div class="col-md-4 geral">
-							<ul class="rate">
-								<li ng-repeat="s in total.general track by $index">
-									<span class="material-icons">{{ s }}</span>
-								</li>
-							</ul>
-							Baseado em {{ opinions.length }} opiniões
-							<md-button class="md-primary" ng-click="openOpinion()">Avaliar</md-button>
-						</div>
-						<div class="col-md-6 specific">
-							<ul>
-								<li>
-									<div class="col-md-6">
-										<span class="material-icons">access_time</span> 
-										Pontualidade
-									</div>
-									<ul class="rate col-md-6">
-										<li ng-repeat="s in total.punctuality track by $index">
-											<span class="material-icons">{{ s }}</span>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<div class="col-md-6">
-										<span class="material-icons">group</span> 
-										Atenção
-									</div>
-									<ul class="rate col-md-6">
-										<li ng-repeat="s in total.attention track by $index">
-											<span class="material-icons">{{ s }}</span>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<div class="col-md-6">
-										<span class="material-icons">domain</span> 
-										Instalações
-									</div>
-									<ul class="rate col-md-6">
-										<li ng-repeat="s in total.installation track by $index">
-											<span class="material-icons">{{ s }}</span>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="divider"></div>
-					<div class="opinions">
-						<div class="row opinion" ng-repeat="o in opinions">
-							<!--<div class="col-md-2 col-xs-12 perfil-image photo">
-								<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
-							</div>-->
-							<div class="col-md-6 col-xs-12">
-								<!--<div class="subname">Maria Eduarda</div>-->
-								<div style="height: 100px;">{{ o.comment }}</div>
+					<div ng-show="doctor.showOpinions">
+						<div class="divider"></div>
+						<div class="row">
+							<div class="col-md-12">
+								<h5>Opiniões para {{ doctor.name }}</h5>
 							</div>
-							<div class="col-md-6 col-xs-12 specific">
+						</div>
+						<div class="row opinions">
+							<div class="col-md-4 geral">
+								<ul class="rate">
+									<li ng-repeat="s in total.general track by $index">
+										<span class="material-icons">{{ s }}</span>
+									</li>
+								</ul>
+								Baseado em {{ opinions.length }} opiniões
+								<md-button class="md-primary" ng-click="openOpinion()">Avaliar</md-button>
+							</div>
+							<div class="col-md-6 specific">
 								<ul>
 									<li>
 										<div class="col-md-6">
@@ -124,7 +77,7 @@
 											Pontualidade
 										</div>
 										<ul class="rate col-md-6">
-											<li ng-repeat="s in o.stars.punctuality track by $index">
+											<li ng-repeat="s in total.punctuality track by $index">
 												<span class="material-icons">{{ s }}</span>
 											</li>
 										</ul>
@@ -135,7 +88,7 @@
 											Atenção
 										</div>
 										<ul class="rate col-md-6">
-											<li ng-repeat="s in o.stars.attention track by $index">
+											<li ng-repeat="s in total.attention track by $index">
 												<span class="material-icons">{{ s }}</span>
 											</li>
 										</ul>
@@ -146,7 +99,7 @@
 											Instalações
 										</div>
 										<ul class="rate col-md-6">
-											<li ng-repeat="s in o.stars.installation track by $index">
+											<li ng-repeat="s in total.installation track by $index">
 												<span class="material-icons">{{ s }}</span>
 											</li>
 										</ul>
@@ -154,7 +107,56 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+						<div class="divider"></div>
+						<div class="opinions">
+							<div class="row opinion" ng-repeat="o in opinions">
+								<!--<div class="col-md-2 col-xs-12 perfil-image photo">
+									<img src="http://www.vitadiagnosticos.com.br/medicos.png" class="circle">
+								</div>-->
+								<div class="col-md-6 col-xs-12">
+									<!--<div class="subname">Maria Eduarda</div>-->
+									<div style="height: 100px;">{{ o.comment }}</div>
+								</div>
+								<div class="col-md-6 col-xs-12 specific">
+									<ul>
+										<li>
+											<div class="col-md-6">
+												<span class="material-icons">access_time</span> 
+												Pontualidade
+											</div>
+											<ul class="rate col-md-6">
+												<li ng-repeat="s in o.stars.punctuality track by $index">
+													<span class="material-icons">{{ s }}</span>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<div class="col-md-6">
+												<span class="material-icons">group</span> 
+												Atenção
+											</div>
+											<ul class="rate col-md-6">
+												<li ng-repeat="s in o.stars.attention track by $index">
+													<span class="material-icons">{{ s }}</span>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<div class="col-md-6">
+												<span class="material-icons">domain</span> 
+												Instalações
+											</div>
+											<ul class="rate col-md-6">
+												<li ng-repeat="s in o.stars.installation track by $index">
+													<span class="material-icons">{{ s }}</span>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>s
 				</div>
 			</md-card>
 		</div>

@@ -49,6 +49,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "AppointmentController"
 	});
 
+	$routeProvider.when("/consultas/sec",{
+		templateUrl: "views/appointmentSecretary.html",
+		controller: "AppointmentSecretaryController"
+	});
+
 	$routeProvider.when("/marcacoes",{
 		templateUrl: "views/appointmentPatient.html",
 		controller: "AppointmentPatientController"

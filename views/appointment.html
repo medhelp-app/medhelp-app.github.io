@@ -8,47 +8,121 @@
 			<md-card md-theme="default" md-theme-watch class="main-content">
 				<div class="doctor">
 					<div class="row">
-						<md-button class="col-md-6 md-primary" aria-label="Horários de atendimento" ng-click="add()">
-							Adicionar horários de atendimento
-						</md-button>
-						<md-button class="com-md-6 md-primary" aria-label="Planos de saúde" ng-click="addHealthInsurance()">
-							Adicionar planos de saúde
-						</md-button>
+						
+						
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<h5>Planos de sáude</h5>
-						</div>
-					</div>
-					<div class="row">
-						<md-list class="col-md-12" ng-cloak>
-							<md-list-item class="secondary-button-padding" ng-repeat="hi in healthInsurance">
-								<p>{{ hi.healthInsurance }}</p>
-								<md-button class="md-secondary" ng-click="deleteHealthInsurance(hi)">
-									<i class="material-icons md-18">delete</i>
+						<div class="col-md-5">
+							<div class="row">
+								<div class="col-md-8">
+									<h5>Planos de sáude</h5>
+								</div>
+								<md-button class="col-md-4 md-primary md-fab md-mini" ng-click="addHealthInsurance()">
+									<i class="material-icons md-18">add</i>
 								</md-button>
-							</md-list-item>
-						</md-list>
+							</div>
+							<div class="row">
+								<md-list class="col-md-12" ng-cloak>
+									<md-list-item class="secondary-button-padding" ng-repeat="hi in healthInsurance">
+										<p>{{ hi.healthInsurance }}</p>
+										<md-button class="md-secondary" ng-click="deleteHealthInsurance(hi)">
+											<i class="material-icons md-18">delete</i>
+										</md-button>
+									</md-list-item>
+								</md-list>
+							</div>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-8">
+									<h5>Horários de atendimento</h5>
+								</div>
+								<md-button class="col-md-4 md-primary md-fab md-mini" ng-click="add()">
+									<i class="material-icons md-18">add</i>
+								</md-button>
+							</div>
+							<div class="row" ng-repeat="day in availability">
+								<div class="col-md-2"><h5>{{ weekdaysPTBR[day.weekday] }}</h5></div>
+								<div class="col-md-10">
+									<md-chips ng-model="day.availability" name="days" readonly="true">
+										<md-chip-template>
+											<strong>{{ $chip.startHour + ' - ' + $chip.endHour }}</strong>
+											<i ng-click="remove($chip)" md-chip-remove class="material-icons md-18">delete</i>
+										</md-chip-template>
+									</md-chips>
+								</div>
+							</div>
+						</div>
 					</div>
+					
 					<div class="divider"></div>
-
 					<div class="row">
 						<div class="col-md-12">
-							<h5>Horários de atendimento</h5>
+							<h5>Secretária</h5>
 						</div>
 					</div>
-					<div class="row" ng-repeat="day in availability">
-						<div class="col-md-2"><h5>{{ weekdaysPTBR[day.weekday] }}</h5></div>
-						<div class="col-md-10">
-							<md-chips ng-model="day.availability" name="days" readonly="true">
-								<md-chip-template>
-									<strong>{{ $chip.startHour + ' - ' + $chip.endHour }}</strong>
-									<i ng-click="remove($chip)" md-chip-remove class="material-icons md-18">delete</i>
-								</md-chip-template>
-							</md-chips>
+					<div class="row">
+						<div class="col-md-12">
+							<form name="secretaryForm" ng-hide="secretary">
+								<div class="row">
+									<div class=" col-md-6">
+										<md-input-container class="md-block">
+											<label>Nome</label>
+											<input ng-model="addSecretary.name" ng-required="true">
+										</md-input-container>
+									</div>
+									<div class=" col-md-6">
+										<md-input-container class="md-block">
+											<label>E-mail</label>
+											<input ng-model="addSecretary.email" ng-required="true">
+										</md-input-container>
+									</div>
+								</div>
+								<div class="row">
+									<div class=" col-md-6">
+										<md-input-container class="md-block">
+											<label>Senha</label>
+											<input type="password" ng-model="addSecretary.password" ng-required="true">
+										</md-input-container>
+									</div>
+									<div class=" col-md-6">
+										<md-input-container class="md-block">
+											<label>Senha</label>
+											<input type="password" ng-model="addSecretary.rePassword" ng-required="true">
+										</md-input-container>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-3">
+										<md-button class="md-raised md-primary" ng-click="addSec(addSecretary)" 
+													ng-disabled="secretaryForm.$invalid">
+											Criar conta
+										</md-button>
+									</div>
+									<div ng-show="message" class="col-md-9">
+										<div  class="alert error">
+											{{ message }}
+										</div>
+									</div>
+								</div>
+							</form>
+							<md-list flex ng-show="secretary">
+								<md-list-item class="md-2-line">
+									<div class="md-list-item-text" layout="column">
+										<h3>{{ secretary.user.name }}</h3>
+										<h4>{{ secretary.user.email }}</h4>
+									</div>
+
+									<md-button class="md-secondary md-icon-button" ng-click="removeSec(secretary)">
+										<i class="material-icons md-18">delete</i>
+									</md-button>
+								</md-list-item>
+							</md-list>
 						</div>
 					</div>
+					
 					<div class="divider"></div>
 					<div class="row">
 						<div class="col-md-12">
@@ -59,7 +133,7 @@
 						<md-list flex>
 							<md-list-item class="md-3-line" ng-repeat="appointment in appointments" 
 										  ng-click="openUser(appointment.patientId)">
-								<img ng-src="data:image/png;base64,{{ appointment.profileImage }}" class="circle md-avatar">
+								<img ng-src="data:image/png;base64,{{ appointment.user.profileImage }}" class="circle md-avatar">
 								<div class="md-list-item-text" layout="column">
 									<h3>{{ appointment.user.name }}</h3>
 									<h4>{{ appointment.date | date }}</h4>

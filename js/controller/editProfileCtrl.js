@@ -71,13 +71,17 @@ app.controller("EditProfileCtrl", function($scope, $http, $cookies, $location, f
 		        console.log('file is ' );
 		        console.dir(file);
 		       
-		        var uploadUrl = API_URL + 'users/' + $cookies.get('user') + '/image';
-		        fileUpload.uploadFileToUrl(file, uploadUrl, $cookies.get('token'), function (success) {
-		        	if (success)
-		        		load();
-		        	else
-		        		$scope.errorstatus = 'Erro ao enviar imagem.';
-		        });
+		       	if (file) {
+			        var uploadUrl = API_URL + 'users/' + $cookies.get('user') + '/image';
+			        fileUpload.uploadFileToUrl(file, uploadUrl, $cookies.get('token'), function (success) {
+			        	if (success)
+			        		load();
+			        	else
+			        		$scope.errorstatus = 'Erro ao enviar imagem.';
+			        });
+			    } else {
+			    	load();
+			    }
 			}
 		}, function (error) {
 			$scope.errorstatus = error.error;
