@@ -19,7 +19,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					var y = b.severity == "High" ? 2 : (b.severity == "Medium" ? 1 : 0);
 					return x - y;
 				});
-
+				console.log(data.data[i]);
 				for (var j = 0; j < data.data[i].problems.length; j++) {
 					if (!data.data[i].problems[j].resolved) {
 						if (data.data[i].problems[j].severity == "Medium") {
