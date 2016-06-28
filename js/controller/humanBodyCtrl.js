@@ -23,9 +23,9 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				for (var j = 0; j < data.data[i].problems.length; j++) {
 					if (!data.data[i].problems[j].resolved) {
 						if (data.data[i].problems[j].severity == "Medium") {
-							$scope.parts.push(data.data[i].part + "-yellow");
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ + "-yellow");
 						} else if (data.data[i].problems[j].severity == "High") {
-							$scope.parts.push(data.data[i].part + "-red");
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-red");
 						} else {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-gray");
 						}
@@ -49,24 +49,24 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'trunk-abdomen') 	selectedName = 'Abdomen';	 
 		else if (name == 'trunk-thorax') 	selectedName = 'Torax';
 		else if (name == 'trunk-loin') 	selectedName = 'Quadril';
-		else if (name == 'left-arm') 		selectedName = 'Braço-Esquerdo';
-		else if (name == 'right-arm') 	selectedName = 'Braço-Direito';
-		else if (name == 'left-forearm') 	selectedName = 'Antebraço-Esquerdo';
-		else if (name == 'right-forearm') 	selectedName = 'Antebraço-Direito';
-		else if (name == 'left-hand') 	selectedName = 'Mão-Esquerda';
-		else if (name == 'right-hand') 	selectedName = 'Mão-Direita';
-		else if (name == 'left-elbow') 	selectedName = 'Junção-Braço-Esquerdo';
-		else if (name == 'right-elbow') 	selectedName = 'Junção-Braço-Direito';
-		else if (name == 'right-elbow') 	selectedName = 'Junção-Braço-Direito';
-		else if (name == 'right-knee') 	selectedName = 'Joelho-Direito';
-		else if (name == 'left-knee') 	selectedName = 'Joelho-Esquerdo';
-		else if (name == 'left-leg') 	selectedName = 'Perna-Esquerda';
-		else if (name == 'righ-leg') 	selectedName = 'Perna-Direita';
-		else if (name == 'righ-leg') 	selectedName = 'Perna-Direita';
-		else if (name == 'righ-foot') 	selectedName = 'Pé-Direito';
-		else if (name == 'left-foot') 	selectedName = 'Pé-Esquerdo';
-		else if (name == 'left-thigh') 	selectedName = 'Coxa-Esquerda';
-		else if (name == 'right-thigh') 	selectedName = 'Coxa-Direita';
+		else if (name == 'leftArm-arm') 		selectedName = 'Braço-Esquerdo';
+		else if (name == 'rightArm-arm') 	selectedName = 'Braço-Direito';
+		else if (name == 'leftArm-forearm') 	selectedName = 'Antebraço-Esquerdo';
+		else if (name == 'rightArm-forearm') 	selectedName = 'Antebraço-Direito';
+		else if (name == 'leftArm-hand') 	selectedName = 'Mão-Esquerda';
+		else if (name == 'rightArm-hand') 	selectedName = 'Mão-Direita';
+		else if (name == 'leftArm-elbow') 	selectedName = 'Junção-Braço-Esquerdo';
+		else if (name == 'rightArm-elbow') 	selectedName = 'Junção-Braço-Direito';
+		else if (name == 'rightArm-elbow') 	selectedName = 'Junção-Braço-Direito';
+		else if (name == 'rightLeg-knee') 	selectedName = 'Joelho-Direito';
+		else if (name == 'leftLeg-knee') 	selectedName = 'Joelho-Esquerdo';
+		else if (name == 'leftLeg-leg') 	selectedName = 'Perna-Esquerda';
+		else if (name == 'righLeg-leg') 	selectedName = 'Perna-Direita';
+		else if (name == 'righLeg-leg') 	selectedName = 'Perna-Direita';
+		else if (name == 'righLeg-foot') 	selectedName = 'Pé-Direito';
+		else if (name == 'leftLeg-foot') 	selectedName = 'Pé-Esquerdo';
+		else if (name == 'leftLeg-thigh') 	selectedName = 'Coxa-Esquerda';
+		else if (name == 'rightLeg-thigh') 	selectedName = 'Coxa-Direita';
 
 
 
@@ -86,7 +86,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					$scope.problems = problems;
 					$scope.edit = edit;
 
-					$scope.openEdit = function (item) {
+					$scope.openEdit = function () {
 						item.part = name;
 						$mdDialog.hide(item);
 					};
@@ -112,28 +112,31 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 		$mdDialog.show({
 				controller: function ($scope) {
+
+					$scope.parts = "";
+
 					$scope.partsList = [
 						{ value: 'head-head', name: 'Cabeça' },
 						{ value: 'head-face', name: 'Face' },
 						{ value: 'trunk-loin', name: 'Quadril' },
 						{ value: 'trunk-thorax', name: 'Torax' },
 						{ value: 'trunk-abdomen', name: 'Abdomen' },
-						{ value: 'left-hand', name: 'Braço-Esquerdo' },
-						{ value: 'right-hand', name: 'Braço-Direito' },
-						{ value: 'right-elbow', name: 'Junção-Braço-Direito' },
-						{ value: 'left-elbow', name: 'Junção-Braço-Esquerdo' },
-						{ value: 'left-forearm', name: 'Antebraço-Esquerdo' },
-						{ value: 'right-forearm', name: 'Antebraço-Direito' },
-						{ value: 'right-arm', name: 'Braço-Direito' },
-						{ value: 'left-arm', name: 'Braço-Esquerdo' },
-						{ value: 'left-foot', name: 'Pé-Esquerdo' },
-						{ value: 'right-foot', name: 'Pé-Direito' },
-						{ value: 'right-leg', name: 'Perna-Direita' },
-						{ value: 'left-leg', name: 'Perna-Esquerda' },
-						{ value: 'left-knee', name: 'Joelho-Esquerdo' },
-						{ value: 'right-knee', name: 'Joelho-Direito' },
-						{ value: 'right-thigh', name: 'Coxa-Direita' },
-						{ value: 'left-thigh', name: 'Coxa-Esquerda' }
+						{ value: 'leftArm-hand', name: 'Braço-Esquerdo' },
+						{ value: 'rightArm-hand', name: 'Braço-Direito' },
+						{ value: 'rightArm-elbow', name: 'Junção-Braço-Direito' },
+						{ value: 'leftArm-elbow', name: 'Junção-Braço-Esquerdo' },
+						{ value: 'leftArm-forearm', name: 'Antebraço-Esquerdo' },
+						{ value: 'rightArm-forearm', name: 'Antebraço-Direito' },
+						{ value: 'rightArm-arm', name: 'Braço-Direito' },
+						{ value: 'leftArm-arm', name: 'Braço-Esquerdo' },
+						{ value: 'leftLeg-foot', name: 'Pé-Esquerdo' },
+						{ value: 'rightLeg-foot', name: 'Pé-Direito' },
+						{ value: 'rightLeg-leg', name: 'Perna-Direita' },
+						{ value: 'leftLeg-leg', name: 'Perna-Esquerda' },
+						{ value: 'leftLeg-knee', name: 'Joelho-Esquerdo' },
+						{ value: 'rightLeg-knee', name: 'Joelho-Direito' },
+						{ value: 'rightLeg-thigh', name: 'Coxa-Direita' },
+						{ value: 'leftLeg-thigh', name: 'Coxa-Esquerda' }
 					];
 
 					$scope.severities = [
@@ -142,11 +145,17 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						{ value: 'High', name: 'Alta' }
 					];
 
+
 					if (item)
 						item.occurredDate = new Date(item.occurredDate);
 					
 					var edit = item ? true : false;
 					$scope.edit = edit;
+
+					var partSubpart = $scope.parts.split("-");
+
+					$scope.add.part = partSubpart[0];
+					$scope.add.subpart = partSubpart[1];
 
 					$scope.add = item ? item : {
 						part: 'head',
