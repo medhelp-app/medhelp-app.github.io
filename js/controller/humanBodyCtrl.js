@@ -27,7 +27,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						} else if (data.data[i].problems[j].severity == "High") {
 							$scope.parts.push(data.data[i].part + "-red");
 						} else {
-							$scope.parts.push(data.data[i].part + "-gray");
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-gray");
 						}
 					}
 				};
@@ -44,13 +44,31 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	$scope.part = function (name, ev) {
 		var selectedName = '';
 
-			 if (name == 'head') 		selectedName = 'Cabeça';
-		else if (name == 'rightArm') 	selectedName = 'Braço direito';
-		else if (name == 'leftArm') 	selectedName = 'Braço esquerdo';
-		else if (name == 'chest') 		selectedName = 'Peito';
-		else if (name == 'stomach') 	selectedName = 'Estomago';
-		else if (name == 'rightLeg') 	selectedName = 'Perna direita';
-		else if (name == 'leftLeg') 	selectedName = 'Perna esquerda';
+			 if (name == 'head-head') 		selectedName = 'Cabeça';
+		else if (name == 'head-face') 	selectedName = 'Face';
+		else if (name == 'trunk-abdomen') 	selectedName = 'Abdomen';	 
+		else if (name == 'trunk-thorax') 	selectedName = 'Torax';
+		else if (name == 'trunk-loin') 	selectedName = 'Quadril';
+		else if (name == 'left-arm') 		selectedName = 'Braço-Esquerdo';
+		else if (name == 'right-arm') 	selectedName = 'Braço-Direito';
+		else if (name == 'left-forearm') 	selectedName = 'Antebraço-Esquerdo';
+		else if (name == 'right-forearm') 	selectedName = 'Antebraço-Direito';
+		else if (name == 'left-hand') 	selectedName = 'Mão-Esquerda';
+		else if (name == 'right-hand') 	selectedName = 'Mão-Direita';
+		else if (name == 'left-elbow') 	selectedName = 'Junção-Braço-Esquerdo';
+		else if (name == 'right-elbow') 	selectedName = 'Junção-Braço-Direito';
+		else if (name == 'right-elbow') 	selectedName = 'Junção-Braço-Direito';
+		else if (name == 'right-knee') 	selectedName = 'Joelho-Direito';
+		else if (name == 'left-knee') 	selectedName = 'Joelho-Esquerdo';
+		else if (name == 'left-leg') 	selectedName = 'Perna-Esquerda';
+		else if (name == 'righ-leg') 	selectedName = 'Perna-Direita';
+		else if (name == 'righ-leg') 	selectedName = 'Perna-Direita';
+		else if (name == 'righ-foot') 	selectedName = 'Pé-Direito';
+		else if (name == 'left-foot') 	selectedName = 'Pé-Esquerdo';
+		else if (name == 'left-thigh') 	selectedName = 'Coxa-Esquerda';
+		else if (name == 'right-thigh') 	selectedName = 'Coxa-Direita';
+
+
 
 		var problems = [];
 		for (var i = 0; i < $scope.problems.length; i++) {
@@ -95,13 +113,27 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		$mdDialog.show({
 				controller: function ($scope) {
 					$scope.partsList = [
-						{ value: 'head', name: 'Cabeça' },
-						{ value: 'chest', name: 'Peito' },
-						{ value: 'stomach', name: 'Estomago' },
-						{ value: 'leftArm', name: 'Braço esquerdo' },
-						{ value: 'rightArm', name: 'Braço direito' },
-						{ value: 'leftLeg', name: 'Perna esquerda' },
-						{ value: 'rightLeg', name: 'Perna direita' }
+						{ value: 'head-head', name: 'Cabeça' },
+						{ value: 'head-face', name: 'Face' },
+						{ value: 'trunk-loin', name: 'Quadril' },
+						{ value: 'trunk-thorax', name: 'Torax' },
+						{ value: 'trunk-abdomen', name: 'Abdomen' },
+						{ value: 'left-hand', name: 'Braço-Esquerdo' },
+						{ value: 'right-hand', name: 'Braço-Direito' },
+						{ value: 'right-elbow', name: 'Junção-Braço-Direito' },
+						{ value: 'left-elbow', name: 'Junção-Braço-Esquerdo' },
+						{ value: 'left-forearm', name: 'Antebraço-Esquerdo' },
+						{ value: 'right-forearm', name: 'Antebraço-Direito' },
+						{ value: 'right-arm', name: 'Braço-Direito' },
+						{ value: 'left-arm', name: 'Braço-Esquerdo' },
+						{ value: 'left-foot', name: 'Pé-Esquerdo' },
+						{ value: 'right-foot', name: 'Pé-Direito' },
+						{ value: 'right-leg', name: 'Perna-Direita' },
+						{ value: 'left-leg', name: 'Perna-Esquerda' },
+						{ value: 'left-knee', name: 'Joelho-Esquerdo' },
+						{ value: 'right-knee', name: 'Joelho-Direito' },
+						{ value: 'right-thigh', name: 'Coxa-Direita' },
+						{ value: 'left-thigh', name: 'Coxa-Esquerda' }
 					];
 
 					$scope.severities = [
