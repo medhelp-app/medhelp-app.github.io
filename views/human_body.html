@@ -14,10 +14,13 @@
 					</div>
 
 					<div class="human-body full"></div>
+
+					<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
 						<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
 						 <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+					</div>
+
 					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>
-					
 					<div class="clicks">
 						<div class="head-head" ng-click="part('head-head')"></div>
 						<div class="head-face" ng-click="part('head-face')"></div>
