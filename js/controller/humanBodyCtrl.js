@@ -8,6 +8,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	var id = $routeParams.id ? $routeParams.id : $cookies.get('user');
 	var edit = $routeParams.id ? true : false;
 
+	$scope.check = "true";
 	$scope.parts = [];
 	function load () {
 		$scope.parts = [];

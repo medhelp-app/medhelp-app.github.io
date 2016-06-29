@@ -15,18 +15,18 @@
 
 					<div class="human-body full">	
 						<a class="btn-floating btn-large waves-effect waves-light red" 
-						ng-disabled="check" ng-click="showProblems()" style="position:absolute;margin-top:200px;margin-left:394px;">
+						ng-disabled="check == true" ng-click="showProblems()" style="position:absolute;margin-top:200px;margin-left:394px;">
 							<i class="material-icons">assignment</i>
 						</a>
 		       			<a class="btn-floating btn-large waves-effect waves-light red" ng-click=""
-		       			ng-disabled="check" style="position:absolute;margin-top:200px;margin-left:300px;">
+		       			ng-disabled="check == true" style="position:absolute;margin-top:200px;margin-left:300px;">
 		       				<i class="material-icons">add</i>
 		       			</a>
 					</div>
        	
 					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>
 					<div class="clicks">
-						<div class="head-head" ng-model="check" ng-click="part('head-head')"></div>
+						<div class="head-head" ng-click="part('head-head')"></div>
 						<div class="head-face" ng-click="part('head-face')"></div>
 						<div class="trunk-abdomen" ng-click="part('trunk-abdomen')"></div>
 						<div class="trunk-thorax" ng-click="part('trunk-thorax')"></div>
