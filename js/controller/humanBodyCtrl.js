@@ -72,6 +72,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
 		else if (name == 'rightLeg-thigh') 	$scope.selectedName = 'Coxa-Direita';
 
+		window.alert($scope.selectedName);
 		for (var i = 0; i < $scope.problems.length; i++) {
 			if ($scope.problems[i].part == name) {
 				$scope.partProblem = $scope.problems[i].problems;
