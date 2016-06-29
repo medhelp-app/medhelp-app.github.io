@@ -26,27 +26,28 @@
        	
 					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>
 					<div class="clicks">
-						<div class="head-head" ng-click="part('head-head')"></div>
-						<div class="head-face" ng-click="part('head-face')"></div>
-						<div class="trunk-abdomen" ng-click="part('trunk-abdomen')"></div>
-						<div class="trunk-thorax" ng-click="part('trunk-thorax')"></div>
-						<div class="trunk-loin" ng-click="part('trunk-loin')"></div>
-						<div class="leftArm-arm" ng-click="part('leftArm-arm')"></div>
-						<div class="rightArm-arm" ng-click="part('rightArm-arm')"></div>
-						<div class="leftArm-elbow" ng-click="part('leftArm-elbow')"></div>
-						<div class="rightArm-elbow" ng-click="part('rightArm-elbow')"></div>
-						<div class="leftArm-forearm" ng-click="part('leftArm-forearm')"></div>
-						<div class="rightArm-forearm" ng-click="part('rightArm-forearm')"></div>
-						<div class="leftArm-hand" ng-click="part('leftArm-hand')"></div>
-						<div class="rightArm-hand" ng-click="part('rightArm-hand')"></div>
-						<div class="leftLeg-foot" ng-click="part('leftLeg-foot')"></div>
-						<div class="rightLeg-foot" ng-click="part('rightLeg-foot')"></div>
-						<div class="leftLeg-knee" ng-click="part('leftLeg-knee')"></div>
-						<div class="rightLeg-knee" ng-click="part('rightLeg-knee')"></div>
-						<div class="leftLeg-leg" ng-click="part('leftLeg-leg')"></div>
-						<div class="rightLeg-leg" ng-click="part('rightLeg-leg')"></div>
-						<div class="leftLeg-thigh" ng-click="part('leftLeg-thigh')"></div>
-						<div class="rightLeg-thigh" ng-click="part('rightLeg-thigh')"></div>
+						<div class="head-head" ng-click="selectPart('head-head')"></div>
+						<div class="head-face" ng-click="selectPart('head-face')"></div>
+						<div class="trunk-abdomen" ng-click="selectPart('trunk-abdomen')"></div>
+						<div class="trunk-thorax" ng-click="selectPart('trunk-thorax')"></div>
+						<div class="trunk-loin" ng-click="selectPart('trunk-loin')"></div>
+						<div class="leftArm-arm" ng-click="selectPart('leftArm-arm')"></div>
+						<div class="rightArm-arm" ng-click="selectPart('rightArm-arm')"></div>
+						<div class="leftArm-elbow" ng-click="selectPart('leftArm-elbow')"></div>
+						<div class="rightArm-elbow" ng-click="selectPart('rightArm-elbow')"></div>
+						<div class="leftArm-forearm" ng-click="selectPart('leftArm-forearm')"></div>
+						<div class="rightArm-forearm" ng-click="selectPart('rightArm-forearm')">	
+						</div>
+						<div class="leftArm-hand" ng-click="selectPart('leftArm-hand')"></div>
+						<div class="rightArm-hand" ng-click="selectPart('rightArm-hand')"></div>
+						<div class="leftLeg-foot" ng-click="selectPart('leftLeg-foot')"></div>
+						<div class="rightLeg-foot" ng-click="selectPart('rightLeg-foot')"></div>
+						<div class="leftLeg-knee" ng-click="selectPart('leftLeg-knee')"></div>
+						<div class="rightLeg-knee" ng-click="selectPart('rightLeg-knee')"></div>
+						<div class="leftLeg-leg" ng-click="selectPart('leftLeg-leg')"></div>
+						<div class="rightLeg-leg" ng-click="selectPart('rightLeg-leg')"></div>
+						<div class="leftLeg-thigh" ng-click="selectPart('leftLeg-thigh')"></div>
+						<div class="rightLeg-thigh" ng-click="selectPart('rightLeg-thigh')"></div>
 					</div>
 				</div>
 			</md-card>
