@@ -84,7 +84,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	$scope.showProblems = function(ev){
 
 		if($scope.selectedName!=""){
-
+			console.log($scope.selectedName);
 			var useFullScreen = $mdMedia('sm');
 			$mdDialog.show({
 					controller: function ($scope) {
