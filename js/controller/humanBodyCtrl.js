@@ -46,6 +46,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	$scope.part = function (name) {
 		var selectedName = '';
 
+		$scope.check ="false";
 			 if (name == 'head-head') 		selectedName = 'Cabeça';
 		else if (name == 'head-face') 	selectedName = 'Face';
 		else if (name == 'trunk-abdomen') 	selectedName = 'Abdomen';	 
