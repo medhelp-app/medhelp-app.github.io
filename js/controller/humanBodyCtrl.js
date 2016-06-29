@@ -83,7 +83,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	};
 
 	$scope.showProblems = function(nome,ev){
-
+			var nome ="Tronco";
 			var useFullScreen = $mdMedia('sm');
 			$mdDialog.show({
 					controller: function ($scope) {
