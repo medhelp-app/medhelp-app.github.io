@@ -41,7 +41,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	load();
 
-	$scope.part = function (name, ev) {
+	$scope.check="";
+	$scope.part = function (name) {
 		var selectedName = '';
 
 			 if (name == 'head-head') 		selectedName = 'Cabeça';
@@ -68,8 +69,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'leftLeg-thigh') 	selectedName = 'Coxa-Esquerda';
 		else if (name == 'rightLeg-thigh') 	selectedName = 'Coxa-Direita';
 
-
-
 		var problems = [];
 		for (var i = 0; i < $scope.problems.length; i++) {
 			if ($scope.problems[i].part == name) {
@@ -77,12 +76,16 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				break;
 			}
 		}
+		
+		$scope.check = selectedName;
+	};
+
+	$scope.showProblems = function(part,problems,ev){
 
 		var useFullScreen = $mdMedia('sm');
-
 		$mdDialog.show({
 				controller: function ($scope) {
-					$scope.name = selectedName;
+					$scope.name = part;
 					$scope.problems = problems;
 					$scope.edit = edit;
 
@@ -100,12 +103,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				targetEvent: ev,
 				clickOutsideToClose:true,
 				fullscreen: useFullScreen
-			}).then(function (item) {
-				if (item) {
-					$scope.openAdd(null, item);
-				}
 			});
-	};
+	}
 
 	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
