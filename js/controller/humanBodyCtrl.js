@@ -72,6 +72,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
 		else if (name == 'rightLeg-thigh') 	$scope.selectedName = 'Coxa-Direita';
 
+		console.log($scope.selectedName);
+
 		for (var i = 0; i < $scope.problems.length; i++) {
 			if ($scope.problems[i].part == name) {
 				$scope.partProblem = $scope.problems[i].problems;
@@ -89,13 +91,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 			$mdDialog.show({
 					controller: function ($scope) {
 						$scope.name = $scope.selectedName;
-						$scope.problems = $scope.partProblem;
+						$scope.prob = $scope.partProblem;
 						$scope.edit = edit;
-
-						$scope.openEdit = function () {
-							item.part = name;
-							$mdDialog.hide(item);
-						};
 
 						$scope.cancel = function () {
 							$mdDialog.cancel();
