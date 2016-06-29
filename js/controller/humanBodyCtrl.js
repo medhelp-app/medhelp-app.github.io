@@ -49,8 +49,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	$scope.selectPart = function (name) {
 
-			$scope.part = name;
-
 			 if (name == 'head-head') 	$scope.selectedName = 'Cabeça';
 		else if (name == 'head-face') 	$scope.selectedName = 'Face';
 		else if (name == 'trunk-abdomen') 	$scope.selectedName = 'Abdomen';	 
@@ -126,8 +124,23 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					];
 
 					var partSubpart = partBody.split("-");
-					$scope.add.part = partSubpart[0];
-					$scope.add.subpart = partSubpart[1];
+					var part = partSubpart[0];
+					var subpart = partSubpart[1];
+					$scope.severity ="";
+					$scope.problem ="";
+					$scope.description="";
+					$scope.occurredDate="";
+					$scope.resolved="";
+
+					$scope.add = {
+						part: part,
+						subpart : subpart,
+						severity: $scope.severity ,
+						problem: $scope.problem ,
+						description: $scope.description,
+						occurredDate: $scope.occurredDate,
+						resolved: $scope.resolved
+					};
 
 					$scope.save = function () {
 						console.log($scope.add);

@@ -18,7 +18,7 @@
 					</div>
 					<div class="col-md-6 col-sm-12">
 						<label>Severidade</label>
-						<md-select ng-model="add.severity" ng-required="true">
+						<md-select ng-model="severity" ng-required="true">
 							<md-option ng-repeat="state in severities" value="{{state.value}}">
 								{{state.name}}
 							</md-option>
@@ -29,7 +29,7 @@
 					<div class="col-md-12">
 						<md-input-container class="md-block" flex-gt-sm>
 							<label>Problema</label>
-							<input ng-model="add.problem" ng-required="true">
+							<input ng-model="problem" ng-required="true">
 						</md-input-container>
 					</div>
 				</div>
@@ -37,17 +37,17 @@
 					<div class="col-md-12">
 						<md-input-container class="md-block">
 							<label>Descrição</label>
-							<textarea ng-model="add.description" ng-required="true" rows="5" md-select-on-focus></textarea>
+							<textarea ng-model="description" ng-required="true" rows="5" md-select-on-focus></textarea>
 						</md-input-container>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-7">
-          				<md-datepicker ng-model="add.occurredDate" ng-required="true" md-placeholder="Selecione a data">
+          				<md-datepicker ng-model="occurredDate" ng-required="true" md-placeholder="Selecione a data">
           				</md-datepicker>
           			</div>
           			<div class="col-md-5">
-          				<md-switch ng-model="add.resolved" aria-label="Resolvido">
+          				<md-switch ng-model="resolved" aria-label="Resolvido">
 							Resolvido
 						</md-switch>
           			</div>
