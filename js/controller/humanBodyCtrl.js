@@ -41,7 +41,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	load();
 
-	$scope.check="";
 	$scope.part = function (name) {
 		var selectedName = '';
 
@@ -76,8 +75,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				break;
 			}
 		}
-		
-		$scope.check = selectedName;
 	};
 
 	$scope.showProblems = function(part,problems,ev){

@@ -26,7 +26,7 @@
        	
 					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>
 					<div class="clicks">
-						<div class="head-head" ng-click="part('head-head')"></div>
+						<div class="head-head" ng-model="check" ng-click="part('head-head')"></div>
 						<div class="head-face" ng-click="part('head-face')"></div>
 						<div class="trunk-abdomen" ng-click="part('trunk-abdomen')"></div>
 						<div class="trunk-thorax" ng-click="part('trunk-thorax')"></div>
