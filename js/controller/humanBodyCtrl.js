@@ -72,8 +72,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
 		else if (name == 'rightLeg-thigh') 	$scope.selectedName = 'Coxa-Direita';
 
-		console.log($scope.selectedName);
-
 		for (var i = 0; i < $scope.problems.length; i++) {
 			if ($scope.problems[i].part == name) {
 				$scope.partProblem = $scope.problems[i].problems;
@@ -85,7 +83,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	$scope.showProblems = function(ev){
 
-		if($scope.selectedName){
+		if($scope.selectedName!=""){
 
 			var useFullScreen = $mdMedia('sm');
 			$mdDialog.show({
