@@ -83,14 +83,15 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	};
 
 	$scope.showProblems = function(nome,ev){
-			var nome ="Tronco";
+			var nome = $scope.selectedName;
+			var probl = $scope.partProblem;
+
 			var useFullScreen = $mdMedia('sm');
 			$mdDialog.show({
 					controller: function ($scope) {
 						$scope.name = nome;
-						$scope.prob = $scope.partProblem;
-						$scope.edit = edit;
-
+						$scope.prob = probl;
+						
 						$scope.cancel = function () {
 							$mdDialog.cancel();
 						};
