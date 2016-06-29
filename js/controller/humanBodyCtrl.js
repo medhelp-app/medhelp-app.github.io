@@ -28,10 +28,10 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				console.log(data.data[i]);
 				for (var j = 0; j < data.data[i].problems.length; j++) {
 					if (!data.data[i].problems[j].resolved) {
-						if (data.data[i].problems[j].severity == "Medium") {
-							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ + "-yellow");
-						} else if (data.data[i].problems[j].severity == "High") {
-							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-red");
+						if (data.data[i].problems[j].severity == "High") {
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ + "-red");
+						} else if (data.data[i].problems[j].severity == "Medium") {
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-yellow");
 						} else {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-gray");
 						}
