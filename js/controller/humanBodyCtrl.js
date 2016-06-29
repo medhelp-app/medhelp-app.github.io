@@ -83,12 +83,10 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	$scope.showProblems = function(ev){
 
-		if($scope.selectedName!=""){
-			console.log($scope.selectedName);
 			var useFullScreen = $mdMedia('sm');
 			$mdDialog.show({
 					controller: function ($scope) {
-						$scope.name = $scope.selectedName;
+						$scope.name = "Cabeça";
 						$scope.prob = $scope.partProblem;
 						$scope.edit = edit;
 
@@ -102,7 +100,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					clickOutsideToClose:true,
 					fullscreen: useFullScreen
 				});
-		}
+		
 	}
 
 	$scope.openAdd = function(ev, item) {
