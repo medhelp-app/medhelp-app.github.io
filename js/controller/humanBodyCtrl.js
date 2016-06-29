@@ -87,7 +87,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 			var useFullScreen = $mdMedia('sm');
 			$mdDialog.show({
 					controller: function ($scope) {
-						$scope.name = "Cabeça";
+						$scope.name = selectedName;
 						$scope.prob = $scope.partProblem;
 						$scope.edit = edit;
 
