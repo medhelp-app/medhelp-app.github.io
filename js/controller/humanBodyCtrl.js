@@ -131,6 +131,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 					$scope.save = function (add) {
 
+						console.log(add);
 						if (!edit) {
 							$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
 								console.log(data);
