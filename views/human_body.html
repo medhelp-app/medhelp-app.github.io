@@ -22,6 +22,9 @@
 		       				ng-click="openAdd()" style="position:absolute;margin-top:200px;margin-left:300px;">
 		       				<i class="material-icons">add</i>
 		       			</a>
+		       			<div class="alert error" ng-show="errostatus" style="position:absolute;margin-top:300px;margin-left:280px;">
+							<span>Click em alguma parte do Corpo</span>
+						</div>
 					</div>
        	
 					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>

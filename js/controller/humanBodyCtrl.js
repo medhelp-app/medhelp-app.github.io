@@ -9,7 +9,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	var id = $routeParams.id ? $routeParams.id : $cookies.get('user');
 	var edit = $routeParams.id ? true : false;
-
+	$scope.errostatus = false;
 	$scope.parts = [];
 	$scope.part = "";
 	$scope.selectedName ="";
@@ -73,10 +73,13 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
 		else if (name == 'rightLeg-thigh') 	$scope.selectedName = 'Coxa-Direita';
 
+
+		var partSubpart = name.split("-");
+
 		if($scope.selectedName!=""){
 			$scope.part = name;
 			for (var i = 0; i < $scope.problems.length; i++) {
-			if ($scope.problems[i].part == name) {
+			if (($scope.problems[i].part == partSubpart[0]) && ($scope.problems[i].subpart==partSubpart[1])) {
 				$scope.partProblem = $scope.problems[i].problems;
 				break;
 			}
@@ -85,9 +88,11 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	};
 
 	$scope.showProblems = function(nome,ev){
-			var nome = $scope.selectedName;
-			var probl = $scope.partProblem;
+		var nome = $scope.selectedName;
+		var probl = $scope.partProblem;
 
+		if($scope.selectedName!=""){
+			$scope.errostatus=false;
 			var useFullScreen = $mdMedia('sm');
 			$mdDialog.show({
 					controller: function ($scope) {
@@ -104,85 +109,91 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					clickOutsideToClose:true,
 					fullscreen: useFullScreen
 				});
-		
+		}else{
+			$scope.errostatus=true;
+		}
 	}
 
 	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		var partBody = $scope.part;
 		var nome = $scope.selectedName;
+		if($scope.selectedName!=""){
+			$scope.errostatus=false;
+			$mdDialog.show({
+					controller: function ($scope) {
 
-		$mdDialog.show({
-				controller: function ($scope) {
 
+						$scope.partBody = partBody;
+						$scope.nome = nome;
 
-					$scope.partBody = partBody;
-					$scope.nome = nome;
+						$scope.severities = [
+							{ value: 'Low', name: 'Baixa' },
+							{ value: 'Medium', name: 'Média' },
+							{ value: 'High', name: 'Alta' }
+						];
 
-					$scope.severities = [
-						{ value: 'Low', name: 'Baixa' },
-						{ value: 'Medium', name: 'Média' },
-						{ value: 'High', name: 'Alta' }
-					];
+						var partSubpart = partBody.split("-");
+						var part = partSubpart[0];
+						var subpart = partSubpart[1];
 
-					var partSubpart = partBody.split("-");
-					var part = partSubpart[0];
-					var subpart = partSubpart[1];
+						$scope.save = function (add) {
 
-					$scope.save = function (add) {
+							add.part = part;
+							add.subpart = subpart;
 
-						add.part = part;
-						add.subpart = subpart;
-						
-						console.log(add);
-						if (!edit) {
-							$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
-								console.log(data);
+							console.log(add);
+							if (!edit) {
+								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
+									console.log(data);
 
-								load();
+									load();
 
-								$mdDialog.hide();
-							}, function (error) {
-								console.log(error);
-							});
-						} else {
-							$http.put(API_URL + 'patients/' + id + '/bodyparts/' + $scope.add._id, $scope.add, config).then(function (data) {
-								console.log(data);
+									$mdDialog.hide();
+								}, function (error) {
+									console.log(error);
+								});
+							} else {
+								$http.put(API_URL + 'patients/' + id + '/bodyparts/' + $scope.add._id, $scope.add, config).then(function (data) {
+									console.log(data);
 
-								load();
+									load();
 
-								$mdDialog.hide();
-							}, function (error) {
-								console.log(error);
-							});
-						}
+									$mdDialog.hide();
+								}, function (error) {
+									console.log(error);
+								});
+							}
 
-						$scope.add = {
-							part: 'head',
-							severity: 'Low',
-							problem: '',
-							description: '',
-							occurredDate: ''
-						};
-					};
-
-					$scope.cancel = function () {
-						$scope.add = {
-							part: 'head',
-							severity: 'Low',
-							problem: '',
-							description: '',
-							occurredDate: ''
+							$scope.add = {
+								part: 'head',
+								severity: 'Low',
+								problem: '',
+								description: '',
+								occurredDate: ''
+							};
 						};
 
-						$mdDialog.cancel();
-					};
-				},
-				templateUrl: '../views/dialog_add_human_body.html',
-				parent: angular.element(document.body),
-				targetEvent: ev,
-				clickOutsideToClose:true,
-				fullscreen: useFullScreen
-			});
-	};
+						$scope.cancel = function () {
+							$scope.add = {
+								part: 'head',
+								severity: 'Low',
+								problem: '',
+								description: '',
+								occurredDate: ''
+							};
+
+							$mdDialog.cancel();
+						};
+					},
+					templateUrl: '../views/dialog_add_human_body.html',
+					parent: angular.element(document.body),
+					targetEvent: ev,
+					clickOutsideToClose:true,
+					fullscreen: useFullScreen
+				});
+			}else{
+				$scope.errostatus=true;
+			}	
+	};	
 });
