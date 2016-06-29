@@ -1,6 +1,6 @@
 app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $mdDialog, $mdMedia, $routeParams) {
 	
-	$scope.check ="true";
+	$scope.check ="false";
 	var config = {
 		headers:  {
 			'x-access-token': $cookies.get('token')
@@ -11,6 +11,9 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	var edit = $routeParams.id ? true : false;
 
 	$scope.parts = [];
+	$scope.selectedName ="";
+	$scope.partProblem = [];
+
 	function load () {
 		$scope.parts = [];
 
@@ -44,66 +47,67 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	load();
 
 	$scope.part = function (name) {
-		var selectedName = '';
 
-		$scope.check ="false";
-			 if (name == 'head-head') 		selectedName = 'Cabeça';
-		else if (name == 'head-face') 	selectedName = 'Face';
-		else if (name == 'trunk-abdomen') 	selectedName = 'Abdomen';	 
-		else if (name == 'trunk-thorax') 	selectedName = 'Torax';
-		else if (name == 'trunk-loin') 	selectedName = 'Quadril';
-		else if (name == 'leftArm-arm') 		selectedName = 'Braço-Esquerdo';
-		else if (name == 'rightArm-arm') 	selectedName = 'Braço-Direito';
-		else if (name == 'leftArm-forearm') 	selectedName = 'Antebraço-Esquerdo';
-		else if (name == 'rightArm-forearm') 	selectedName = 'Antebraço-Direito';
-		else if (name == 'leftArm-hand') 	selectedName = 'Mão-Esquerda';
-		else if (name == 'rightArm-hand') 	selectedName = 'Mão-Direita';
-		else if (name == 'leftArm-elbow') 	selectedName = 'Junção-Braço-Esquerdo';
-		else if (name == 'rightArm-elbow') 	selectedName = 'Junção-Braço-Direito';
-		else if (name == 'rightArm-elbow') 	selectedName = 'Junção-Braço-Direito';
-		else if (name == 'rightLeg-knee') 	selectedName = 'Joelho-Direito';
-		else if (name == 'leftLeg-knee') 	selectedName = 'Joelho-Esquerdo';
-		else if (name == 'leftLeg-leg') 	selectedName = 'Perna-Esquerda';
-		else if (name == 'righLeg-leg') 	selectedName = 'Perna-Direita';
-		else if (name == 'righLeg-leg') 	selectedName = 'Perna-Direita';
-		else if (name == 'righLeg-foot') 	selectedName = 'Pé-Direito';
-		else if (name == 'leftLeg-foot') 	selectedName = 'Pé-Esquerdo';
-		else if (name == 'leftLeg-thigh') 	selectedName = 'Coxa-Esquerda';
-		else if (name == 'rightLeg-thigh') 	selectedName = 'Coxa-Direita';
+			 if (name == 'head-head') 	$scope.selectedName = 'Cabeça';
+		else if (name == 'head-face') 	$scope.selectedName = 'Face';
+		else if (name == 'trunk-abdomen') 	$scope.selectedName = 'Abdomen';	 
+		else if (name == 'trunk-thorax') 	$scope.selectedName = 'Torax';
+		else if (name == 'trunk-loin') 	$scope.selectedName = 'Quadril';
+		else if (name == 'leftArm-arm') 	$scope.selectedName = 'Braço-Esquerdo';
+		else if (name == 'rightArm-arm') 	$scope.selectedName = 'Braço-Direito';
+		else if (name == 'leftArm-forearm') $scope.selectedName = 'Antebraço-Esquerdo';
+		else if (name == 'rightArm-forearm') $scope.selectedName = 'Antebraço-Direito';
+		else if (name == 'leftArm-hand') $scope.selectedName = 'Mão-Esquerda';
+		else if (name == 'rightArm-hand') $scope.selectedName = 'Mão-Direita';
+		else if (name == 'leftArm-elbow') $scope.selectedName = 'Junção-Braço-Esquerdo';
+		else if (name == 'rightArm-elbow') $scope.selectedName = 'Junção-Braço-Direito';
+		else if (name == 'rightArm-elbow') $scope.selectedName = 'Junção-Braço-Direito';
+		else if (name == 'rightLeg-knee') 	$scope.selectedName = 'Joelho-Direito';
+		else if (name == 'leftLeg-knee') 	$scope.selectedName = 'Joelho-Esquerdo';
+		else if (name == 'leftLeg-leg') 	$scope.selectedName = 'Perna-Esquerda';
+		else if (name == 'righLeg-leg') 	$scope.selectedName = 'Perna-Direita';
+		else if (name == 'righLeg-leg') 	$scope.selectedName = 'Perna-Direita';
+		else if (name == 'righLeg-foot') 	$scope.selectedName = 'Pé-Direito';
+		else if (name == 'leftLeg-foot') 	$scope.selectedName = 'Pé-Esquerdo';
+		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
+		else if (name == 'rightLeg-thigh') 	$scope.selectedName = 'Coxa-Direita';
 
-		var problems = [];
 		for (var i = 0; i < $scope.problems.length; i++) {
 			if ($scope.problems[i].part == name) {
-				problems = $scope.problems[i].problems;
+				$scope.partProblem = $scope.problems[i].problems;
 				break;
 			}
 		}
+
 	};
 
-	$scope.showProblems = function(part,problems,ev){
+	$scope.showProblems = function(ev){
 
-		var useFullScreen = $mdMedia('sm');
-		$mdDialog.show({
-				controller: function ($scope) {
-					$scope.name = part;
-					$scope.problems = problems;
-					$scope.edit = edit;
+		if($scope.selectedName){
 
-					$scope.openEdit = function () {
-						item.part = name;
-						$mdDialog.hide(item);
-					};
+			var useFullScreen = $mdMedia('sm');
+			$mdDialog.show({
+					controller: function ($scope) {
+						$scope.name = part;
+						$scope.problems = problems;
+						$scope.edit = edit;
 
-					$scope.cancel = function () {
-						$mdDialog.cancel();
-					};
-				},
-				templateUrl: '../views/dialog_view_human_body.html',
-				parent: angular.element(document.body),
-				targetEvent: ev,
-				clickOutsideToClose:true,
-				fullscreen: useFullScreen
-			});
+						$scope.openEdit = function () {
+							item.part = name;
+							$mdDialog.hide(item);
+						};
+
+						$scope.cancel = function () {
+							$mdDialog.cancel();
+						};
+					},
+					templateUrl: '../views/dialog_view_human_body.html',
+					parent: angular.element(document.body),
+					targetEvent: ev,
+					clickOutsideToClose:true,
+					fullscreen: useFullScreen
+				});
+		}
 	}
 
 	$scope.openAdd = function(ev, item) {
