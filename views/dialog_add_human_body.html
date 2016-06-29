@@ -14,11 +14,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<label>Parte do corpo</label>
-						<md-select ng-model="parts" ng-required="true">
-							<md-option ng-repeat="state in partsList" value="{{state.value}}">
-								{{state.name}}
-							</md-option>
-						</md-select>
+						<label >{{partBody}}</label>
 					</div>
 					<div class="col-md-6 col-sm-12">
 						<label>Severidade</label>
@@ -64,7 +60,7 @@
 				Cancelar
 			</md-button>
 			<md-button ng-click="save()" ng-disabled="addForm.$invalid">
-				{{ edit ? 'Editar' : 'Adicionar' }}
+				Adicionar
 			</md-button>
 		</md-dialog-actions>
 	</form>

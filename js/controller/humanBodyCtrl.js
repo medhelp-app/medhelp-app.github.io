@@ -11,6 +11,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	var edit = $routeParams.id ? true : false;
 
 	$scope.parts = [];
+	$scope.part = "";
 	$scope.selectedName ="";
 	$scope.partProblem = [];
 
@@ -46,7 +47,9 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	load();
 
-	$scope.part = function (name) {
+	$scope.selectPart = function (name) {
+
+			$scope.part = name;
 
 			 if (name == 'head-head') 	$scope.selectedName = 'Cabeça';
 		else if (name == 'head-face') 	$scope.selectedName = 'Face';
@@ -72,14 +75,15 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
 		else if (name == 'rightLeg-thigh') 	$scope.selectedName = 'Coxa-Direita';
 
-		window.alert($scope.selectedName);
-		for (var i = 0; i < $scope.problems.length; i++) {
+		if($scope.selectedName!=""){
+			$scope.part = name;
+			for (var i = 0; i < $scope.problems.length; i++) {
 			if ($scope.problems[i].part == name) {
 				$scope.partProblem = $scope.problems[i].problems;
 				break;
 			}
 		}
-
+		}
 	};
 
 	$scope.showProblems = function(nome,ev){
@@ -91,7 +95,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					controller: function ($scope) {
 						$scope.name = nome;
 						$scope.prob = probl;
-						
+
 						$scope.cancel = function () {
 							$mdDialog.cancel();
 						};
@@ -107,35 +111,13 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+		var partBody = $scope.part;
 
 		$mdDialog.show({
 				controller: function ($scope) {
 
-					$scope.parts = "";
 
-					$scope.partsList = [
-						{ value: 'head-head', name: 'Cabeça' },
-						{ value: 'head-face', name: 'Face' },
-						{ value: 'trunk-loin', name: 'Quadril' },
-						{ value: 'trunk-thorax', name: 'Torax' },
-						{ value: 'trunk-abdomen', name: 'Abdomen' },
-						{ value: 'leftArm-hand', name: 'Braço-Esquerdo' },
-						{ value: 'rightArm-hand', name: 'Braço-Direito' },
-						{ value: 'rightArm-elbow', name: 'Junção-Braço-Direito' },
-						{ value: 'leftArm-elbow', name: 'Junção-Braço-Esquerdo' },
-						{ value: 'leftArm-forearm', name: 'Antebraço-Esquerdo' },
-						{ value: 'rightArm-forearm', name: 'Antebraço-Direito' },
-						{ value: 'rightArm-arm', name: 'Braço-Direito' },
-						{ value: 'leftArm-arm', name: 'Braço-Esquerdo' },
-						{ value: 'leftLeg-foot', name: 'Pé-Esquerdo' },
-						{ value: 'rightLeg-foot', name: 'Pé-Direito' },
-						{ value: 'rightLeg-leg', name: 'Perna-Direita' },
-						{ value: 'leftLeg-leg', name: 'Perna-Esquerda' },
-						{ value: 'leftLeg-knee', name: 'Joelho-Esquerdo' },
-						{ value: 'rightLeg-knee', name: 'Joelho-Direito' },
-						{ value: 'rightLeg-thigh', name: 'Coxa-Direita' },
-						{ value: 'leftLeg-thigh', name: 'Coxa-Esquerda' }
-					];
+					$scope.partBody = partBody;
 
 					$scope.severities = [
 						{ value: 'Low', name: 'Baixa' },
@@ -143,25 +125,9 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						{ value: 'High', name: 'Alta' }
 					];
 
-
-					if (item)
-						item.occurredDate = new Date(item.occurredDate);
-					
-					var edit = item ? true : false;
-					$scope.edit = edit;
-
-					var partSubpart = $scope.parts.split("-");
-
+					var partSubpart = partBody.split("-");
 					$scope.add.part = partSubpart[0];
 					$scope.add.subpart = partSubpart[1];
-
-					$scope.add = item ? item : {
-						part: 'head',
-						severity: 'Low',
-						problem: '',
-						description: '',
-						occurredDate: ''
-					};
 
 					$scope.save = function () {
 						console.log($scope.add);
