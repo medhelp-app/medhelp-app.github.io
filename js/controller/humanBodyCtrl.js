@@ -28,10 +28,10 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				console.log(data.data[i]);
 				for (var j = 0; j < data.data[i].problems.length; j++) {
 					if (!data.data[i].problems[j].resolved) {
-						if (data.data[i].problems[j].severity == "High") {
-							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ + "-red");
-						} else if (data.data[i].problems[j].severity == "Medium") {
-							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-yellow");
+						if (data.data[i].problems[j].severity == "Medium") {
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ + "-yellow");
+						} else if (data.data[i].problems[j].severity == "High") {
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-red");
 						} else {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-gray");
 						}
@@ -66,8 +66,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'rightLeg-knee') 	$scope.selectedName = 'Joelho-Direito';
 		else if (name == 'leftLeg-knee') 	$scope.selectedName = 'Joelho-Esquerdo';
 		else if (name == 'leftLeg-leg') 	$scope.selectedName = 'Perna-Esquerda';
-		else if (name == 'righLeg-leg') 	$scope.selectedName = 'Perna-Direita';
-		else if (name == 'righLeg-leg') 	$scope.selectedName = 'Perna-Direita';
+		else if (name == 'rightLeg-leg') 	$scope.selectedName = 'Perna-Direita';
 		else if (name == 'righLeg-foot') 	$scope.selectedName = 'Pé-Direito';
 		else if (name == 'leftLeg-foot') 	$scope.selectedName = 'Pé-Esquerdo';
 		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
@@ -127,12 +126,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						$scope.partBody = partBody;
 						$scope.nome = nome;
 
-						$scope.severities = [
-							{ value: 'Low', name: 'Baixa' },
-							{ value: 'Medium', name: 'Média' },
-							{ value: 'High', name: 'Alta' }
-						];
-
 						var partSubpart = partBody.split("-");
 						var part = partSubpart[0];
 						var subpart = partSubpart[1];
@@ -141,6 +134,14 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 							add.part = part;
 							add.subpart = subpart;
+
+							if(parseInt(add.level)<=30){
+								add.severity = "Low";
+							}else if(parseInt(add.level)>30 && parseInt(add.level)<=60){
+								add.severity = "Medium";
+							}else{
+								add.severity ="High";
+							}
 
 							console.log(add);
 							if (!edit) {

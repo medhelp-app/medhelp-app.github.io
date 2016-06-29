@@ -8,49 +8,61 @@
 			<md-card md-theme="default" md-theme-watch class="main-content">
 				<div class="body">
 					<div class="row">
-						<md-button class="col-md-3 md-primary" aria-label="Adicionar problema" ng-click="openAdd()">
-							Adicionar problema
-						</md-button>
+						<label style="font-size:12pt;color:#CC3333;font-weight:bold;">PARTES DO CORPO</label>
 					</div>
 
 					<div class="human-body full">	
-						<a class="btn-floating btn-large waves-effect waves-light red" 
-						   ng-click="showProblems()" style="position:absolute;margin-top:200px;margin-left:394px;">
+						
+						<div class="botaoListar" style="position:absolute;top:200px;
+						left:430px;width: 80px;text-align: center;"> 
+							<a class="btn-floating btn-large waves-effect waves-light red" 
+						   		ng-click="showProblems()">
 							<i class="material-icons">assignment</i>
-						</a>
-		       			<a class="btn-floating btn-large waves-effect waves-light red" 
-		       				ng-click="openAdd()" style="position:absolute;margin-top:200px;margin-left:300px;">
-		       				<i class="material-icons">add</i>
-		       			</a>
-		       			<div class="alert error" ng-show="errostatus" style="position:absolute;margin-top:300px;margin-left:280px;">
-							<span>Click em alguma parte do Corpo</span>
+							</a>
+							<p style="font-size:12pt;font-weight:bold;color:#CC3333;"> Listar Problemas</p>	
+						</div>
+						
+						<div class="botaoAdd" style="position:absolute;top:200px;
+						left:300px;width: 80px;text-align: center;">
+							<a class="btn-floating btn-large waves-effect waves-light red" 
+			       			ng-click="openAdd()">
+			       				<i class="material-icons">add</i>
+		       				</a>
+		       				<p style="font-size:12pt;font-weight:bold;color:#CC3333;">Adicionar Problema</p>
+						</div>
+		       			<div class="alert error" ng-show="errostatus" style="position:absolute;margin-top:350px;margin-left:310px;color:#CC3333;font-size:12pt;font-weight:bold;text-align:left">
+							<span>Clique em alguma parte do Corpo</span>
 						</div>
 					</div>
        	
 					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>
 					<div class="clicks">
-						<div class="head-head" ng-click="selectPart('head-head')"></div>
-						<div class="head-face" ng-click="selectPart('head-face')"></div>
-						<div class="trunk-abdomen" ng-click="selectPart('trunk-abdomen')"></div>
-						<div class="trunk-thorax" ng-click="selectPart('trunk-thorax')"></div>
-						<div class="trunk-loin" ng-click="selectPart('trunk-loin')"></div>
-						<div class="leftArm-arm" ng-click="selectPart('leftArm-arm')"></div>
-						<div class="rightArm-arm" ng-click="selectPart('rightArm-arm')"></div>
-						<div class="leftArm-elbow" ng-click="selectPart('leftArm-elbow')"></div>
-						<div class="rightArm-elbow" ng-click="selectPart('rightArm-elbow')"></div>
-						<div class="leftArm-forearm" ng-click="selectPart('leftArm-forearm')"></div>
-						<div class="rightArm-forearm" ng-click="selectPart('rightArm-forearm')">	
+						<div class="head-head showdown" ng-click="selectPart('head-head')"></div>
+						<div class="head-face showdown" ng-click="selectPart('head-face')"></div>
+						<div class="trunk-abdomen showdown" ng-click="selectPart('trunk-abdomen')"></div>
+						<div class="trunk-thorax showdown" ng-click="selectPart('trunk-thorax')">	
 						</div>
-						<div class="leftArm-hand" ng-click="selectPart('leftArm-hand')"></div>
-						<div class="rightArm-hand" ng-click="selectPart('rightArm-hand')"></div>
-						<div class="leftLeg-foot" ng-click="selectPart('leftLeg-foot')"></div>
-						<div class="rightLeg-foot" ng-click="selectPart('rightLeg-foot')"></div>
-						<div class="leftLeg-knee" ng-click="selectPart('leftLeg-knee')"></div>
-						<div class="rightLeg-knee" ng-click="selectPart('rightLeg-knee')"></div>
-						<div class="leftLeg-leg" ng-click="selectPart('leftLeg-leg')"></div>
-						<div class="rightLeg-leg" ng-click="selectPart('rightLeg-leg')"></div>
-						<div class="leftLeg-thigh" ng-click="selectPart('leftLeg-thigh')"></div>
-						<div class="rightLeg-thigh" ng-click="selectPart('rightLeg-thigh')"></div>
+						<div class="trunk-loin showdown" ng-click="selectPart('trunk-loin')"></div>
+						<div class="leftArm-arm showdown" ng-click="selectPart('leftArm-arm')">
+						</div>
+						<div class="rightArm-arm showdown" ng-click="selectPart('rightArm-arm')">
+						</div>
+						<div class="leftArm-elbow showdown" ng-click="selectPart('leftArm-elbow')"></div>
+						<div class="rightArm-elbow showdown" ng-click="selectPart('rightArm-elbow')"> </div>
+						<div class="leftArm-forearm showdown" ng-click="selectPart('leftArm-forearm')"></div>
+						<div class="rightArm-forearm showdown" ng-click="selectPart('rightArm-forearm')">	
+						</div>
+						<div class="leftArm-hand showdown" ng-click="selectPart('leftArm-hand')">
+						</div>
+						<div class="rightArm-hand showdown" ng-click="selectPart('rightArm-hand')"></div>
+						<div class="leftLeg-foot showdown" ng-click="selectPart('leftLeg-foot')">	</div>
+						<div class="rightLeg-foot showdown" ng-click="selectPart('righLeg-foot')"></div>
+						<div class="leftLeg-knee showdown" ng-click="selectPart('leftLeg-knee')">	</div>
+						<div class="rightLeg-knee showdown" ng-click="selectPart('rightLeg-knee')"></div>
+						<div class="leftLeg-leg showdown" ng-click="selectPart('leftLeg-leg')">		</div>
+						<div class="rightLeg-leg showdown" ng-click="selectPart('rightLeg-leg')">	</div>
+						<div class="leftLeg-thigh showdown" ng-click="selectPart('leftLeg-thigh')"></div>
+						<div class="rightLeg-thigh showdown" ng-click="selectPart('rightLeg-thigh')"></div>
 					</div>
 				</div>
 			</md-card>
