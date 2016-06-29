@@ -110,12 +110,14 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		var partBody = $scope.part;
+		var nome = $scope.selectedName;
 
 		$mdDialog.show({
 				controller: function ($scope) {
 
 
 					$scope.partBody = partBody;
+					$scope.nome = nome;
 
 					$scope.severities = [
 						{ value: 'Low', name: 'Baixa' },
@@ -126,24 +128,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					var partSubpart = partBody.split("-");
 					var part = partSubpart[0];
 					var subpart = partSubpart[1];
-					$scope.severity ="";
-					$scope.problem ="";
-					$scope.description="";
-					$scope.occurredDate="";
-					$scope.resolved="";
 
-					$scope.add = {
-						part: part,
-						subpart : subpart,
-						severity: $scope.severity ,
-						problem: $scope.problem ,
-						description: $scope.description,
-						occurredDate: $scope.occurredDate,
-						resolved: $scope.resolved
-					};
-
-					$scope.save = function () {
-						console.log($scope.add);
+					$scope.save = function (add) {
 
 						if (!edit) {
 							$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
