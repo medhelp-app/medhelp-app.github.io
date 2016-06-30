@@ -26,46 +26,20 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
       		}else{
 
 				FB.login(function(response) {
-				    if (response.authResponse) { 
-
+				    if (response.authResponse) {
 				     console.log('Welcome!  Fetching your information.... ');
-				     FB.api('/me',{fields: 'email'}, function(response) {
+				     FB.api('/me',{fields: 'name, email'}, function(response) {
 				       console.log('Good to see you, ' + response.name + '.');
 				       console.log(response);
-								       
+				       
 				     });
 				    } else {
 				     console.log('User cancelled login or did not fully authorize.');
 				    }
-				},{scope: 'email, publish_actions'});
+				},{scope: 'e-mail'});
 
       		}
     	});
-
-	}
-
-	var cadastroFaceBook = function(response){
-
-			var jsSha = new jsSHA(response.id);
-			var hash = jsSha.getHash("SHA-512", "HEX");
-
-			$http({
-			    method: "POST",
-			    url: API_URL + "users",
-			    data: {
-					password: hash,
-					rePassword: hash,
-					name: response.name,
-					email: response.email,
-					userType: 0
-				}
-			}).success(function(data) {
-				$scope.errostatus = false;
-			  	$location.path("/#inicio");
-			}).error(function(data) {
-				$scope.errostatus = true;
-				$scope.erro = data.error;
-			});
 
 	}
 
