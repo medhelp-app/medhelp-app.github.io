@@ -94,9 +94,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "PrescriptionController"
 	});
 
+
 	$routeProvider.when("/loginface",{
-		templateUrl: "views/loginFacebook.html",
-		controller:"LoginFaceBook"
+		templateUrl: "views/loginface.html",
+		controller: "LoginFace"
 	});
 
 	$routeProvider.when("/arquivos",{
