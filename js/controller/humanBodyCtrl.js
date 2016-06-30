@@ -113,7 +113,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 								}, function (error) {
 									console.log(error);
 								});
-						}
+						};
 
 					},
 					templateUrl: '../views/dialog_view_human_body.html',
