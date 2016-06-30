@@ -102,6 +102,19 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						$scope.cancel = function () {
 							$mdDialog.cancel();
 						};
+
+						$scope.alterar(item){
+
+							$http.put(API_URL + 'patients/' + id + '/bodyparts/' + item._id, item , config).then(function (data) {
+									console.log(data);
+									load();
+
+									$mdDialog.hide();
+								}, function (error) {
+									console.log(error);
+								});
+						}
+
 					},
 					templateUrl: '../views/dialog_view_human_body.html',
 					parent: angular.element(document.body),
