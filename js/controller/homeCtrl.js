@@ -20,6 +20,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
 	$scope.faceLogin = function(){
 
+
 				FB.login(function(response) {
 				    if (response.authResponse) {
 				     console.log('Welcome!  Fetching your information.... ');
@@ -30,10 +31,9 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 				    } else {
 				     console.log('User cancelled login or did not fully authorize.');
 				    }
-				
+				});
 
-      		}
-    	});
+	}
 
 	$scope.login = function(user) {
 		if (user.email == "" || user.password == "") {
