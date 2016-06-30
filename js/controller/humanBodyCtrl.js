@@ -36,6 +36,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						} else {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-gray");
 						}
+						break;
 					}
 				};
 			};
