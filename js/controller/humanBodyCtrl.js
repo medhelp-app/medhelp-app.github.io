@@ -208,6 +208,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				$scope.errostatus=true;
 			}	
 
-			 console.log(retorno);
+			 alert(retorno);
 	};	
 });
