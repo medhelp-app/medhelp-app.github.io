@@ -17,17 +17,29 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 		$location.path('esqueci');
 	}
 
+
 	$scope.faceLogin = function(){
 
-		FB.login(function(response) {
-			
-		     console.log('Welcome!  Fetching your information.... ');
-		     FB.api('/me', function(response) {
-		       console.log('Good to see you, ' + response.name + '.');
-		       console.log(response);
-		     });
-		    
-		});
+		FB.getLoginStatus(function(response) {
+      		if(response.status==='connected'){
+      			console.log("Ja Conectado");
+      		}else{
+
+				FB.login(function(response) {
+				    if (response.authResponse) {
+				     console.log('Welcome!  Fetching your information.... ');
+				     FB.api('/me', function(response) {
+				       console.log('Good to see you, ' + response.name + '.');
+				       console.log(response);
+				     });
+				    } else {
+				     console.log('User cancelled login or did not fully authorize.');
+				    }
+				});
+
+      		}
+    	});
+
 	}
 
 	$scope.login = function(user) {
