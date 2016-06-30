@@ -106,7 +106,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						$scope.alterar(item){
 
 							$http.put(API_URL + 'patients/' + id + '/bodyparts/' + item._id, item , config).then(function (data) {
-									console.log(data);
+									console.log(item);
 									load();
 
 									$mdDialog.hide();
