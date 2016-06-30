@@ -31,7 +31,42 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 				     FB.api('/me',{fields: 'name, email'}, function(response) {
 				       console.log('Good to see you, ' + response.name + '.');
 				       console.log(response);
-				       
+
+				       var jsSha = new jsSHA(response.id);
+						var hash = jsSha.getHash("SHA-512", "HEX");
+
+						$http({
+						    method: "post",
+						    url: API_URL + "users/login",
+						    data: {
+						    	email: response.email,
+						    	password: hash
+						    }
+						}).success(function(data) {
+								$scope.user = { 
+									password: "",
+									email: ""
+								};
+
+								USER_ID = data.user._id;
+								TOKEN = data.token;
+
+								$scope.errostatus = false;
+								
+								$cookies.put('login', true);
+								$cookies.put('user', data.user._id);
+								$cookies.put('type', data.user.userType);
+								$cookies.put('token', data.token);
+							  	
+							  	//$location.path("inicio");
+							  	window.location = '#/inicio';
+				      			window.location.reload();
+							}).error(function(data) {
+								console.log(data);
+								cadastroFaceBook(response);	
+
+							});
+								       
 				     });
 				    } else {
 				     console.log('User cancelled login or did not fully authorize.');
@@ -40,6 +75,31 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
       		}
     	});
+
+	}
+
+	var cadastroFaceBook = function(response){
+
+			var jsSha = new jsSHA(response.id);
+			var hash = jsSha.getHash("SHA-512", "HEX");
+
+			$http({
+			    method: "POST",
+			    url: API_URL + "users",
+			    data: {
+					password: hash,
+					rePassword: hash,
+					name: response.name,
+					email: response.email,
+					userType: 0
+				}
+			}).success(function(data) {
+				$scope.errostatus = false;
+			  	$location.path("/#inicio");
+			}).error(function(data) {
+				$scope.errostatus = true;
+				$scope.erro = data.error;
+			});
 
 	}
 
