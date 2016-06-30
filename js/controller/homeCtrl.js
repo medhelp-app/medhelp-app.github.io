@@ -19,22 +19,11 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
 
 	$scope.faceLogin = function(){
-
-		FB.getLoginStatus(function(response) {
-      		if(response.status==='connected'){
-      			console.log("Ja Conectado");
-      		}else{
-
-				FB.login(function(response) {
-				    if (response.authResponse) {
-				      cosole.log(response);
-				    } else {
-				     console.log('User cancelled login or did not fully authorize.');
-				    }
-				},{scope: 'user_friends'});
-
-      		}
-    	});
+			FB.api('/me', function(response) {
+      			console.log('Successful login for: ' + response.name);
+      			document.getElementById('status').innerHTML =
+        		'Thanks for logging in, ' + response.name + '!';
+    		});
 
 	}
 

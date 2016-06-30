@@ -3,6 +3,7 @@ var app = angular.module("medhelp", ["ngRoute", "ngLoadingSpinner", "ngCookies",
 window.fbAsyncInit = function() {
     FB.init({
       appId      : '298759077133556',
+      cookie     : true,
       xfbml      : true,
       version    : 'v2.6'
     });
