@@ -104,7 +104,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.alterar = function(item){
 
-							alert(abrirTela());
+							console.log(abrirTela());
 						};
 
 					},
@@ -128,7 +128,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		var partBody = $scope.part;
 		var nome = $scope.selectedName;
-		var retorno = "";
+		var retorno = "asasasas";
 		if($scope.selectedName!=""){
 			$scope.errostatus=false;
 			$mdDialog.show({
