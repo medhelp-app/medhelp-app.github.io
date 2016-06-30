@@ -163,6 +163,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 									$mdDialog.hide();
 								}, function (error) {
 									console.log(error);
+									
 								});
 
 							} else {

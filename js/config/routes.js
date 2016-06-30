@@ -94,6 +94,12 @@ app.config(function($routeProvider, $locationProvider, $httpProvider, $mdTheming
 		controller: "PrescriptionController"
 	});
 
+	$routeProvider.when("/loginFacebook",{
+		templateUrl: "views/loginFacebook.html",
+		controller:"LoginFaceBook"
+	});
+	
+
 	$routeProvider.when("/arquivos",{
 		templateUrl: "views/archives.html",
 		controller: "ArchivesController"
