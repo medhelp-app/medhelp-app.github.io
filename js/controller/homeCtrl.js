@@ -20,6 +20,10 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
 	$scope.faceLogin = function(){
 
+		FB.getLoginStatus(function(response) {
+      		if(response.status==='connected'){
+      			console.log("Ja Conectado");
+      		}else{
 
 				FB.login(function(response) {
 				    if (response.authResponse) {
@@ -27,11 +31,15 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 				     FB.api('/me', function(response) {
 				       console.log('Good to see you, ' + response.name + '.');
 				       console.log(response);
-				     });
+				       
+				     },{scope:'email','publish_actions'});
 				    } else {
 				     console.log('User cancelled login or did not fully authorize.');
 				    }
 				});
+
+      		}
+    	});
 
 	}
 
