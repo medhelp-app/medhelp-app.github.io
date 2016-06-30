@@ -21,8 +21,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		$http.get(API_URL + 'patients/' + id + '/bodyparts', config).then(function (data) {
 			for (var i = 0; i < data.data.length; i++) {
 				data.data[i].problems.sort(function(a, b){
-					var x = a.severity == "High" ? 2 : (a.severity == "Medium" ? 1 : 0);
-					var y = b.severity == "High" ? 2 : (b.severity == "Medium" ? 1 : 0);
+					var x = a.severity == "High" ? 0 : (a.severity == "Medium" ? 1 : 2);
+					var y = b.severity == "High" ? 0 : (b.severity == "Medium" ? 1 : 2);
 					return x - y;
 				});
 				console.log(data.data[i]);
