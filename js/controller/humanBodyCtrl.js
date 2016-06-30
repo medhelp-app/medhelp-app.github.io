@@ -104,7 +104,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.alterar = function(item){
 
-							console.log(abrirTela());
+							console.log(abrirTela(item));
 						};
 
 					},
@@ -119,16 +119,15 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		}
 	}
 
-	var abrirTela = function(){
-
-		return $scope.openAdd();
+	var abrirTela(item){
+		$scope.openAdd(item);
 	}
 
 	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		var partBody = $scope.part;
 		var nome = $scope.selectedName;
-		var retorno = {};
+		
 		if($scope.selectedName!=""){
 			$scope.errostatus=false;
 			$mdDialog.show({
@@ -154,36 +153,29 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 							}else{
 								add.severity ="High";
 							}
-							retorno = add;
 
-							if (!edit) {
-								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
-									
+							if (item) {
 
+								$http.put(API_URL + 'patients/' + id + '/bodyparts/' + item._id, $scope.add, config).then(function (data) {
+									console.log($scope.add);
 									load();
 
 									$mdDialog.hide();
 								}, function (error) {
 									console.log(error);
 								});
+
 							} else {
-								$http.put(API_URL + 'patients/' + id + '/bodyparts/' + $scope.add._id, $scope.add, config).then(function (data) {
 
+								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
+									
 									load();
-
 									$mdDialog.hide();
 								}, function (error) {
 									console.log(error);
 								});
 							}
 
-							$scope.add = {
-								part: 'head',
-								severity: 'Low',
-								problem: '',
-								description: '',
-								occurredDate: ''
-							};
 						};
 
 						$scope.cancel = function () {
@@ -208,6 +200,5 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				$scope.errostatus=true;
 			}	
 
-			 alert(retorno);
 	};	
 });
