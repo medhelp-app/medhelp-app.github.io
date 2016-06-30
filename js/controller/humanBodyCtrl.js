@@ -105,7 +105,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.alterar = function(item){
 
-							abrirTela();
+							console.log(abrirTela());
 						};
 
 					},
