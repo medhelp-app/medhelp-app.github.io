@@ -30,7 +30,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					if (!data.data[i].problems[j].resolved) {
 							console.log(data.data[i].problems[j]);
 						if (data.data[i].problems[j].severity == "Medium") {
-							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ + "-yellow");
+							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-yellow");
 						} else if (data.data[i].problems[j].severity == "High") {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-red");
 						} else {
