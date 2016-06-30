@@ -128,7 +128,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		var partBody = $scope.part;
 		var nome = $scope.selectedName;
-		var retorno = "asasasas";
+		var retorno = {};
 		if($scope.selectedName!=""){
 			$scope.errostatus=false;
 			$mdDialog.show({
@@ -208,6 +208,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 				$scope.errostatus=true;
 			}	
 
-			return retorno;
+			 console.log(retorno);
 	};	
 });
