@@ -62,7 +62,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 							  	window.location = '#/inicio';
 				      			window.location.reload();
 							}).error(function(data) {
-								console.log(data);
+								console.log("Deu Merda");
 								cadastroFaceBook(response);	
 
 							});
