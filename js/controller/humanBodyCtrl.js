@@ -62,7 +62,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'rightArm-hand') $scope.selectedName = 'Mão-Direita';
 		else if (name == 'leftArm-elbow') $scope.selectedName = 'Junção-Braço-Esquerdo';
 		else if (name == 'rightArm-elbow') $scope.selectedName = 'Junção-Braço-Direito';
-		else if (name == 'rightArm-elbow') $scope.selectedName = 'Junção-Braço-Direito';
 		else if (name == 'rightLeg-knee') 	$scope.selectedName = 'Joelho-Direito';
 		else if (name == 'leftLeg-knee') 	$scope.selectedName = 'Joelho-Esquerdo';
 		else if (name == 'leftLeg-leg') 	$scope.selectedName = 'Perna-Esquerda';
