@@ -105,14 +105,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.alterar = function(item){
 
-							$http.put(API_URL + 'patients/' + id + '/bodyparts/' + item._id, item , config).then(function (data) {
-									console.log(item);
-									load();
-
-									$mdDialog.hide();
-								}, function (error) {
-									console.log(error);
-								});
+							abrirTela();
 						};
 
 					},
@@ -127,10 +120,16 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		}
 	}
 
+	var abrirTela = function(){
+
+		return $scope.openAdd();
+	}
+
 	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		var partBody = $scope.part;
 		var nome = $scope.selectedName;
+		var retorno = "";
 		if($scope.selectedName!=""){
 			$scope.errostatus=false;
 			$mdDialog.show({
@@ -156,7 +155,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 							}else{
 								add.severity ="High";
 							}
-
+							retorno = add;
 							console.log(add);
 							if (!edit) {
 								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
@@ -210,5 +209,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 			}else{
 				$scope.errostatus=true;
 			}	
+
+			return retorno;
 	};	
 });
