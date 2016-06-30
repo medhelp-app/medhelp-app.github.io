@@ -25,10 +25,9 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 					var y = b.severity == "High" ? 0 : (b.severity == "Medium" ? 1 : 2);
 					return x - y;
 				});
-				console.log(data.data[i]);
 				for (var j = 0; j < data.data[i].problems.length; j++) {
 					if (!data.data[i].problems[j].resolved) {
-							console.log(data.data[i].problems[j]);
+
 						if (data.data[i].problems[j].severity == "Medium") {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-yellow");
 						} else if (data.data[i].problems[j].severity == "High") {
@@ -105,7 +104,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.alterar = function(item){
 
-							console.log(abrirTela());
+							alert(abrirTela());
 						};
 
 					},
@@ -156,10 +155,10 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 								add.severity ="High";
 							}
 							retorno = add;
-							console.log(add);
+
 							if (!edit) {
 								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
-									console.log(data);
+									
 
 									load();
 
@@ -169,7 +168,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 								});
 							} else {
 								$http.put(API_URL + 'patients/' + id + '/bodyparts/' + $scope.add._id, $scope.add, config).then(function (data) {
-									console.log(data);
 
 									load();
 
