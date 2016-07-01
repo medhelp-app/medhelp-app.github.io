@@ -76,24 +76,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
       			window.location.reload();
 			}).error(function(data) {
 
-				    http({
-					    method: "POST",
-					    url: API_URL + "users",
-					    data: {
-							password: hash,
-							rePassword: hash,
-							name: response.name,
-							email: emailUser,
-							userType: 0
-						}
-					}).success(function(data) {
-						$scope.errostatus = false;
-					  	$location.path("/inicio");
-					}).error(function(data) {
-						$scope.errostatus = true;
-						$scope.erro = data.error;
-					});
-
+				  
 			});
     	});
 	}
