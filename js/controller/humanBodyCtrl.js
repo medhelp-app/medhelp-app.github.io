@@ -121,9 +121,9 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	var alterarParte = function(item){
 		
-		item.part = $scope.selectedName;
+		item.part = $scope.part;
 
-		$http.post(API_URL + 'patients/' + id + '/bodyparts/prob', item, config).then(function (data) {
+		$http.put(API_URL + 'patients/' + id + '/bodyparts/prob', item, config).then(function (data) {
 								
 			load();
 			$mdDialog.hide();
