@@ -41,7 +41,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
 	var showFaceUser = function(){
 
-		FB.api('/me',{scope:'name,email'}, function(response) {
+		FB.api('/me',{fields: 'id,name,email'}, function(response) {
       		console.log(response);
     	});
 	}
