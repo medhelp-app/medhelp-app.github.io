@@ -32,7 +32,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 				    } else {
 				      console.log('User cancelled login or did not fully authorize.');
 				    }
-				},{scope:'email'});
+				},{scope: 'email,user_likes'});
 
       		}
     	});
