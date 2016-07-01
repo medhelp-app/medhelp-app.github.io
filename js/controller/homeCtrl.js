@@ -75,12 +75,12 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 			  	window.location = '#/inicio';
       			window.location.reload();
 			}).error(function(data) {
-				registerFace(hash,emailUser);
+				registerFace(response,emailUser);
 			});
     	});
 	}
 
-	var registerFace = function(hash,emailUser){
+	var registerFace = function(response,emailUser){
 
 		alert(hash +" "+emailUser);
 		$http({
@@ -88,25 +88,17 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 			    url: API_URL + "users",
 			    data: {
 					password: hash,
-					rePassword: hashRe,
-					name: $scope.user.name,
-					email: $scope.user.email,
-					userType: $scope.user.userType
+					rePassword: hash,
+					name: response.name,
+					email: emailUser,
+					userType: 0
 				}
 			}).success(function(data) {
-				$scope.user = {
-					password: "",
-					rePassword: "",
-					name: "",
-					email: "",
-					userType: "0"
-				};
-
-				$scope.errostatus = false;
 			  	$location.path("/");
 			}).error(function(data) {
 				$scope.errostatus = true;
 				$scope.erro = data.error;
+				cosole.log("Deu Merda");
 			});
 	}
 
