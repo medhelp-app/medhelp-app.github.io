@@ -123,7 +123,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		
 		item.part = $scope.selectedName;
 
-		$http.post(API_URL + 'patients/' + id + '/bodyparts/prob', $scope.add, config).then(function (data) {
+		$http.post(API_URL + 'patients/' + id + '/bodyparts/prob', item, config).then(function (data) {
 								
 			load();
 			$mdDialog.hide();
