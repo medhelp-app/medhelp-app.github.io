@@ -104,7 +104,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.alterar = function(item){
 
-							abrirTela(item);
+							alterarParte(item);
 						};
 
 					},
@@ -119,9 +119,17 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		}
 	}
 
-	var abrirTela = function(item){
+	var alterarParte = function(item){
 		
-		console.log(item);	
+		item.part = $scope.selectedName;
+
+		$http.post(API_URL + 'patients/' + id + '/bodyparts/prob', $scope.add, config).then(function (data) {
+								
+			load();
+			$mdDialog.hide();
+		}, function (error) {
+			console.log(error);
+		});
 	}
 
 	$scope.openAdd = function(ev, item) {
