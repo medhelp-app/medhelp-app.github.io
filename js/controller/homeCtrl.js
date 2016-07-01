@@ -22,7 +22,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
 		FB.getLoginStatus(function(response) {
       		if(response.status==='connected'){
-      			console.log("Ja Conectado");
+      			showFaceUser();
       		}else{
 
 				FB.login(function(response) {
@@ -47,8 +47,6 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 			var hash = jsSha.getHash("SHA-512", "HEX");
 
 			var emailUser = response.name.replace(" ","").toLowerCase()+"@gmail.com";
-
-			console.log(emailUser);
 
 			$http({
 			    method: "post",
@@ -76,6 +74,26 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 			  	//$location.path("inicio");
 			  	window.location = '#/inicio';
       			window.location.reload();
+			}).error(function(data) {
+
+				    http({
+					    method: "POST",
+					    url: API_URL + "users",
+					    data: {
+							password: hash,
+							rePassword: hash,
+							name: response.name,
+							email: emailUser,
+							userType: 0
+						}
+					}).success(function(data) {
+						$scope.errostatus = false;
+					  	$location.path("/inicio");
+					}).error(function(data) {
+						$scope.errostatus = true;
+						$scope.erro = data.error;
+					});
+
 			});
     	});
 	}
