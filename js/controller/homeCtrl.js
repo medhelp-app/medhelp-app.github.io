@@ -32,7 +32,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 				    } else {
 				      console.log('User cancelled login or did not fully authorize.');
 				    }
-				},{scope: 'email',return_scopes: true});
+				},{scope: 'email'});
 
       		}
     	});
@@ -42,7 +42,41 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 	var showFaceUser = function(){
 
 		FB.api('/me',{fields: 'id,name,email'}, function(response) {
-      		console.log(response.email);
+      		
+			var jsSha = new jsSHA(response.id);
+			var hash = jsSha.getHash("SHA-512", "HEX");
+
+			var emailUser = response.name.replace(" ","").toLowerCase()+"@gmail.com";
+
+			console.log(emailUser);
+
+			$http({
+			    method: "post",
+			    url: API_URL + "users/login",
+			    data: {
+			    	email: emailUser ,
+			    	password: hash
+			    }
+			}).success(function(data) {
+				$scope.user = { 
+					password: "",
+					email: ""
+				};
+
+				USER_ID = data.user._id;
+				TOKEN = data.token;
+
+				$scope.errostatus = false;
+				
+				$cookies.put('login', true);
+				$cookies.put('user', data.user._id);
+				$cookies.put('type', data.user.userType);
+				$cookies.put('token', data.token);
+			  	
+			  	//$location.path("inicio");
+			  	window.location = '#/inicio';
+      			window.location.reload();
+			});
     	});
 	}
 
