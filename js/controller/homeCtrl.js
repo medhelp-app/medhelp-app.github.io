@@ -82,7 +82,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
 	var registerFace = function(response,emailUser){
 
-		alert(hash +" "+emailUser);
+		alert(emailUser);
 		$http({
 			    method: "POST",
 			    url: API_URL + "users",
