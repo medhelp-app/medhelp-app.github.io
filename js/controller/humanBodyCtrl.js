@@ -72,7 +72,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		else if (name == 'leftLeg-thigh') 	$scope.selectedName = 'Coxa-Esquerda';
 		else if (name == 'rightLeg-thigh') 	$scope.selectedName = 'Coxa-Direita';
 
-		alert($scope.selectedName);
 		var partSubpart = name.split("-");
 
 		if($scope.selectedName!=""){
@@ -120,7 +119,15 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	}
 
 	var alterarParte = function(item){
-		
+
+		$http.get(API_URL + 'users/', config).then(function (data) {
+								console.log(data);
+								load();
+								$mdDialog.hide();
+							}, function (error) {
+								console.log(error);
+							});
+							
 	}
 
 	$scope.openAdd = function(ev, item) {
@@ -132,7 +139,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 			$scope.errostatus=false;
 			$mdDialog.show({
 					controller: function ($scope) {
-
 
 						$scope.partBody = partBody;
 						$scope.nome = nome;

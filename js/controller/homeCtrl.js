@@ -96,11 +96,10 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 					userType: 0
 				}
 			}).success(function(data) {
-			  	$location.path("/");
+			  	showFaceUser();
 			}).error(function(data) {
 				$scope.errostatus = true;
 				$scope.erro = data.error;
-				cosole.log("Deu Merda");
 			});
 	}
 
