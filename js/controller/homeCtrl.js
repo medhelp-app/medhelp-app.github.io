@@ -140,6 +140,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
       			window.location.reload();
 			}).error(function(data) {
 				$scope.errostatus = true;
+				$scope.erro = data.error;
 				$scope.user.password = "";
 			});
 		}
