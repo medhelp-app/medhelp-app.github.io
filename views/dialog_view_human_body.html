@@ -13,20 +13,36 @@
 			<div class="md-dialog-content">
 				<div class="row">
 					<md-list flex>
-						<md-list-item class="md-3-line" ng-repeat="item in prob">
+						<md-list-item class="md-3-line" style="border: 1px solid #B2B2B2;
+						padding:5px;margin-bottom: 5px;" 
+						ng-repeat="item in prob">
 							<div class="md-list-item-text" layout="column">
-								<h3>{{ item.problem }}</h3>
-								<h4>{{ item.description }}</h4>
-								<p>
-									<i>
-										Data: {{ item.occurredDate | date }}, 
-										Severidade: <b>{{ item.severity == "High" ? "Alta" : (item.severity == "Medium" ? "Média" : "Baixa") }}</b>
-										<span ng-show="item.resolved">- <b>Resolvido</b></span>
-									</i>
-								</p>
+								<label style="font-size:12pt;font-weight:bold;">Local:
+									<p>{{item.local}}</p>
+								</label>	
+								<label style="font-size: 12pt;font-weight:bold;">Problema:
+									<p>{{ item.problem }}</p>
+								</label>
+								<label style="font-size:12pt;font-weight:bold;">Descrição:
+									<p>{{ item.description }}</p>
+								</label>
+								
+								<label style="font-size:12pt;font-weight:bold;">
+									Data: <p>{{ item.occurredDate | date }}</p>	
+								</label>
+								
+								<label style="font-size:12pt;font-weight:bold;">Severidade: 
+									<p>{{ item.severity == "High" ? "Alta" : (item.severity == "Medium" ? "Média" : "Baixa") }}</p>
+								</label>	
+								
+
+								<label style="font-size:12pt;font-weight:bold;">Condição: 
+									<p>{{item.resolved == true ? "Resolvido" : "Não Resolvido"}}</p>
+								</label>	
+								
 								<md-dialog-actions layout="row">
 								<span flex></span>
-									<md-button ng-click="alterar(item) ">
+									<md-button ng-click="alterar(item)">
 										Alterar
 									</md-button>
 								</md-dialog-actions>

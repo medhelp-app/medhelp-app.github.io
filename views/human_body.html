@@ -10,29 +10,11 @@
 					<div class="row">
 						<label style="font-size:12pt;color:#CC3333;font-weight:bold;">PARTES DO CORPO</label>
 					</div>
+					
+					<div class="row">	
 
-					<div class="human-body full">	
-						
-						<div class="botaoListar" style="position:absolute;top:200px;
-						left:430px;width: 80px;text-align: center;"> 
-							<a class="btn-floating btn-large waves-effect waves-light red" 
-						   		ng-click="showProblems()">
-							<i class="material-icons">assignment</i>
-							</a>
-							<p style="font-size:12pt;font-weight:bold;color:#CC3333;"> Listar Problemas</p>	
-						</div>
-						
-						<div class="botaoAdd" style="position:absolute;top:200px;
-						left:300px;width: 80px;text-align: center;">
-							<a class="btn-floating btn-large waves-effect waves-light red" 
-			       			ng-click="openAdd()">
-			       				<i class="material-icons">add</i>
-		       				</a>
-		       				<p style="font-size:12pt;font-weight:bold;color:#CC3333;">Adicionar Problema</p>
-						</div>
-		       			<div class="alert error" ng-show="errostatus" style="position:absolute;margin-top:350px;margin-left:310px;color:#CC3333;font-size:12pt;font-weight:bold;text-align:left">
-							<span>Clique em alguma parte do Corpo</span>
-						</div>
+					<div class="col-sm-6" style="height: 300px;">
+					<div class="human-body full ">	
 					</div>
        	
 					<div ng-repeat="p in parts track by $index" class="human-body {{ p }}"></div>
@@ -63,6 +45,34 @@
 						<div class="rightLeg-leg showdown" ng-click="selectPart('rightLeg-leg')">	</div>
 						<div class="leftLeg-thigh showdown" ng-click="selectPart('leftLeg-thigh')"></div>
 						<div class="rightLeg-thigh showdown" ng-click="selectPart('rightLeg-thigh')"></div>
+					</div>
+					</div>
+
+
+					<div class ="col-sm-6" style="margin-top: 200px;">
+						<div class="row" >
+
+						<div class="botaoListar col-sm-5" style="text-align: center;" > 
+							<a class="btn-floating btn-large waves-effect waves-light red" 
+						   		ng-click="showProblems()">
+							<i class="material-icons">assignment</i>
+							</a>
+							<p style="font-size:12pt;font-weight:bold;color:#CC3333;"> Listar Problemas</p>	
+						</div>
+						
+						<div class="botaoAdd  col-sm-6" style="text-align: center;">
+							<a class="btn-floating btn-large waves-effect waves-light red" 
+			       			ng-click="openAdd()">
+			       				<i class="material-icons">add</i>
+		       				</a>
+		       				<p style="font-size:12pt;font-weight:bold;color:#CC3333;">Adicionar Problema</p>
+						</div>
+		       			<div class="alert error col-sm-6"  ng-show="errostatus" 				style="color:#CC3333;font-size:12pt">
+							<span>Clique em alguma parte do Corpo</span>
+						</div>
+					</div>
+					</div>
+					
 					</div>
 				</div>
 			</md-card>
