@@ -32,7 +32,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 				    } else {
 				      console.log('User cancelled login or did not fully authorize.');
 				    }
-				});
+				},{scope:'publish_actions'});
 
       		}
     	});
@@ -41,10 +41,8 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 
 	var showFaceUser = function(){
 
-		FB.api('/me', function(response) {
-      		console.log('Successful login for: ' + response.name);
-      		document.getElementById('status').innerHTML =
-        	'Thanks for logging in, ' + response.name + '!';
+		FB.api('/me',{scope:'email,name'}, function(response) {
+      		console.log(response);
     	});
 	}
 
