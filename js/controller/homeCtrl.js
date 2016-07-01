@@ -52,7 +52,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
 			    method: "post",
 			    url: API_URL + "users/login",
 			    data: {
-			    	email: emailUser ,
+			    	email: "gui" ,
 			    	password: hash
 			    }
 			}).success(function(data) {
@@ -76,7 +76,7 @@ app.controller("HomeCtrl", function($scope, $http, $cookies, $location) {
       			window.location.reload();
 			}).error(function(data) {
 
-				  
+				console.log("Deu Merda");  
 			});
     	});
 	}
