@@ -121,6 +121,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	var alterarParte = function(item,ev){
 		var partBody = $scope.part;
+		var nome = $scope.selectedName;
 		var item = item;
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		$mdDialog.show({
@@ -128,6 +129,9 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.partBody = partBody;
 						$scope.item = item;
+						$scope.nome = nome;
+						$scope.tema = "Alterar Problema";
+						$scope.botao = "Alterar";
 
 						$scope.save = function (add) {
 
@@ -185,6 +189,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.partBody = partBody;
 						$scope.nome = nome;
+						$scope.tema = "Adicionar Problema";
+						$scope.botao = "Adicionar";
 
 						var partSubpart = partBody.split("-");
 						var part = partSubpart[0];

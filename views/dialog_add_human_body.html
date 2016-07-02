@@ -2,7 +2,7 @@
 	<form name="addForm">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<h2>Adicionar problema</h2>
+				<h2>{{tema}}</h2>
 				<span flex></span>
 				<md-button class="md-icon-button" ng-click="cancel()">
 					<i class="material-icons">close</i>
@@ -85,7 +85,7 @@
 				Cancelar
 			</md-button>
 			<md-button ng-click="save(add)" ng-disabled="addForm.$invalid">
-				Adicionar
+				{{botao}}
 			</md-button>
 		</md-dialog-actions>
 	</form>
