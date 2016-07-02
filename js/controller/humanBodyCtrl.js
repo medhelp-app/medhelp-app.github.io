@@ -119,7 +119,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		}
 	}
 
-	var alterarParte = function(item){
+	var alterarParte = function(ev,item){
 		var partBody = $scope.part;
 
 		$mdDialog.show({
