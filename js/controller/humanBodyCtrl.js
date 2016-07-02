@@ -14,6 +14,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	$scope.part = "";
 	$scope.selectedName ="";
 	$scope.partProblem = [];
+	$scope.editProblema = false;
 
 	function load () {
 		$scope.parts = [];
@@ -119,15 +120,8 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 	}
 
 	var alterarParte = function(item){
-
-		$http.get(API_URL + 'users/', config).then(function (data) {
-								console.log(data);
-								load();
-								$mdDialog.hide();
-							}, function (error) {
-								console.log(error);
-							});
-							
+			$scope.editProblema=true;
+			$scope.openAdd(item);				
 	}
 
 	$scope.openAdd = function(ev, item) {
@@ -161,14 +155,28 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 							}
 
 
-							$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
-								
-								load();
-								$mdDialog.hide();
-							}, function (error) {
-								console.log(error);
-							});
-							
+							if($scope.editProblema == true){
+								item.part = $scope.partBody; 
+
+								$http.put(API_URL + 'patients/'+id+'/updateBody',item, config).then(function (data) {
+									console.log(data);
+									$scope.editProblema=false;
+									load();
+									$mdDialog.hide();
+								}, function (error) {
+									console.log(error);
+									$scope.editProblema=false;
+								});
+							}else{
+
+								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
+									
+									load();
+									$mdDialog.hide();
+								}, function (error) {
+									console.log(error);
+								});
+							}
 
 						};
 
