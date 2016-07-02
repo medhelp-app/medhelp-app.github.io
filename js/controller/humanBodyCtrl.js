@@ -119,7 +119,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		}
 	}
 
-	var alterarParte = function(ev,item){
+	var alterarParte = function(item,ev){
 		var partBody = $scope.part;
 		var item = item;
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -132,7 +132,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						$scope.save = function (add) {
 
 							add.part = partBody;
-							add.idItem = item;
+							add.idItem = $scope.item;
 							console.log(add);
 
 							if(parseInt(add.level)<=30){
@@ -145,12 +145,10 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 							
 								$http.put(API_URL + 'patients/'+id+'/updateBody',$scope.add, config).then(function (data) {
 									console.log(data);
-									$scope.editProblema=false;
 									load();
 									$mdDialog.hide();
 								}, function (error) {
 									console.log(error);
-									$scope.editProblema=false;
 								});	
 						};
 
