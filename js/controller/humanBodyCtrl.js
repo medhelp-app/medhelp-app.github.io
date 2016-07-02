@@ -121,13 +121,15 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	var alterarParte = function(item){
 			$scope.editProblema=true;
-			$scope.openAdd(item);				
+			$scope.openAdd(item);
+			console.log(item);				
 	}
 
 	$scope.openAdd = function(ev, item) {
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		var partBody = $scope.part;
 		var nome = $scope.selectedName;
+		var item = item;
 		
 		if($scope.selectedName!=""){
 			$scope.errostatus=false;
