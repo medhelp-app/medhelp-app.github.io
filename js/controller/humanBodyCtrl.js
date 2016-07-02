@@ -132,7 +132,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 						$scope.save = function (add) {
 
 							add.part = partBody;
-							add.idItem = $scope.item;
+							add.idItem = $scope.item._id;
 							console.log(add);
 
 							if(parseInt(add.level)<=30){
