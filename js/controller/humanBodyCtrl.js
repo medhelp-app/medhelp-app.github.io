@@ -132,6 +132,7 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 							add.part = partBody;
 							add.idItem = item;
+							console.log(add);
 
 							if(parseInt(add.level)<=30){
 								add.severity = "Low";
