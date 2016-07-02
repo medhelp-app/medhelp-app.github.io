@@ -121,12 +121,13 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 	var alterarParte = function(ev,item){
 		var partBody = $scope.part;
+		var item = item;
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		$mdDialog.show({
 					controller: function ($scope) {
 
-						var partBody = partBody;
-						var item = item;
+						$scope.partBody = partBody;
+						$scope.item = item;
 
 						$scope.save = function (add) {
 
