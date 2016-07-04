@@ -33,9 +33,7 @@
 								
 								<label style="font-size:12pt;font-weight:bold;">Severidade: 
 									<p>{{ item.severity == "High" ? "Alta" : (item.severity == "Medium" ? "Média" : "Baixa") }}</p>
-									<p style="font-size:12pt;color:gray;" ng-show="item.severity=='Low'">Nível: {{item.level}}</p>
-									<p style="font-size:12pt;color:yellow;" ng-show="item.severity=='Medium'">Nível: {{item.level}}</p>
-									<p style="font-size:12pt;color:red;" ng-show="item.severity=='High'">Nível: {{item.level}}</p>
+									<p style="font-size:12pt;" >Nível: {{item.level}}</p>
 									
 								</label>	
 								
