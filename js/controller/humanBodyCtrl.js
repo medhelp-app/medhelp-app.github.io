@@ -22,16 +22,16 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		$http.get(API_URL + 'patients/' + id + '/bodyparts', config).then(function (data) {
 			for (var i = 0; i < data.data.length; i++) {
 				data.data[i].problems.sort(function(a, b){
-					var x = a.severity.escala == "High" ? 0 : (a.severity.escala == "Medium" ? 1 : 2);
-					var y = b.severity.escala == "High" ? 0 : (b.severity.escala == "Medium" ? 1 : 2);
+					var x = a.severity == "High" ? 0 : (a.severity == "Medium" ? 1 : 2);
+					var y = b.severity == "High" ? 0 : (b.severity == "Medium" ? 1 : 2);
 					return x - y;
 				});
 				for (var j = 0; j < data.data[i].problems.length; j++) {
 					if (!data.data[i].problems[j].resolved) {
 
-						if (data.data[i].problems[j].severity.escala == "Medium") {
+						if (data.data[i].problems[j].severity == "Medium") {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-yellow");
-						} else if (data.data[i].problems[j].severity.escala == "High") {
+						} else if (data.data[i].problems[j].severity == "High") {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-red");
 						} else {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-gray");
@@ -198,24 +198,17 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.save = function (add) {
 
-							var valor = add.level;
-							var escala = "";
 							add.part = part;
 							add.subpart = subpart;
-							add.severity.valor = add.level;
 
 							if(parseInt(add.level)<=30){
-								escala = "Low";
+								add.severity = "Low";
 							}else if(parseInt(add.level)>30 && parseInt(add.level)<=60){
-								escala = "Medium";
+								add.severity = "Medium";
 							}else{
-								escala ="High";
+								add.severity ="High";
 							}
-							
-								add.severity = {
-									escala: escala,
-									valor: valor
-								};
+								
 
 								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
 									
