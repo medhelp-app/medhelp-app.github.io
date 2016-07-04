@@ -208,7 +208,6 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 							}else{
 								add.severity ="High";
 							}
-								
 
 								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
 									
