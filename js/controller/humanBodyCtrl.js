@@ -22,16 +22,16 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 		$http.get(API_URL + 'patients/' + id + '/bodyparts', config).then(function (data) {
 			for (var i = 0; i < data.data.length; i++) {
 				data.data[i].problems.sort(function(a, b){
-					var x = a.severity == "High" ? 0 : (a.severity == "Medium" ? 1 : 2);
-					var y = b.severity == "High" ? 0 : (b.severity == "Medium" ? 1 : 2);
+					var x = a.severity.escala == "High" ? 0 : (a.severity.escala == "Medium" ? 1 : 2);
+					var y = b.severity.escala == "High" ? 0 : (b.severity.escala == "Medium" ? 1 : 2);
 					return x - y;
 				});
 				for (var j = 0; j < data.data[i].problems.length; j++) {
 					if (!data.data[i].problems[j].resolved) {
 
-						if (data.data[i].problems[j].severity == "Medium") {
+						if (data.data[i].problems[j].severity.escala == "Medium") {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-yellow");
-						} else if (data.data[i].problems[j].severity == "High") {
+						} else if (data.data[i].problems[j].severity.escala == "High") {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-red");
 						} else {
 							$scope.parts.push(data.data[i].part+"-"+data.data[i].subpart+ "-gray");
@@ -198,17 +198,24 @@ app.controller("HumanBodyCtrl", function($scope, $http, $location, $cookies, $md
 
 						$scope.save = function (add) {
 
+							var valor = add.level;
+							var escala = "";
 							add.part = part;
 							add.subpart = subpart;
+							add.severity.valor = add.level;
 
 							if(parseInt(add.level)<=30){
-								add.severity = "Low";
+								escala = "Low";
 							}else if(parseInt(add.level)>30 && parseInt(add.level)<=60){
-								add.severity = "Medium";
+								escala = "Medium";
 							}else{
-								add.severity ="High";
+								escala ="High";
 							}
 							
+								add.severity = {
+									escala: escala,
+									valor: valor
+								};
 
 								$http.post(API_URL + 'patients/' + id + '/bodyparts', $scope.add, config).then(function (data) {
 									

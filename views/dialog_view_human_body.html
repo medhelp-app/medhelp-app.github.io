@@ -32,7 +32,8 @@
 								</label>
 								
 								<label style="font-size:12pt;font-weight:bold;">Severidade: 
-									<p>{{ item.severity == "High" ? "Alta" : (item.severity == "Medium" ? "Média" : "Baixa") }}</p>
+									<p>{{ item.severity.escala == "High" ? "Alta" : (item.severity.escala == "Medium" ? "Média" : "Baixa") }}</p>
+									<p>item.severity.valor</p>
 								</label>	
 								
 
